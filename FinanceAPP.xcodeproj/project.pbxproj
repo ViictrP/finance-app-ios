@@ -9,29 +9,41 @@
 /* Begin PBXBuildFile section */
 		0CE3F6B87DC3B9B27C8CE022 /* Pods_FinanceAPP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0C563CDD5A23C43FB4979D8 /* Pods_FinanceAPP.framework */; };
 		4415EB0C203D00A800FD9888 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4415EB0B203D00A800FD9888 /* AppDelegate.swift */; };
-		4415EB0E203D00A800FD9888 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4415EB0D203D00A800FD9888 /* ViewController.swift */; };
 		4415EB11203D00A800FD9888 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4415EB0F203D00A800FD9888 /* Main.storyboard */; };
 		4415EB14203D00A800FD9888 /* FinanceAPP.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4415EB12203D00A800FD9888 /* FinanceAPP.xcdatamodeld */; };
-		4415EB16203D00A800FD9888 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4415EB15203D00A800FD9888 /* Assets.xcassets */; };
 		4415EB19203D00A800FD9888 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4415EB17203D00A800FD9888 /* LaunchScreen.storyboard */; };
 		4415EB4D203D05C800FD9888 /* Hero+FinanceAPP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4415EB4C203D05C800FD9888 /* Hero+FinanceAPP.swift */; };
 		4415EB4E203D061200FD9888 /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4415EB4F203D061200FD9888 /* Hero.framework */; };
-		4415EB9F203D083200FD9888 /* OtherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4415EB9E203D083200FD9888 /* OtherViewController.swift */; };
+		44B1F6AD203D9D180078E923 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44B1F6AC203D9D180078E923 /* Assets.xcassets */; };
+		44B1F6B0203DABE20078E923 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1F6AF203DABE20078E923 /* HomeViewController.swift */; };
+		44B1F6B3203DB4290078E923 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1F6B2203DB4290078E923 /* UIViewControllerExtension.swift */; };
+		44B1F6B5203DBB580078E923 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1F6B4203DBB580078E923 /* UserViewController.swift */; };
+		44B1F6B7203DC0800078E923 /* FinanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1F6B6203DC0800078E923 /* FinanceTableViewCell.swift */; };
+		44B1F6BB203DDC310078E923 /* AddInvoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1F6BA203DDC310078E923 /* AddInvoiceViewController.swift */; };
+		44B1F6BD203DDD660078E923 /* InvoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1F6BC203DDD660078E923 /* InvoiceViewController.swift */; };
+		44B1F6BF203DDF090078E923 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1F6BE203DDF090078E923 /* SettingsViewController.swift */; };
+		44B1F6C1203DFDD30078E923 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1F6C0203DFDD30078E923 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4415EB08203D00A800FD9888 /* FinanceAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinanceAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4415EB0B203D00A800FD9888 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4415EB0D203D00A800FD9888 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4415EB10203D00A800FD9888 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4415EB13203D00A800FD9888 /* FinanceAPP.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FinanceAPP.xcdatamodel; sourceTree = "<group>"; };
-		4415EB15203D00A800FD9888 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4415EB18203D00A800FD9888 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4415EB1A203D00A800FD9888 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4415EB21203D017E00FD9888 /* Hero.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Hero.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4415EB4C203D05C800FD9888 /* Hero+FinanceAPP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Hero+FinanceAPP.swift"; sourceTree = "<group>"; };
 		4415EB4F203D061200FD9888 /* Hero.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Hero.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4415EB9E203D083200FD9888 /* OtherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherViewController.swift; sourceTree = "<group>"; };
+		44B1F6AC203D9D180078E923 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		44B1F6AF203DABE20078E923 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		44B1F6B2203DB4290078E923 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		44B1F6B4203DBB580078E923 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		44B1F6B6203DC0800078E923 /* FinanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceTableViewCell.swift; sourceTree = "<group>"; };
+		44B1F6BA203DDC310078E923 /* AddInvoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInvoiceViewController.swift; sourceTree = "<group>"; };
+		44B1F6BC203DDD660078E923 /* InvoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceViewController.swift; sourceTree = "<group>"; };
+		44B1F6BE203DDF090078E923 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		44B1F6C0203DFDD30078E923 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7D737D258320E22610610F77 /* Pods-FinanceAPP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceAPP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinanceAPP/Pods-FinanceAPP.debug.xcconfig"; sourceTree = "<group>"; };
 		B0C563CDD5A23C43FB4979D8 /* Pods_FinanceAPP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinanceAPP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E641025F3F4CE455F02F951C /* Pods-FinanceAPP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceAPP.release.xcconfig"; path = "Pods/Target Support Files/Pods-FinanceAPP/Pods-FinanceAPP.release.xcconfig"; sourceTree = "<group>"; };
@@ -71,6 +83,7 @@
 		4415EB0A203D00A800FD9888 /* FinanceAPP */ = {
 			isa = PBXGroup;
 			children = (
+				44B1F6B1203DB4120078E923 /* Extensions */,
 				4415EC69203D0B3F00FD9888 /* Sources */,
 				4415EB27203D02FA00FD9888 /* Resources */,
 				4415EB26203D02ED00FD9888 /* Controllers */,
@@ -92,8 +105,13 @@
 		4415EB26203D02ED00FD9888 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4415EB0D203D00A800FD9888 /* ViewController.swift */,
-				4415EB9E203D083200FD9888 /* OtherViewController.swift */,
+				44B1F6AF203DABE20078E923 /* HomeViewController.swift */,
+				44B1F6B4203DBB580078E923 /* UserViewController.swift */,
+				44B1F6B6203DC0800078E923 /* FinanceTableViewCell.swift */,
+				44B1F6BA203DDC310078E923 /* AddInvoiceViewController.swift */,
+				44B1F6BC203DDD660078E923 /* InvoiceViewController.swift */,
+				44B1F6BE203DDF090078E923 /* SettingsViewController.swift */,
+				44B1F6C0203DFDD30078E923 /* LoginViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -101,10 +119,10 @@
 		4415EB27203D02FA00FD9888 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				44B1F6AC203D9D180078E923 /* Assets.xcassets */,
 				4415EB4C203D05C800FD9888 /* Hero+FinanceAPP.swift */,
 				4415EB0B203D00A800FD9888 /* AppDelegate.swift */,
 				4415EB17203D00A800FD9888 /* LaunchScreen.storyboard */,
-				4415EB15203D00A800FD9888 /* Assets.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -162,6 +180,14 @@
 			children = (
 			);
 			path = Transition;
+			sourceTree = "<group>";
+		};
+		44B1F6B1203DB4120078E923 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				44B1F6B2203DB4290078E923 /* UIViewControllerExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		65927491D32A52F7928E67BC /* Frameworks */ = {
@@ -246,7 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4415EB19203D00A800FD9888 /* LaunchScreen.storyboard in Resources */,
-				4415EB16203D00A800FD9888 /* Assets.xcassets in Resources */,
+				44B1F6AD203D9D180078E923 /* Assets.xcassets in Resources */,
 				4415EB11203D00A800FD9888 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,11 +340,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4415EB0E203D00A800FD9888 /* ViewController.swift in Sources */,
 				4415EB14203D00A800FD9888 /* FinanceAPP.xcdatamodeld in Sources */,
+				44B1F6B5203DBB580078E923 /* UserViewController.swift in Sources */,
+				44B1F6BD203DDD660078E923 /* InvoiceViewController.swift in Sources */,
+				44B1F6BF203DDF090078E923 /* SettingsViewController.swift in Sources */,
 				4415EB4D203D05C800FD9888 /* Hero+FinanceAPP.swift in Sources */,
+				44B1F6B3203DB4290078E923 /* UIViewControllerExtension.swift in Sources */,
 				4415EB0C203D00A800FD9888 /* AppDelegate.swift in Sources */,
-				4415EB9F203D083200FD9888 /* OtherViewController.swift in Sources */,
+				44B1F6B0203DABE20078E923 /* HomeViewController.swift in Sources */,
+				44B1F6BB203DDC310078E923 /* AddInvoiceViewController.swift in Sources */,
+				44B1F6B7203DC0800078E923 /* FinanceTableViewCell.swift in Sources */,
+				44B1F6C1203DFDD30078E923 /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
