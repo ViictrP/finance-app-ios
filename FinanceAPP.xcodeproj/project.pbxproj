@@ -14,7 +14,9 @@
 		4415EB14203D00A800FD9888 /* FinanceAPP.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4415EB12203D00A800FD9888 /* FinanceAPP.xcdatamodeld */; };
 		4415EB16203D00A800FD9888 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4415EB15203D00A800FD9888 /* Assets.xcassets */; };
 		4415EB19203D00A800FD9888 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4415EB17203D00A800FD9888 /* LaunchScreen.storyboard */; };
-		4415EB20203D017E00FD9888 /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4415EB21203D017E00FD9888 /* Hero.framework */; };
+		4415EB4D203D05C800FD9888 /* Hero+FinanceAPP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4415EB4C203D05C800FD9888 /* Hero+FinanceAPP.swift */; };
+		4415EB4E203D061200FD9888 /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4415EB4F203D061200FD9888 /* Hero.framework */; };
+		4415EB9F203D083200FD9888 /* OtherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4415EB9E203D083200FD9888 /* OtherViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,9 @@
 		4415EB18203D00A800FD9888 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4415EB1A203D00A800FD9888 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4415EB21203D017E00FD9888 /* Hero.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Hero.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4415EB4C203D05C800FD9888 /* Hero+FinanceAPP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Hero+FinanceAPP.swift"; sourceTree = "<group>"; };
+		4415EB4F203D061200FD9888 /* Hero.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Hero.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4415EB9E203D083200FD9888 /* OtherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherViewController.swift; sourceTree = "<group>"; };
 		7D737D258320E22610610F77 /* Pods-FinanceAPP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceAPP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinanceAPP/Pods-FinanceAPP.debug.xcconfig"; sourceTree = "<group>"; };
 		B0C563CDD5A23C43FB4979D8 /* Pods_FinanceAPP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinanceAPP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E641025F3F4CE455F02F951C /* Pods-FinanceAPP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceAPP.release.xcconfig"; path = "Pods/Target Support Files/Pods-FinanceAPP/Pods-FinanceAPP.release.xcconfig"; sourceTree = "<group>"; };
@@ -37,7 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4415EB20203D017E00FD9888 /* Hero.framework in Frameworks */,
+				4415EB4E203D061200FD9888 /* Hero.framework in Frameworks */,
 				0CE3F6B87DC3B9B27C8CE022 /* Pods_FinanceAPP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -66,11 +71,10 @@
 		4415EB0A203D00A800FD9888 /* FinanceAPP */ = {
 			isa = PBXGroup;
 			children = (
+				4415EC69203D0B3F00FD9888 /* Sources */,
 				4415EB27203D02FA00FD9888 /* Resources */,
 				4415EB26203D02ED00FD9888 /* Controllers */,
 				4415EB25203D02E200FD9888 /* Views */,
-				4415EB0B203D00A800FD9888 /* AppDelegate.swift */,
-				4415EB17203D00A800FD9888 /* LaunchScreen.storyboard */,
 				4415EB1A203D00A800FD9888 /* Info.plist */,
 				4415EB12203D00A800FD9888 /* FinanceAPP.xcdatamodeld */,
 			);
@@ -89,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				4415EB0D203D00A800FD9888 /* ViewController.swift */,
+				4415EB9E203D083200FD9888 /* OtherViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -96,14 +101,73 @@
 		4415EB27203D02FA00FD9888 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4415EB4C203D05C800FD9888 /* Hero+FinanceAPP.swift */,
+				4415EB0B203D00A800FD9888 /* AppDelegate.swift */,
+				4415EB17203D00A800FD9888 /* LaunchScreen.storyboard */,
 				4415EB15203D00A800FD9888 /* Assets.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		4415EC69203D0B3F00FD9888 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				4415EC6A203D0B3F00FD9888 /* Animator */,
+				4415EC6B203D0B3F00FD9888 /* Debug Plugin */,
+				4415EC6C203D0B3F00FD9888 /* Extensions */,
+				4415EC6D203D0B3F00FD9888 /* Parser */,
+				4415EC6E203D0B3F00FD9888 /* Preprocessors */,
+				4415EC6F203D0B3F00FD9888 /* Transition */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		4415EC6A203D0B3F00FD9888 /* Animator */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Animator;
+			sourceTree = "<group>";
+		};
+		4415EC6B203D0B3F00FD9888 /* Debug Plugin */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Debug Plugin";
+			sourceTree = "<group>";
+		};
+		4415EC6C203D0B3F00FD9888 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4415EC6D203D0B3F00FD9888 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Parser;
+			sourceTree = "<group>";
+		};
+		4415EC6E203D0B3F00FD9888 /* Preprocessors */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Preprocessors;
+			sourceTree = "<group>";
+		};
+		4415EC6F203D0B3F00FD9888 /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Transition;
+			sourceTree = "<group>";
+		};
 		65927491D32A52F7928E67BC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4415EB4F203D061200FD9888 /* Hero.framework */,
 				4415EB21203D017E00FD9888 /* Hero.framework */,
 				B0C563CDD5A23C43FB4979D8 /* Pods_FinanceAPP.framework */,
 			);
@@ -252,7 +316,9 @@
 			files = (
 				4415EB0E203D00A800FD9888 /* ViewController.swift in Sources */,
 				4415EB14203D00A800FD9888 /* FinanceAPP.xcdatamodeld in Sources */,
+				4415EB4D203D05C800FD9888 /* Hero+FinanceAPP.swift in Sources */,
 				4415EB0C203D00A800FD9888 /* AppDelegate.swift in Sources */,
+				4415EB9F203D083200FD9888 /* OtherViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,7 +457,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+                DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FinanceAPP/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -408,7 +474,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+                DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FinanceAPP/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

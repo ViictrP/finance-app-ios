@@ -12,10 +12,14 @@ import Hero
 class ViewController: UIViewController {
 
     @IBOutlet weak var viView: UIView!
+    @IBOutlet weak var btButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.heroID = "heroView"
+    }
+    
+    @IBAction func btButtonAction(_ sender: UIButton) {
+        performSegue(withIdentifier: "show", sender: nil)
     }
 }
 

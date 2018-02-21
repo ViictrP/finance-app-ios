@@ -19,11 +19,46 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7jx-1o-ccU">
                                 <rect key="frame" x="57" y="108.5" width="260" height="310"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k87-9t-iUu">
+                                        <rect key="frame" x="103" y="137.5" width="54" height="34"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="button"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="btButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AE4-qn-Al7"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="k87-9t-iUu" firstAttribute="centerY" secondItem="7jx-1o-ccU" secondAttribute="centerY" id="2li-6t-6jj"/>
                                     <constraint firstAttribute="height" constant="310" id="35N-6c-V51"/>
+                                    <constraint firstItem="k87-9t-iUu" firstAttribute="centerX" secondItem="7jx-1o-ccU" secondAttribute="centerX" id="XoC-S8-qzD"/>
                                     <constraint firstAttribute="width" constant="260" id="adz-YE-JKn"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.40000000000000002"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="viView"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="fade"/>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -37,11 +72,56 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
+                        <outlet property="btButton" destination="k87-9t-iUu" id="Mrx-Yf-YRc"/>
                         <outlet property="viView" destination="7jx-1o-ccU" id="y6A-Nb-VRw"/>
+                        <segue destination="vbQ-PR-Lcf" kind="presentation" identifier="show" modalPresentationStyle="overFullScreen" id="IgF-nT-piI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-209" y="33"/>
+        </scene>
+        <!--Other View Controller-->
+        <scene sceneID="AyX-cr-pl6">
+            <objects>
+                <viewController id="vbQ-PR-Lcf" customClass="OtherViewController" customModule="FinanceAPP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eOi-C8-U8S">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kGx-pX-YmE">
+                                <rect key="frame" x="161" y="316" width="54" height="34"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="button"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="btVoltarAction:" destination="vbQ-PR-Lcf" eventType="touchUpInside" id="ibi-dp-uTi"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kGx-pX-YmE" firstAttribute="centerY" secondItem="eOi-C8-U8S" secondAttribute="centerY" id="41U-V6-983"/>
+                            <constraint firstItem="kGx-pX-YmE" firstAttribute="centerX" secondItem="eOi-C8-U8S" secondAttribute="centerX" id="LVw-k5-NjH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ovn-rQ-lO2"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="viView"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="btVoltar" destination="kGx-pX-YmE" id="xkZ-AE-i5G"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kzy-QJ-wnR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="816.79999999999995" y="32.833583208395808"/>
         </scene>
     </scenes>
 </document>
