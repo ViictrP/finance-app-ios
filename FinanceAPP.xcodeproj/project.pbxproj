@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0CE3F6B87DC3B9B27C8CE022 /* Pods_FinanceAPP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0C563CDD5A23C43FB4979D8 /* Pods_FinanceAPP.framework */; };
 		4415EB0C203D00A800FD9888 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4415EB0B203D00A800FD9888 /* AppDelegate.swift */; };
 		4415EB0E203D00A800FD9888 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4415EB0D203D00A800FD9888 /* ViewController.swift */; };
 		4415EB11203D00A800FD9888 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4415EB0F203D00A800FD9888 /* Main.storyboard */; };
 		4415EB14203D00A800FD9888 /* FinanceAPP.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4415EB12203D00A800FD9888 /* FinanceAPP.xcdatamodeld */; };
 		4415EB16203D00A800FD9888 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4415EB15203D00A800FD9888 /* Assets.xcassets */; };
 		4415EB19203D00A800FD9888 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4415EB17203D00A800FD9888 /* LaunchScreen.storyboard */; };
+		4415EB20203D017E00FD9888 /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4415EB21203D017E00FD9888 /* Hero.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,10 @@
 		4415EB15203D00A800FD9888 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4415EB18203D00A800FD9888 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4415EB1A203D00A800FD9888 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4415EB21203D017E00FD9888 /* Hero.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Hero.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D737D258320E22610610F77 /* Pods-FinanceAPP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceAPP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinanceAPP/Pods-FinanceAPP.debug.xcconfig"; sourceTree = "<group>"; };
+		B0C563CDD5A23C43FB4979D8 /* Pods_FinanceAPP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinanceAPP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E641025F3F4CE455F02F951C /* Pods-FinanceAPP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceAPP.release.xcconfig"; path = "Pods/Target Support Files/Pods-FinanceAPP/Pods-FinanceAPP.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +37,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4415EB20203D017E00FD9888 /* Hero.framework in Frameworks */,
+				0CE3F6B87DC3B9B27C8CE022 /* Pods_FinanceAPP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +50,8 @@
 			children = (
 				4415EB0A203D00A800FD9888 /* FinanceAPP */,
 				4415EB09203D00A800FD9888 /* Products */,
+				CFBF3263BCF4C27984898CE5 /* Pods */,
+				65927491D32A52F7928E67BC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +66,57 @@
 		4415EB0A203D00A800FD9888 /* FinanceAPP */ = {
 			isa = PBXGroup;
 			children = (
+				4415EB27203D02FA00FD9888 /* Resources */,
+				4415EB26203D02ED00FD9888 /* Controllers */,
+				4415EB25203D02E200FD9888 /* Views */,
 				4415EB0B203D00A800FD9888 /* AppDelegate.swift */,
-				4415EB0D203D00A800FD9888 /* ViewController.swift */,
-				4415EB0F203D00A800FD9888 /* Main.storyboard */,
-				4415EB15203D00A800FD9888 /* Assets.xcassets */,
 				4415EB17203D00A800FD9888 /* LaunchScreen.storyboard */,
 				4415EB1A203D00A800FD9888 /* Info.plist */,
 				4415EB12203D00A800FD9888 /* FinanceAPP.xcdatamodeld */,
 			);
 			path = FinanceAPP;
+			sourceTree = "<group>";
+		};
+		4415EB25203D02E200FD9888 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4415EB0F203D00A800FD9888 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4415EB26203D02ED00FD9888 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4415EB0D203D00A800FD9888 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		4415EB27203D02FA00FD9888 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4415EB15203D00A800FD9888 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		65927491D32A52F7928E67BC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4415EB21203D017E00FD9888 /* Hero.framework */,
+				B0C563CDD5A23C43FB4979D8 /* Pods_FinanceAPP.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CFBF3263BCF4C27984898CE5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7D737D258320E22610610F77 /* Pods-FinanceAPP.debug.xcconfig */,
+				E641025F3F4CE455F02F951C /* Pods-FinanceAPP.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +126,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4415EB1D203D00A800FD9888 /* Build configuration list for PBXNativeTarget "FinanceAPP" */;
 			buildPhases = (
+				F71F938B79E5B9C78D9A593D /* [CP] Check Pods Manifest.lock */,
 				4415EB04203D00A800FD9888 /* Sources */,
 				4415EB05203D00A800FD9888 /* Frameworks */,
 				4415EB06203D00A800FD9888 /* Resources */,
+				545095413286A4CA82B73197 /* [CP] Embed Pods Frameworks */,
+				3EF79243C8C90392DDBD2C3A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -133,6 +188,62 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3EF79243C8C90392DDBD2C3A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FinanceAPP/Pods-FinanceAPP-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		545095413286A4CA82B73197 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-FinanceAPP/Pods-FinanceAPP-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FinanceAPP/Pods-FinanceAPP-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F71F938B79E5B9C78D9A593D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FinanceAPP-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4415EB04203D00A800FD9888 /* Sources */ = {
@@ -276,31 +387,35 @@
 		};
 		4415EB1E203D00A800FD9888 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D737D258320E22610610F77 /* Pods-FinanceAPP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VHS2L26N34;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FinanceAPP/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.victorprado.FinanceAPP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		4415EB1F203D00A800FD9888 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E641025F3F4CE455F02F951C /* Pods-FinanceAPP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VHS2L26N34;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FinanceAPP/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.victorprado.FinanceAPP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
