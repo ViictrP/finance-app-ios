@@ -1,15 +1,21 @@
 PODS:
+  - DeckTransition (2.0.0)
   - FSCalendar (2.7.9)
   - Hero (1.1.0)
+  - TextFieldEffects (1.4.0)
 
 DEPENDENCIES:
+  - DeckTransition (~> 2.0)
   - FSCalendar
   - Hero
+  - TextFieldEffects
 
 SPEC CHECKSUMS:
+  DeckTransition: 2300694f94fbeca2c103f365dc9dc09ffae14a4f
   FSCalendar: a04b09f16f811bc92e82f3cf852a15225233b9d5
   Hero: ce59e81c79390613d97b43da7179e2c5e1017e04
+  TextFieldEffects: 4ee41b5216e674d55fb6ac25107bf1af7629176f
 
-PODFILE CHECKSUM: c3d2bd308298a0ce374b21261d3d208745698eff
+PODFILE CHECKSUM: b4278dc601c4dcfc028af9537d9c4f654d8db9d5
 
 COCOAPODS: 1.4.0

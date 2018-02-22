@@ -5,4 +5,6 @@ target 'FinanceAPP' do
   use_frameworks!
   pod "Hero"
   pod "FSCalendar"
+  pod "TextFieldEffects"
+  pod "DeckTransition", "~> 2.0"
 end
