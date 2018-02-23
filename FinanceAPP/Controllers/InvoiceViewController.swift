@@ -10,26 +10,24 @@ import UIKit
 
 class InvoiceViewController: UIViewControllerExtension {
 
+    @IBOutlet weak var lbTitle: UILabel!
+    @IBOutlet weak var lbCategory: UILabel!
+    @IBOutlet weak var lbExpireDate: UILabel!
+    @IBOutlet weak var lbValue: UILabel!
+    @IBOutlet weak var lbInstallment: UILabel!
+    
+    var invoice: Invoice?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        lbTitle.text = invoice?.title
+        lbCategory.text = invoice?.category.rawValue
+        lbExpireDate.text = invoice?.expireDate
+        lbValue.text = invoice?.value
+        lbInstallment.text = invoice?.installment
     }
-    */
-
 }
