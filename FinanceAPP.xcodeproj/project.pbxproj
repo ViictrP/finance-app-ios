@@ -14,6 +14,9 @@
 		4415EB19203D00A800FD9888 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4415EB17203D00A800FD9888 /* LaunchScreen.storyboard */; };
 		4415EB4D203D05C800FD9888 /* Hero+FinanceAPP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4415EB4C203D05C800FD9888 /* Hero+FinanceAPP.swift */; };
 		4415EB4E203D061200FD9888 /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4415EB4F203D061200FD9888 /* Hero.framework */; };
+		4463EBC720405933008224C4 /* SettingsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4463EBC620405933008224C4 /* SettingsCollectionViewCell.swift */; };
+		4463EBC920406F6B008224C4 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4463EBC820406F6B008224C4 /* TextField.swift */; };
+		4463EBCE20407D7A008224C4 /* Invoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4463EBCD20407D7A008224C4 /* Invoice.swift */; };
 		449514D0203F4A4B00092F14 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449514CF203F4A4B00092F14 /* SignupViewController.swift */; };
 		44B1F6AD203D9D180078E923 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44B1F6AC203D9D180078E923 /* Assets.xcassets */; };
 		44B1F6B0203DABE20078E923 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1F6AF203DABE20078E923 /* HomeViewController.swift */; };
@@ -36,6 +39,9 @@
 		4415EB21203D017E00FD9888 /* Hero.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Hero.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4415EB4C203D05C800FD9888 /* Hero+FinanceAPP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Hero+FinanceAPP.swift"; sourceTree = "<group>"; };
 		4415EB4F203D061200FD9888 /* Hero.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Hero.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4463EBC620405933008224C4 /* SettingsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCollectionViewCell.swift; sourceTree = "<group>"; };
+		4463EBC820406F6B008224C4 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		4463EBCD20407D7A008224C4 /* Invoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invoice.swift; sourceTree = "<group>"; };
 		449514CF203F4A4B00092F14 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		44B1F6AC203D9D180078E923 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		44B1F6AF203DABE20078E923 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +91,8 @@
 		4415EB0A203D00A800FD9888 /* FinanceAPP */ = {
 			isa = PBXGroup;
 			children = (
+				4463EBCC20407D6D008224C4 /* Model */,
+				4463EBCB20407972008224C4 /* Custom */,
 				44B1F6B1203DB4120078E923 /* Extensions */,
 				4415EC69203D0B3F00FD9888 /* Sources */,
 				4415EB27203D02FA00FD9888 /* Resources */,
@@ -115,6 +123,7 @@
 				44B1F6BE203DDF090078E923 /* SettingsViewController.swift */,
 				44B1F6C0203DFDD30078E923 /* LoginViewController.swift */,
 				449514CF203F4A4B00092F14 /* SignupViewController.swift */,
+				4463EBC620405933008224C4 /* SettingsCollectionViewCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -183,6 +192,23 @@
 			children = (
 			);
 			path = Transition;
+			sourceTree = "<group>";
+		};
+		4463EBCB20407972008224C4 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				4463EBC820406F6B008224C4 /* TextField.swift */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		4463EBCC20407D6D008224C4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4463EBCD20407D7A008224C4 /* Invoice.swift */,
+			);
+			name = Model;
+			path = "Modeç";
 			sourceTree = "<group>";
 		};
 		44B1F6B1203DB4120078E923 /* Extensions */ = {
@@ -350,8 +376,11 @@
 				4415EB14203D00A800FD9888 /* FinanceAPP.xcdatamodeld in Sources */,
 				44B1F6B5203DBB580078E923 /* UserViewController.swift in Sources */,
 				44B1F6BD203DDD660078E923 /* InvoiceViewController.swift in Sources */,
+				4463EBC920406F6B008224C4 /* TextField.swift in Sources */,
 				44B1F6BF203DDF090078E923 /* SettingsViewController.swift in Sources */,
 				4415EB4D203D05C800FD9888 /* Hero+FinanceAPP.swift in Sources */,
+				4463EBC720405933008224C4 /* SettingsCollectionViewCell.swift in Sources */,
+				4463EBCE20407D7A008224C4 /* Invoice.swift in Sources */,
 				44B1F6B3203DB4290078E923 /* UIViewControllerExtension.swift in Sources */,
 				449514D0203F4A4B00092F14 /* SignupViewController.swift in Sources */,
 				4415EB0C203D00A800FD9888 /* AppDelegate.swift in Sources */,

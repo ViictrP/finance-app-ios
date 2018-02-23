@@ -13,6 +13,13 @@ class HomeViewController: UIViewControllerExtension {
     
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var tableView: UITableView!
+    let titles: [String] = ["Itaucard", "Nubank", "Casas Bahia", "iPlace", "Tentbeach", "C&A", "Pernambucanas", "NET", "Notebook", "Faculdade"]
+    let values: [String] = ["R$435,50", "R$270,45", "R$179,90", "R$415,89", "R$260,00", "R$50,00", "R$117,98", "R$223,20", "R$382,90", "R$98,00"]
+    let expires: [String] = ["09/03", "23/03", "15/03", "20/03", "20/03", "09/03", "15/03", "20/03", "09/03", "09/03"]
+    let installments: [String] = ["1x", "1x", "10x", "10x", "12x", "12x", "9x", "--", "12x", "4x"]
+    let categories: [InvoiceCategory] = [.creditCard, .creditCard, .creditCard, .creditCard, .creditCard, .creditCard, .creditCard, .homeExpenses, .creditCard, .creditCard]
+    var invoices: [Invoice] = []
     
     var oldCalendarHeight = CGFloat(300)
     
@@ -21,10 +28,17 @@ class HomeViewController: UIViewControllerExtension {
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0
         calendar.setScope(.week, animated: true)
         calendarHeightConstraint.constant = 120
+        for i in 0...9 {
+            invoices.append(Invoice(title: titles[i], value: values[i], expireDate: expires[i], installment: installments[i], category: categories[i]))
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
+        if let vc = segue.destination as? InvoiceViewController {
+            let invoice = invoices[tableView.indexPathForSelectedRow!.row]
+            vc.invoice = invoice
+        }
     }
     
     @IBAction func toggleScope(_ sender: UIBarButtonItem) {
@@ -62,23 +76,18 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let backgroundView = UIView()
         backgroundView.backgroundColor = .black
         cell.selectedBackgroundView = backgroundView
-        let titles: [String] = ["Itaucard", "Nubank", "Casas Bahia", "iPlace", "Tentbeach", "C&A", "Pernambucanas", "NET", "Notebook", "Faculdade"]
-        let values: [String] = ["R$435,50", "R$270,45", "R$179,90", "R$415,89", "R$260,00", "R$50,00", "R$117,98", "R$223,20", "R$382,90", "R$98,00"]
-        let expires: [String] = ["09/03", "23/03", "15/03", "20/03", "20/03", "09/03", "15/03", "20/03", "09/03", "09/03"]
-        let installments: [String] = ["1x", "1x", "10x", "10x", "12x", "12x", "9x", "--", "12x", "4x"]
-        let categories: [String] = ["Credit card", "Credit card", "Credit card", "Credit card", "Credit card", "Credit card", "Credit card", "Home expenses", "Credit card", "Credit card"]
-        cell.invoiceTitle.text = titles[indexPath.row]
-        cell.invoiceValue.text = values[indexPath.row]
-        cell.expireDate.text = expires[indexPath.row]
-        cell.invoiceInstallmentCount.text = installments[indexPath.row]
-        cell.invoiceCategory.text = categories[indexPath.row]
-        
+        let invoice = invoices[indexPath.row]
+        cell.invoiceTitle.text = invoice.title
+        cell.invoiceValue.text = invoice.value
+        cell.expireDate.text = invoice.expireDate
+        cell.invoiceInstallmentCount.text = invoice.installment
+        cell.invoiceCategory.text = invoice.category.rawValue
         return cell;
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "editInvoice", sender: nil)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
