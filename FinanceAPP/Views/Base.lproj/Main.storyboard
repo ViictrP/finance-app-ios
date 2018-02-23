@@ -571,7 +571,6 @@
         <!--User View Controller-->
         <scene sceneID="b19-by-fld">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bhL-8L-oOm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="Cdl-LG-aC3" customClass="UserViewController" customModule="FinanceAPP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="T6P-6O-iQK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -761,6 +760,7 @@
                         <outlet property="ivUser" destination="7Mf-Lj-WQA" id="06h-bU-vbb"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bhL-8L-oOm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1044" y="287.40629685157421"/>
         </scene>
@@ -3946,12 +3946,6 @@ AAJ7RAACe1YAAntZAAJ7XgAAAAAAAAQBAAAAAAAAAEEAAAAAAAAAAAAAAAAAAntgA
         </namedColor>
         <namedColor name="main">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
-        <namedColor name="main">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
-        <namedColor name="main_green">
-            <color red="0.071000002324581146" green="0.76899999380111694" blue="0.40400001406669617" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="main_green">
             <color red="0.071000002324581146" green="0.76899999380111694" blue="0.40400001406669617" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
