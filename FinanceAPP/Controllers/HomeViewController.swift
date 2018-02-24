@@ -52,6 +52,9 @@ class HomeViewController: UIViewControllerExtension {
         }
     }
     
+    @IBAction func filter(_ sender: UIBarButtonItem) {
+    }
+    
     func changeImages(_ image: String, for sender: UIBarButtonItem, constant: CGFloat) {
         UIView.animate(withDuration: 0.1, animations: {
             sender.image = UIImage(named: image)

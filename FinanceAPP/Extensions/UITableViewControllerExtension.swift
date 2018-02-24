@@ -1,15 +1,14 @@
 //
-//  UIViewControllerExtension.swift
+//  UITableViewControllerExtension.swift
 //  FinanceAPP
 //
-//  Created by Victor Prado on 21/02/18.
+//  Created by Victor Prado on 24/02/18.
 //  Copyright © 2018 Victor Prado. All rights reserved.
 //
 
 import UIKit
-import Hero
 
-class UIViewControllerExtension: UIViewController {
+class UITableViewControllerExtension: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

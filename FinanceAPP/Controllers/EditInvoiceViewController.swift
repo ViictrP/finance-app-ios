@@ -1,23 +1,23 @@
 //
-//  AddInvoiceViewController.swift
+//  EditInvoiceViewController.swift
 //  FinanceAPP
 //
-//  Created by Victor Prado on 21/02/18.
+//  Created by Victor Prado on 24/02/18.
 //  Copyright © 2018 Victor Prado. All rights reserved.
 //
 
 import UIKit
 
-class AddInvoiceViewController: UITableViewControllerExtension {
-    
+class EditInvoiceViewController: UITableViewController {
+
     @IBOutlet weak var tfTitle: UITextField!
     @IBOutlet weak var tfValue: UITextField!
-    @IBOutlet weak var swIsInstallment: UISwitch!
-    @IBOutlet weak var tfInstallmentCount: UITextField!
     @IBOutlet weak var tfExpireDate: UITextField!
-    @IBOutlet weak var lbCategory: UILabel!
+    @IBOutlet weak var tfInstallmentCount: UITextField!
+    @IBOutlet weak var swIsInstallment: UISwitch!
     @IBOutlet weak var btSave: UIButton!
     @IBOutlet weak var btCancel: UIButton!
+    @IBOutlet weak var lbCategory: UILabel!
     
     var invoice: Invoice?
     
@@ -29,16 +29,35 @@ class AddInvoiceViewController: UITableViewControllerExtension {
         tfInstallmentCount.attributedPlaceholder = changePlaceholder("Installment count", with: .lightGray)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+       resignFirstResponderAll()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        title = invoice?.title
+        tfTitle.text = invoice!.title
+        tfValue.text = invoice!.value
+        tfExpireDate.text = invoice!.expireDate
+        tfInstallmentCount.text = invoice!.installment
+        lbCategory.text = invoice!.category.rawValue
     }
+    
+    //MARK: - Actions
+    @IBAction func cancel(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
+    
     
     //MARK: - Func
     func changePlaceholder(_ placeholder: String, with color: UIColor) -> NSAttributedString {
         return NSAttributedString(string: placeholder, attributes: [NSAttributedStringKey.foregroundColor: color])
+    }
+    
+    func resignFirstResponderAll() {
+        tfTitle.resignFirstResponder()
+        tfValue.resignFirstResponder()
+        tfExpireDate.resignFirstResponder()
+        tfInstallmentCount.resignFirstResponder()
     }
 }
