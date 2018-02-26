@@ -14,23 +14,22 @@ class HomeViewController: UIViewControllerExtension {
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
-    let titles: [String] = ["Itaucard", "Nubank", "Casas Bahia", "iPlace", "Tentbeach", "C&A", "Pernambucanas", "NET", "Notebook", "Faculdade"]
-    let values: [String] = ["R$435,50", "R$270,45", "R$179,90", "R$415,89", "R$260,00", "R$50,00", "R$117,98", "R$223,20", "R$382,90", "R$98,00"]
-    let expires: [String] = ["09/03", "23/03", "15/03", "20/03", "20/03", "09/03", "15/03", "20/03", "09/03", "09/03"]
-    let installments: [String] = ["1x", "1x", "10x", "10x", "12x", "12x", "9x", "--", "12x", "4x"]
-    let categories: [InvoiceCategory] = [.creditCard, .creditCard, .creditCard, .creditCard, .creditCard, .creditCard, .creditCard, .homeExpenses, .creditCard, .creditCard]
-    var invoices: [Invoice] = []
     
+    var invoices: [Invoice] = []
     var oldCalendarHeight = CGFloat(300)
+    private var api: InvoiceAPI = InvoiceAPI.shared
+    private var defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0
         calendar.setScope(.week, animated: true)
         calendarHeightConstraint.constant = 120
-        for i in 0...9 {
-            invoices.append(Invoice(title: titles[i], value: values[i], expireDate: expires[i], installment: installments[i], category: categories[i]))
-        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getInvoices()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -62,6 +61,17 @@ class HomeViewController: UIViewControllerExtension {
             self.view.layoutIfNeeded()
         })
     }
+    
+    func getInvoices() {
+        api.getInvoices(accessToken: defaults.string(forKey: "accessToken")!, params: nil) { (invoices) in
+            if let inv = invoices {
+                self.invoices = inv
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
 }
 
 extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource {
@@ -71,7 +81,7 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource {
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return invoices.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -80,11 +90,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         backgroundView.backgroundColor = .black
         cell.selectedBackgroundView = backgroundView
         let invoice = invoices[indexPath.row]
-        cell.invoiceTitle.text = invoice.title
-        cell.invoiceValue.text = invoice.value
-        cell.expireDate.text = invoice.expireDate
-        cell.invoiceInstallmentCount.text = invoice.installment
-        cell.invoiceCategory.text = invoice.category.rawValue
+        cell.prepare(invoice: invoice)
         return cell;
     }
     

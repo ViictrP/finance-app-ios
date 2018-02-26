@@ -7,4 +7,8 @@ target 'FinanceAPP' do
   pod "FSCalendar"
   pod "TextFieldEffects"
   pod "DeckTransition", "~> 2.0"
+  pod "SwiftyJSON"
+  pod "Alamofire", "~> 4.6"
+  pod "ObjectMapper", "~> 3.1"
+  pod "AlamofireObjectMapper", "~> 5.0"
 end

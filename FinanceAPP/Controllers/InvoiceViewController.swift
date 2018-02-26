@@ -10,6 +10,8 @@ import UIKit
 
 class InvoiceViewController: UIViewControllerExtension {
 
+    private let format: String = "dd/MM"
+    
     @IBOutlet weak var lbTitle: UILabel!
     @IBOutlet weak var lbCategory: UILabel!
     @IBOutlet weak var lbExpireDate: UILabel!
@@ -18,6 +20,10 @@ class InvoiceViewController: UIViewControllerExtension {
     @IBOutlet weak var btEdit: UIButton!
     @IBOutlet weak var btDelete: UIButton!
     @IBOutlet weak var btPayment: UIButton!
+    @IBOutlet weak var lbTotalPaid: UILabel!
+    @IBOutlet weak var lbIsInstallment: UILabel!
+    @IBOutlet weak var lbLastExpireDate: UILabel!
+    @IBOutlet weak var lbDescription: UILabel!
     
     var invoice: Invoice?
     
@@ -34,11 +40,17 @@ class InvoiceViewController: UIViewControllerExtension {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        lbTitle.text = invoice?.title
-        lbCategory.text = invoice?.category.rawValue
-        lbExpireDate.text = invoice?.expireDate
-        lbValue.text = invoice?.value
-        lbInstallment.text = invoice?.installment
+        if let nonNilInvoice = invoice {
+            lbTitle.text = invoice?.title
+            lbDescription.text = nonNilInvoice.description!
+            lbCategory.text = nonNilInvoice.type?.rawValue
+            lbExpireDate.text = DateUtils.dateToString(nonNilInvoice.expireDate!, with: format)
+            lbValue.text = "R$\(nonNilInvoice.value!)"
+            lbInstallment.text = "1x"
+            lbTotalPaid.text = "R$\(nonNilInvoice.totalPaid!)"
+            lbIsInstallment.text = (nonNilInvoice.isInstallment!) ? "Sim" : "Não"
+            lbLastExpireDate.text = DateUtils.dateToString(nonNilInvoice.lastExpireDate!, with: format)
+        }
     }
     
     //MARK: - Actions
@@ -51,5 +63,4 @@ class InvoiceViewController: UIViewControllerExtension {
     
     @IBAction func makePayment(_ sender: UIButton) {
     }
-    
 }

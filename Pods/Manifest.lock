@@ -1,21 +1,35 @@
 PODS:
+  - Alamofire (4.6.0)
+  - AlamofireObjectMapper (5.0.0):
+    - Alamofire (~> 4.1)
+    - ObjectMapper (~> 3.0)
   - DeckTransition (2.0.0)
   - FSCalendar (2.7.9)
   - Hero (1.1.0)
+  - ObjectMapper (3.1.0)
+  - SwiftyJSON (4.0.0)
   - TextFieldEffects (1.4.0)
 
 DEPENDENCIES:
+  - Alamofire (~> 4.6)
+  - AlamofireObjectMapper (~> 5.0)
   - DeckTransition (~> 2.0)
   - FSCalendar
   - Hero
+  - ObjectMapper (~> 3.1)
+  - SwiftyJSON
   - TextFieldEffects
 
 SPEC CHECKSUMS:
+  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  AlamofireObjectMapper: 5fafc816351cbbc0d486611aaeba7461c0cbad49
   DeckTransition: 2300694f94fbeca2c103f365dc9dc09ffae14a4f
   FSCalendar: a04b09f16f811bc92e82f3cf852a15225233b9d5
   Hero: ce59e81c79390613d97b43da7179e2c5e1017e04
+  ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
+  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   TextFieldEffects: 4ee41b5216e674d55fb6ac25107bf1af7629176f
 
-PODFILE CHECKSUM: b4278dc601c4dcfc028af9537d9c4f654d8db9d5
+PODFILE CHECKSUM: 341e1483fc6e2843a25734f7a33786653797eb1d
 
 COCOAPODS: 1.4.0

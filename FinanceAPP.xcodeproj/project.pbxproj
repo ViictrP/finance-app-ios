@@ -17,9 +17,14 @@
 		4463EBC720405933008224C4 /* SettingsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4463EBC620405933008224C4 /* SettingsCollectionViewCell.swift */; };
 		4463EBC920406F6B008224C4 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4463EBC820406F6B008224C4 /* TextField.swift */; };
 		4463FC172040938B0032BA67 /* Invoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4463FC162040938B0032BA67 /* Invoice.swift */; };
+		4493B6C420445A1D009C4258 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4493B6C320445A1D009C4258 /* DateUtils.swift */; };
+		4493B6C620446875009C4258 /* StarterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4493B6C520446875009C4258 /* StarterViewController.swift */; };
 		449514D0203F4A4B00092F14 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449514CF203F4A4B00092F14 /* SignupViewController.swift */; };
 		449E31952041D21D0051E47C /* EditInvoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449E31942041D21D0051E47C /* EditInvoiceViewController.swift */; };
 		449E31972041DF5F0051E47C /* UITableViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449E31962041DF5F0051E47C /* UITableViewControllerExtension.swift */; };
+		44AF44272041E66000D5BFC5 /* RestConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AF44262041E66000D5BFC5 /* RestConfig.swift */; };
+		44AF442D2041EA2200D5BFC5 /* InvoiceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AF442C2041EA2200D5BFC5 /* InvoiceAPI.swift */; };
+		44AF442F2041EC3100D5BFC5 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AF442E2041EC3100D5BFC5 /* LoginAPI.swift */; };
 		44B1F6AD203D9D180078E923 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44B1F6AC203D9D180078E923 /* Assets.xcassets */; };
 		44B1F6B0203DABE20078E923 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1F6AF203DABE20078E923 /* HomeViewController.swift */; };
 		44B1F6B3203DB4290078E923 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1F6B2203DB4290078E923 /* UIViewControllerExtension.swift */; };
@@ -44,9 +49,14 @@
 		4463EBC620405933008224C4 /* SettingsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCollectionViewCell.swift; sourceTree = "<group>"; };
 		4463EBC820406F6B008224C4 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		4463FC162040938B0032BA67 /* Invoice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Invoice.swift; sourceTree = "<group>"; };
+		4493B6C320445A1D009C4258 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
+		4493B6C520446875009C4258 /* StarterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarterViewController.swift; sourceTree = "<group>"; };
 		449514CF203F4A4B00092F14 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		449E31942041D21D0051E47C /* EditInvoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInvoiceViewController.swift; sourceTree = "<group>"; };
 		449E31962041DF5F0051E47C /* UITableViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewControllerExtension.swift; sourceTree = "<group>"; };
+		44AF44262041E66000D5BFC5 /* RestConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestConfig.swift; sourceTree = "<group>"; };
+		44AF442C2041EA2200D5BFC5 /* InvoiceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceAPI.swift; sourceTree = "<group>"; };
+		44AF442E2041EC3100D5BFC5 /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
 		44B1F6AC203D9D180078E923 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		44B1F6AF203DABE20078E923 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		44B1F6B2203DB4290078E923 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -95,6 +105,8 @@
 		4415EB0A203D00A800FD9888 /* FinanceAPP */ = {
 			isa = PBXGroup;
 			children = (
+				4493B6C220445A0F009C4258 /* Utils */,
+				44AF44252041E65500D5BFC5 /* Rest */,
 				4463FC152040938B0032BA67 /* Model */,
 				4463EBCB20407972008224C4 /* Custom */,
 				44B1F6B1203DB4120078E923 /* Extensions */,
@@ -129,6 +141,7 @@
 				449514CF203F4A4B00092F14 /* SignupViewController.swift */,
 				4463EBC620405933008224C4 /* SettingsCollectionViewCell.swift */,
 				449E31942041D21D0051E47C /* EditInvoiceViewController.swift */,
+				4493B6C520446875009C4258 /* StarterViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -213,6 +226,24 @@
 				4463FC162040938B0032BA67 /* Invoice.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		4493B6C220445A0F009C4258 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				4493B6C320445A1D009C4258 /* DateUtils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		44AF44252041E65500D5BFC5 /* Rest */ = {
+			isa = PBXGroup;
+			children = (
+				44AF44262041E66000D5BFC5 /* RestConfig.swift */,
+				44AF442C2041EA2200D5BFC5 /* InvoiceAPI.swift */,
+				44AF442E2041EC3100D5BFC5 /* LoginAPI.swift */,
+			);
+			path = Rest;
 			sourceTree = "<group>";
 		};
 		44B1F6B1203DB4120078E923 /* Extensions */ = {
@@ -336,16 +367,24 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-FinanceAPP/Pods-FinanceAPP-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/DeckTransition/DeckTransition.framework",
 				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DeckTransition.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -382,15 +421,20 @@
 				449E31972041DF5F0051E47C /* UITableViewControllerExtension.swift in Sources */,
 				44B1F6B5203DBB580078E923 /* UserViewController.swift in Sources */,
 				44B1F6BD203DDD660078E923 /* InvoiceViewController.swift in Sources */,
+				4493B6C420445A1D009C4258 /* DateUtils.swift in Sources */,
 				4463EBC920406F6B008224C4 /* TextField.swift in Sources */,
 				44B1F6BF203DDF090078E923 /* SettingsViewController.swift in Sources */,
 				4415EB4D203D05C800FD9888 /* Hero+FinanceAPP.swift in Sources */,
+				44AF44272041E66000D5BFC5 /* RestConfig.swift in Sources */,
 				4463EBC720405933008224C4 /* SettingsCollectionViewCell.swift in Sources */,
 				4463FC172040938B0032BA67 /* Invoice.swift in Sources */,
 				44B1F6B3203DB4290078E923 /* UIViewControllerExtension.swift in Sources */,
+				4493B6C620446875009C4258 /* StarterViewController.swift in Sources */,
 				449514D0203F4A4B00092F14 /* SignupViewController.swift in Sources */,
+				44AF442F2041EC3100D5BFC5 /* LoginAPI.swift in Sources */,
 				4415EB0C203D00A800FD9888 /* AppDelegate.swift in Sources */,
 				44B1F6B0203DABE20078E923 /* HomeViewController.swift in Sources */,
+				44AF442D2041EA2200D5BFC5 /* InvoiceAPI.swift in Sources */,
 				449E31952041D21D0051E47C /* EditInvoiceViewController.swift in Sources */,
 				44B1F6BB203DDC310078E923 /* AddInvoiceViewController.swift in Sources */,
 				44B1F6B7203DC0800078E923 /* FinanceTableViewCell.swift in Sources */,

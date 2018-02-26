@@ -18,13 +18,22 @@ class FinanceTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    }
+    
+    func prepare(invoice: Invoice) {
+        invoiceTitle.text = invoice.title
+        invoiceValue.text = "R$\(invoice.value!)"
+        if let date = invoice.expireDate {
+            expireDate.text = DateUtils.dateToString(date, with: "dd/MM")
+        }
+        invoiceInstallmentCount.text = "Test"
+        if let type = invoice.type {
+            invoiceCategory.text = type.rawValue
+        }
     }
 
 }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ObjectMapper
 
 public enum InvoiceCategory: String {
     case homeExpenses = "Home expenses"
@@ -14,19 +15,67 @@ public enum InvoiceCategory: String {
     case invoice = "Invoice"
 }
 
-public class Invoice {
+public class Invoice: Mappable {
     
-    var title: String
-    var value: String
-    var expireDate: String
-    var installment: String
-    var category: InvoiceCategory
+    fileprivate final let transformEnum = TransformOf<InvoiceCategory, String>(fromJSON: { (value: String?) -> InvoiceCategory? in
+        if var convertedValue = value {
+            convertedValue = convertedValue.lowercased().replacingOccurrences(of: "_", with: " ").capitalizingFirstLetter()
+            return InvoiceCategory(rawValue: convertedValue)
+        }
+        return nil
+    }, toJSON: { (value: InvoiceCategory?) -> String? in
+        if let value = value {
+            return value.rawValue
+        }
+        return nil
+    })
     
-    init(title: String, value: String, expireDate: String, installment: String, category: InvoiceCategory) {
-        self.title = title
-        self.value = value
-        self.expireDate = expireDate
-        self.installment = installment
-        self.category = category
+    fileprivate final let transformDate = TransformOf<Date, String>(fromJSON: { (value: String?) -> Date? in
+        if let value = value {
+            return DateUtils.stringToDate(value, with: "yyyy-MM-dd HH:mm:ss")
+        }
+        return nil
+    }, toJSON: { (value: Date?) -> String? in
+        if let value = value {
+            return DateUtils.dateToString(value, with: "yyyy-MM-dd HH:mm:ss")
+        }
+        return nil
+    })
+    
+    var id: Int?
+    var title: String?
+    var value: Double?
+    var expireDate: Date?
+    var totalPaid: Double?
+    var description: String?
+    var type: InvoiceCategory?
+    var isInstallment: Bool?
+    var lastExpireDate: Date?
+    
+    public required init?(map: Map) {
+        
+    }
+    
+    public func mapping(map: Map) {
+        id <- map["id"]
+        title <- map["title"]
+        value <- map["value"]
+        expireDate <- (map["expireDate"], transformDate)
+        lastExpireDate <- (map["lastExpireDate"], transformDate)
+        totalPaid <- map["totalPaid"]
+        description <- map["description"]
+        type <- (map["type"], transformEnum)
+        isInstallment <- map["isInstallment"]
     }
 }
+
+extension String {
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).uppercased() + dropFirst()
+    }
+    
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
+    }
+}
+

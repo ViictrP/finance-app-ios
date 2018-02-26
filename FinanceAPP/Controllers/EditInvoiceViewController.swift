@@ -37,10 +37,10 @@ class EditInvoiceViewController: UITableViewController {
         super.viewWillAppear(animated)
         title = invoice?.title
         tfTitle.text = invoice!.title
-        tfValue.text = invoice!.value
-        tfExpireDate.text = invoice!.expireDate
-        tfInstallmentCount.text = invoice!.installment
-        lbCategory.text = invoice!.category.rawValue
+        tfValue.text = "Test"
+        tfExpireDate.text = "Test"
+        tfInstallmentCount.text = "Test"
+        lbCategory.text = "Test"
     }
     
     //MARK: - Actions
