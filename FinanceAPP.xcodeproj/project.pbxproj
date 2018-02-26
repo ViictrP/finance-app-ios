@@ -14,6 +14,8 @@
 		4415EB19203D00A800FD9888 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4415EB17203D00A800FD9888 /* LaunchScreen.storyboard */; };
 		4415EB4D203D05C800FD9888 /* Hero+FinanceAPP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4415EB4C203D05C800FD9888 /* Hero+FinanceAPP.swift */; };
 		4415EB4E203D061200FD9888 /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4415EB4F203D061200FD9888 /* Hero.framework */; };
+		4427E24D20448DAA0042D520 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4427E24C20448DAA0042D520 /* CategoryTableViewController.swift */; };
+		4427E24F20448FD90042D520 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4427E24E20448FD90042D520 /* Category.swift */; };
 		4463EBC720405933008224C4 /* SettingsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4463EBC620405933008224C4 /* SettingsCollectionViewCell.swift */; };
 		4463EBC920406F6B008224C4 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4463EBC820406F6B008224C4 /* TextField.swift */; };
 		4463FC172040938B0032BA67 /* Invoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4463FC162040938B0032BA67 /* Invoice.swift */; };
@@ -46,6 +48,8 @@
 		4415EB21203D017E00FD9888 /* Hero.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Hero.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4415EB4C203D05C800FD9888 /* Hero+FinanceAPP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Hero+FinanceAPP.swift"; sourceTree = "<group>"; };
 		4415EB4F203D061200FD9888 /* Hero.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Hero.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4427E24C20448DAA0042D520 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
+		4427E24E20448FD90042D520 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		4463EBC620405933008224C4 /* SettingsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCollectionViewCell.swift; sourceTree = "<group>"; };
 		4463EBC820406F6B008224C4 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		4463FC162040938B0032BA67 /* Invoice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Invoice.swift; sourceTree = "<group>"; };
@@ -142,6 +146,7 @@
 				4463EBC620405933008224C4 /* SettingsCollectionViewCell.swift */,
 				449E31942041D21D0051E47C /* EditInvoiceViewController.swift */,
 				4493B6C520446875009C4258 /* StarterViewController.swift */,
+				4427E24C20448DAA0042D520 /* CategoryTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -224,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				4463FC162040938B0032BA67 /* Invoice.swift */,
+				4427E24E20448FD90042D520 /* Category.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -432,6 +438,7 @@
 				4493B6C620446875009C4258 /* StarterViewController.swift in Sources */,
 				449514D0203F4A4B00092F14 /* SignupViewController.swift in Sources */,
 				44AF442F2041EC3100D5BFC5 /* LoginAPI.swift in Sources */,
+				4427E24D20448DAA0042D520 /* CategoryTableViewController.swift in Sources */,
 				4415EB0C203D00A800FD9888 /* AppDelegate.swift in Sources */,
 				44B1F6B0203DABE20078E923 /* HomeViewController.swift in Sources */,
 				44AF442D2041EA2200D5BFC5 /* InvoiceAPI.swift in Sources */,
@@ -439,6 +446,7 @@
 				44B1F6BB203DDC310078E923 /* AddInvoiceViewController.swift in Sources */,
 				44B1F6B7203DC0800078E923 /* FinanceTableViewCell.swift in Sources */,
 				44B1F6C1203DFDD30078E923 /* LoginViewController.swift in Sources */,
+				4427E24F20448FD90042D520 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -52,6 +52,10 @@ public class Invoice: Mappable {
     var isInstallment: Bool?
     var lastExpireDate: Date?
     
+    public init() {
+        
+    }
+    
     public required init?(map: Map) {
         
     }
