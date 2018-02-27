@@ -35,6 +35,7 @@ class InvoiceViewController: UIViewControllerExtension {
         super.prepare(for: segue, sender: sender)
         if let vc = segue.destination as? EditInvoiceViewController {
             vc.invoice = invoice!
+            vc.delegate = self
         }
     }
     

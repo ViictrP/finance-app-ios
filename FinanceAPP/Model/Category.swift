@@ -8,8 +8,11 @@
 
 import Foundation
 import ObjectMapper
+import RealmSwift
 
-public class Category: Mappable {
+public class Category: Object, Mappable {
+    
+    public static var DISCARTABLE: Int = 84126382313434242
  
     fileprivate final let transformEnum = TransformOf<String, String>(fromJSON: { (value: String?) -> String? in
         if var convertedValue = value {
@@ -24,11 +27,11 @@ public class Category: Mappable {
         return nil
     })
     
-    var id: Any?
-    var title: String?
+    @objc dynamic var id: Int = DISCARTABLE
+    @objc dynamic var title: String = ""
     
-    public required init?(map: Map) {
-        
+    required convenience public init?(map: Map) {
+        self.init()
     }
     
     public func mapping(map: Map) {

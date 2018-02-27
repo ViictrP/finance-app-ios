@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import RealmSwift
 
 class CategoryTableViewController: UITableViewControllerExtension {
     
     private var defaults = UserDefaults.standard
     private let api: InvoiceAPI = InvoiceAPI.shared
     var categories: [Category] = []
-    var delegate: AddInvoiceViewController?
+    var delegate: UITableViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,13 +22,21 @@ class CategoryTableViewController: UITableViewControllerExtension {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        api.getCategories(accessToken: defaults.string(forKey: "accessToken")!) { (categories) in
-            if let cat = categories {
-                self.categories = cat
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
+        let loadedFromAPI = defaults.value(forKey: "loadedFromAPI") as? Bool ?? false
+        print(loadedFromAPI)
+        if !loadedFromAPI {
+            api.getCategories(accessToken: defaults.string(forKey: "accessToken")!) { (categories) in
+                if let cat = categories {
+                    self.categories = cat
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
                 }
             }
+        } else {
+            let realm = try! Realm()
+            let result = realm.objects(Category.self)
+            categories = Array(result)
         }
     }
     
@@ -44,14 +53,22 @@ class CategoryTableViewController: UITableViewControllerExtension {
         let backgroundView = UIView()
         backgroundView.backgroundColor = .black
         cell.selectedBackgroundView = backgroundView
-        cell.textLabel?.text = categories[indexPath.row].title!
+        cell.textLabel?.text = categories[indexPath.row].title
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let category = categories[indexPath.row]
-        delegate?.lbCategory.text = category.title
-        navigationController?.popViewController(animated: true)
+        if let vc = delegate as? EditInvoiceViewController  {
+            vc.lbCategory.text = category.title
+            navigationController?.popViewController(animated: true)
+            return
+        }
+        if let vc = delegate as? AddInvoiceViewController {
+            vc.lbCategory.text = category.title
+            navigationController?.popViewController(animated: true)
+            return
+        }
     }
 }

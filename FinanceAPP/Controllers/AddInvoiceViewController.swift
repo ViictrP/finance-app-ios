@@ -8,6 +8,7 @@
 
 import UIKit
 import ObjectMapper
+import MaterialComponents.MaterialSnackbar
 
 class AddInvoiceViewController: UITableViewControllerExtension {
     
@@ -20,16 +21,17 @@ class AddInvoiceViewController: UITableViewControllerExtension {
     @IBOutlet weak var btCancel: UIButton!
     @IBOutlet weak var btCategory: UIButton!
     @IBOutlet weak var dtExpireDate: UIDatePicker!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var invoice: Invoice?
     var api: InvoiceAPI = InvoiceAPI.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tfTitle.attributedPlaceholder = changePlaceholder("Title", with: .lightGray)
-        tfValue.attributedPlaceholder = changePlaceholder("Value", with: .lightGray)
-        tfInstallmentCount.attributedPlaceholder = changePlaceholder("Installment count", with: .lightGray)
-        dtExpireDate.setValue(UIColor.white, forKey: "textColor")
+        tfTitle.delegate = self
+        tfValue.delegate = self
+        tfInstallmentCount.delegate = self
+        resetFields()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,6 +49,11 @@ class AddInvoiceViewController: UITableViewControllerExtension {
         resignFirstResponderAll()
     }
     
+    @IBAction func chooseCategory(_ sender: UIButton) {
+        resignFirstResponderAll()
+        performSegue(withIdentifier: "categorySegue", sender: nil)
+    }
+    
     @IBAction func save(_ sender: UIButton) {
         resignFirstResponderAll()
         invoice = Invoice()
@@ -56,10 +63,81 @@ class AddInvoiceViewController: UITableViewControllerExtension {
         invoice?.totalPaid = 0.0
         invoice?.type = InvoiceCategory(rawValue: lbCategory.text!)
         invoice?.isInstallment = swIsInstallment.isOn
-        invoice?.description = "Invoice added from app"
-        api.saveInvoice(invoice: invoice!) { (bool) in
-            print(bool)
+        if swIsInstallment.isOn {
+            let expireDate = invoice?.expireDate!
+            invoice?.lastExpireDate = Calendar.current.date(byAdding: .month, value: Int(tfInstallmentCount.text!)!, to: expireDate!)
         }
+        invoice?.description = "Invoice added from app"
+        let checked = checkBeforeSave(invoice)
+        if checked {
+            activityIndicator.isHidden = false
+            api.saveInvoice(invoice: invoice!) { (success, error) in
+                if error == nil {
+                    self.doSnackbar("The invoice \(self.invoice!.title!) was created")
+                    self.resetFields()
+                    self.activityIndicator.isHidden = true
+                } else {
+                    self.doSnackbar(error!)
+                    self.activityIndicator.isHidden = true
+                }
+            }
+        } else {
+            doSnackbar("Some fields are required")
+        }
+    }
+    
+    @IBAction func cancel(_ sender: UIButton) {
+        resetFields()
+    }
+    
+    func resetFields() {
+        resignFirstResponderAll()
+        self.tfTitle.text = ""
+        self.tfValue.text = ""
+        self.tfInstallmentCount.text = ""
+        self.swIsInstallment.isOn = false
+        self.dtExpireDate.setDate(Date(), animated: true)
+        self.lbCategory.text = "CATEGORY"
+        self.invoice = nil
+        tfTitle.attributedPlaceholder = changePlaceholder("Title", with: .lightGray)
+        tfValue.attributedPlaceholder = changePlaceholder("Value", with: .lightGray)
+        tfInstallmentCount.attributedPlaceholder = changePlaceholder("Installment count", with: .lightGray)
+        dtExpireDate.setValue(UIColor.white, forKey: "textColor")
+        tfTitle.backgroundColor = UIColor(named: "textfield_bg_color")
+        tfValue.backgroundColor = UIColor(named: "textfield_bg_color")
+        tfInstallmentCount.backgroundColor = UIColor(named: "textfield_bg_color")
+        lbCategory.backgroundColor = UIColor(named: "textfield_bg_color")
+    }
+    
+    func checkBeforeSave(_ invoice: Invoice?) -> Bool {
+        var checked = true
+        if invoice == nil {
+            self.doSnackbar("Fill the form!")
+            return false
+        }
+        if invoice!.title!.isEmpty {
+            tfTitle.text = ""
+            tfTitle.backgroundColor = UIColor(named: "main_red")
+            tfTitle.attributedPlaceholder = changePlaceholder("This field is required", with: .white)
+            checked = false
+        }
+        if invoice!.value == nil {
+            tfValue.text = ""
+            tfValue.backgroundColor = UIColor(named: "main_red")
+            tfValue.attributedPlaceholder = changePlaceholder("This field is required", with: .white)
+            checked = false
+        }
+        if invoice!.type == nil {
+            lbCategory.text = "CATEGORY"
+            lbCategory.backgroundColor = UIColor(named: "main_red")
+            checked = false
+        }
+        if swIsInstallment.isOn && tfInstallmentCount.text!.isEmpty {
+            tfInstallmentCount.text = ""
+            tfInstallmentCount.backgroundColor = UIColor(named: "main_red")
+            tfInstallmentCount.attributedPlaceholder = changePlaceholder("This field is required", with: .white)
+        }
+        return checked
     }
     
     //MARK: - Func
@@ -72,7 +150,40 @@ class AddInvoiceViewController: UITableViewControllerExtension {
         tfValue.resignFirstResponder()
         tfInstallmentCount.resignFirstResponder()
     }
+    
+    func doSnackbar(_ msg: String) {
+        let message = MDCSnackbarMessage()
+        message.text = msg
+        MDCSnackbarManager.show(message)
+    }
 }
+
+extension AddInvoiceViewController: UITextFieldDelegate {
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.resignFirstResponder()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

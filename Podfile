@@ -11,4 +11,6 @@ target 'FinanceAPP' do
   pod "Alamofire", "~> 4.6"
   pod "ObjectMapper", "~> 3.1"
   pod "AlamofireObjectMapper", "~> 5.0"
+  pod "RealmSwift"
+  pod "MaterialComponents/Snackbar"
 end

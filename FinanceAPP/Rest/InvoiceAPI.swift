@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 import AlamofireObjectMapper
+import RealmSwift
 
 public class InvoiceAPI {
     
@@ -50,7 +51,19 @@ public class InvoiceAPI {
             switch response.result {
                 case .success:
                     if response.response!.statusCode >= 200 && response.response!.statusCode <= 300 {
+                        self.defaults.set(true, forKey: "loadedFromAPI")
                         completionHandler(categories)
+                        if let nonNilArray = categories {
+                            let realm = try! Realm()
+                            try! realm.write {
+                                realm.delete(realm.objects(Category.self))
+                            }
+                            for category in nonNilArray {
+                                try! realm.write {
+                                    realm.add(category)
+                                }
+                            }
+                        }
                     } else {
                         completionHandler([])
                     }
@@ -61,23 +74,57 @@ public class InvoiceAPI {
         }
     }
     
-    public func saveInvoice(invoice: Invoice, completionHandler: @escaping(Bool) -> Void) {
+    public func saveInvoice(invoice: Invoice, completionHandler: @escaping(Bool, String?) -> Void) {
         let headers: HTTPHeaders = ["authorization": "Bearer \(defaults.string(forKey: "accessToken")!)"]
         let parameters: Parameters = convertToParameters(invoice)
         Alamofire.request("\(RestConfig.basePath)\(endpoint)", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
-            print(response)
+            switch response.result {
+            case .success(let value):
+                if response.response!.statusCode >= 200 && response.response!.statusCode <= 300 {
+                    completionHandler(true, nil)
+                } else {
+                    let json = JSON(value)
+                    let errors: [String] = json["errors"].rawValue as? [String] ?? ["An error occurred"]
+                    completionHandler(false, errors[0])
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+                completionHandler(false, error.localizedDescription)
+            }
+        }
+    }
+    
+    public func updateInvoice(invoice: Invoice, completionHandler: @escaping(Bool, String?) -> Void) {
+        let headers: HTTPHeaders = ["authorization": "Bearer \(defaults.string(forKey: "accessToken")!)"]
+        let parameters: Parameters = convertToParameters(invoice)
+        Alamofire.request("\(RestConfig.basePath)\(endpoint)/\(invoice.id!)", method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
+            switch response.result {
+            case .success(let value):
+                if response.response!.statusCode >= 200 && response.response!.statusCode <= 300 {
+                    completionHandler(true, nil)
+                } else {
+                    let json = JSON(value)
+                    let errors: [String] = json["errors"].rawValue as? [String] ?? ["An error occurred"]
+                    completionHandler(false, errors[0])
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+                completionHandler(false, error.localizedDescription)
+            }
         }
     }
     
     private func convertToParameters(_ invoice: Invoice) -> Parameters {
         return [
+            "id": invoice.id!,
             "title": invoice.title!,
             "value": invoice.value!,
             "expireDate": DateUtils.dateToString(invoice.expireDate!, with: "yyyy-MM-dd HH:mm:ss"),
             "totalPaid": invoice.totalPaid!,
             "description": invoice.description!,
             "type": invoice.type!.rawValue.uppercased().replacingOccurrences(of: " ", with: "_"),
-            "isInstallment": invoice.isInstallment!
+            "isInstallment": invoice.isInstallment!,
+            "lastExpireDate": invoice.lastExpireDate != nil ? DateUtils.dateToString(invoice.lastExpireDate!, with: "yyyy-MM-dd HH:mm:ss") : ""
         ]
     }
 }
