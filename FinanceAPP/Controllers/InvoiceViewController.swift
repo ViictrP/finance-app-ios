@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MaterialComponents.MaterialSnackbar
 
 class InvoiceViewController: UIViewControllerExtension {
 
@@ -26,6 +27,7 @@ class InvoiceViewController: UIViewControllerExtension {
     @IBOutlet weak var lbDescription: UILabel!
     
     var invoice: Invoice?
+    var api: InvoiceAPI = InvoiceAPI.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +36,10 @@ class InvoiceViewController: UIViewControllerExtension {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         if let vc = segue.destination as? EditInvoiceViewController {
+            vc.invoice = invoice!
+            vc.delegate = self
+        }
+        if let vc = segue.destination as? PaymentViewController {
             vc.invoice = invoice!
             vc.delegate = self
         }
@@ -60,8 +66,23 @@ class InvoiceViewController: UIViewControllerExtension {
     }
     
     @IBAction func deleteInvoice(_ sender: UIButton) {
+        api.deleteInvoice(invoice: invoice!) { (success, error) in
+            if error == nil {
+                self.doSnackbar("Invoice \(self.invoice!.title!) was deleted")
+                self.navigationController?.popViewController(animated: true)
+            } else {
+                self.doSnackbar(error!)
+            }
+        }
     }
     
     @IBAction func makePayment(_ sender: UIButton) {
+        performSegue(withIdentifier: "paymentSegue", sender: nil)
+    }
+    
+    func doSnackbar(_ msg: String) {
+        let message = MDCSnackbarMessage()
+        message.text = msg
+        MDCSnackbarManager.show(message)
     }
 }

@@ -14,6 +14,7 @@ class HomeViewController: UIViewControllerExtension {
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var noResultContainer: UIView!
     
     var invoices: [Invoice] = []
     var oldCalendarHeight = CGFloat(300)
@@ -68,6 +69,11 @@ class HomeViewController: UIViewControllerExtension {
                 self.invoices = inv
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
+                    if inv.count <= 0 {
+                        self.noResultContainer.isHidden = false
+                    } else {
+                        self.noResultContainer.isHidden = true
+                    }
                 }
             }
         }

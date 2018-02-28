@@ -114,9 +114,28 @@ public class InvoiceAPI {
         }
     }
     
+    public func deleteInvoice(invoice: Invoice, completionHandler: @escaping(Bool, String?) -> Void) {
+        let headers: HTTPHeaders = ["authorization": "Bearer \(defaults.string(forKey: "accessToken")!)"]
+        Alamofire.request("\(RestConfig.basePath)\(endpoint)/\(invoice.id!)", method: .delete, headers: headers).responseJSON { (response) in
+            switch response.result {
+                case .success(let value):
+                    if response.response!.statusCode >= 200 && response.response!.statusCode <= 300 {
+                        completionHandler(true, nil)
+                    } else {
+                        let json = JSON(value)
+                        let errors: [String] = json["errors"].rawValue as? [String] ?? ["An error occurred"]
+                        completionHandler(false, errors[0])
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    completionHandler(false, error.localizedDescription)
+            }
+        }
+    }
+    
     private func convertToParameters(_ invoice: Invoice) -> Parameters {
-        return [
-            "id": invoice.id!,
+        var parameters: Parameters = [
+            "id": "",
             "title": invoice.title!,
             "value": invoice.value!,
             "expireDate": DateUtils.dateToString(invoice.expireDate!, with: "yyyy-MM-dd HH:mm:ss"),
@@ -126,6 +145,10 @@ public class InvoiceAPI {
             "isInstallment": invoice.isInstallment!,
             "lastExpireDate": invoice.lastExpireDate != nil ? DateUtils.dateToString(invoice.lastExpireDate!, with: "yyyy-MM-dd HH:mm:ss") : ""
         ]
+        if let id = invoice.id {
+           parameters["id"] = id
+        }
+        return parameters
     }
 }
 

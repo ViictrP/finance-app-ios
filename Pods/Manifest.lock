@@ -6,7 +6,45 @@ PODS:
   - DeckTransition (2.0.0)
   - FSCalendar (2.7.9)
   - Hero (1.1.0)
+  - MaterialComponents/AnimationTiming (44.6.0)
+  - MaterialComponents/Buttons (44.6.0):
+    - MaterialComponents/Ink
+    - MaterialComponents/private/Math
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/Typography
+    - MDFInternationalization
+    - MDFTextAccessibility
+  - MaterialComponents/Ink (44.6.0):
+    - MaterialComponents/private/Math
+  - MaterialComponents/OverlayWindow (44.6.0):
+    - MaterialComponents/private/Application
+  - MaterialComponents/private/Application (44.6.0)
+  - MaterialComponents/private/KeyboardWatcher (44.6.0):
+    - MaterialComponents/private/Application
+  - MaterialComponents/private/Math (44.6.0)
+  - MaterialComponents/private/Overlay (44.6.0)
+  - MaterialComponents/ShadowElevations (44.6.0)
+  - MaterialComponents/ShadowLayer (44.6.0):
+    - MaterialComponents/ShadowElevations
+  - MaterialComponents/Snackbar (44.6.0):
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/Buttons
+    - MaterialComponents/OverlayWindow
+    - MaterialComponents/private/Application
+    - MaterialComponents/private/KeyboardWatcher
+    - MaterialComponents/private/Overlay
+    - MaterialComponents/Typography
+  - MaterialComponents/Typography (44.6.0):
+    - MaterialComponents/private/Application
+  - MDFInternationalization (1.0.4)
+  - MDFTextAccessibility (1.2.0)
   - ObjectMapper (3.1.0)
+  - Realm (3.1.1):
+    - Realm/Headers (= 3.1.1)
+  - Realm/Headers (3.1.1)
+  - RealmSwift (3.1.1):
+    - Realm (= 3.1.1)
   - SwiftyJSON (4.0.0)
   - TextFieldEffects (1.4.0)
 
@@ -16,7 +54,9 @@ DEPENDENCIES:
   - DeckTransition (~> 2.0)
   - FSCalendar
   - Hero
+  - MaterialComponents/Snackbar
   - ObjectMapper (~> 3.1)
+  - RealmSwift
   - SwiftyJSON
   - TextFieldEffects
 
@@ -26,10 +66,15 @@ SPEC CHECKSUMS:
   DeckTransition: 2300694f94fbeca2c103f365dc9dc09ffae14a4f
   FSCalendar: a04b09f16f811bc92e82f3cf852a15225233b9d5
   Hero: ce59e81c79390613d97b43da7179e2c5e1017e04
+  MaterialComponents: 974b52899fb90f28da0284790be46b2ca82358f5
+  MDFInternationalization: e355b0cebecf53d60233bd267084e49366c82513
+  MDFTextAccessibility: 94098925e0853551c5a311ce7c1ecefbe297cdb6
   ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
+  Realm: 42d1c38a5b1bbcc828b48a7ce702cb86fc68adf4
+  RealmSwift: d31937ca6a6ee54acde64ec839523c0a3c04924b
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   TextFieldEffects: 4ee41b5216e674d55fb6ac25107bf1af7629176f
 
-PODFILE CHECKSUM: 341e1483fc6e2843a25734f7a33786653797eb1d
+PODFILE CHECKSUM: b3506e485fca4c5cd11ecf1f0348daaa85a47a29
 
 COCOAPODS: 1.4.0
