@@ -133,6 +133,27 @@ public class InvoiceAPI {
         }
     }
     
+    public func makePayment(value: Double, invoice: Invoice, completionHandler: @escaping(Bool, String?) -> Void) {
+        let headers: HTTPHeaders = ["authorization": "Bearer \(defaults.string(forKey: "accessToken")!)"]
+        invoice.payment = value
+        let parameters: Parameters = convertToParameters(invoice)
+        Alamofire.request("\(RestConfig.basePath)\(endpoint)/payments/\(invoice.id!)", method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
+            switch response.result {
+            case .success(let value):
+                if response.response!.statusCode >= 200 && response.response!.statusCode <= 300 {
+                    completionHandler(true, nil)
+                } else {
+                    let json = JSON(value)
+                    let errors: [String] = json["errors"].rawValue as? [String] ?? ["An error occurred"]
+                    completionHandler(false, errors[0])
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+                completionHandler(false, error.localizedDescription)
+            }
+        }
+    }
+    
     private func convertToParameters(_ invoice: Invoice) -> Parameters {
         var parameters: Parameters = [
             "id": "",
@@ -143,10 +164,14 @@ public class InvoiceAPI {
             "description": invoice.description!,
             "type": invoice.type!.rawValue.uppercased().replacingOccurrences(of: " ", with: "_"),
             "isInstallment": invoice.isInstallment!,
+            "payment": "",
             "lastExpireDate": invoice.lastExpireDate != nil ? DateUtils.dateToString(invoice.lastExpireDate!, with: "yyyy-MM-dd HH:mm:ss") : ""
         ]
         if let id = invoice.id {
            parameters["id"] = id
+        }
+        if let payment = invoice.payment {
+            parameters["payment"] = payment
         }
         return parameters
     }

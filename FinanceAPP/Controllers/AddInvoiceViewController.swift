@@ -58,7 +58,9 @@ class AddInvoiceViewController: UITableViewControllerExtension {
         resignFirstResponderAll()
         invoice = Invoice()
         invoice?.title = tfTitle.text!
-        invoice?.value = Double(tfValue.text!)
+        var value = tfValue.text!
+        value = value.replacingOccurrences(of: ",", with: ".")
+        invoice?.value = Double(value)
         invoice?.expireDate = dtExpireDate.date
         invoice?.totalPaid = 0.0
         invoice?.type = InvoiceCategory(rawValue: lbCategory.text!)

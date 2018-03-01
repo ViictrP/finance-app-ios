@@ -12,6 +12,7 @@ import MaterialComponents.MaterialSnackbar
 class InvoiceViewController: UIViewControllerExtension {
 
     private let format: String = "dd/MM"
+    private let installmentFormat: String = "dd/MM/yyyy"
     
     @IBOutlet weak var lbTitle: UILabel!
     @IBOutlet weak var lbCategory: UILabel!
@@ -25,6 +26,8 @@ class InvoiceViewController: UIViewControllerExtension {
     @IBOutlet weak var lbIsInstallment: UILabel!
     @IBOutlet weak var lbLastExpireDate: UILabel!
     @IBOutlet weak var lbDescription: UILabel!
+    @IBOutlet weak var ivPaid: UIImageView!
+    @IBOutlet weak var viPaidBg: UIView!
     
     var invoice: Invoice?
     var api: InvoiceAPI = InvoiceAPI.shared
@@ -53,10 +56,16 @@ class InvoiceViewController: UIViewControllerExtension {
             lbCategory.text = nonNilInvoice.type?.rawValue
             lbExpireDate.text = DateUtils.dateToString(nonNilInvoice.expireDate!, with: format)
             lbValue.text = "R$\(nonNilInvoice.value!)"
-            lbInstallment.text = "1x"
             lbTotalPaid.text = "R$\(nonNilInvoice.totalPaid!)"
             lbIsInstallment.text = (nonNilInvoice.isInstallment!) ? "Sim" : "Não"
-            lbLastExpireDate.text = DateUtils.dateToString(nonNilInvoice.lastExpireDate!, with: format)
+            calculateInvoiceCount(expireDate: nonNilInvoice.expireDate!, LastExpireDate: nonNilInvoice.lastExpireDate!)
+            lbLastExpireDate.text = DateUtils.dateToString(nonNilInvoice.lastExpireDate!, with: installmentFormat)
+            if let totalPaid = invoice?.totalPaid, let value = invoice?.value {
+                if totalPaid >= value {
+                    ivPaid.isHidden = false
+                    viPaidBg.isHidden = false
+                }
+            }
         }
     }
     
@@ -84,5 +93,14 @@ class InvoiceViewController: UIViewControllerExtension {
         let message = MDCSnackbarMessage()
         message.text = msg
         MDCSnackbarManager.show(message)
+    }
+    
+    func calculateInvoiceCount(expireDate: Date, LastExpireDate: Date) {
+        let form = DateComponentsFormatter()
+        form.maximumUnitCount = 2
+        form.unitsStyle = .full
+        form.allowedUnits = [.month]
+        let s = form.string(from: expireDate, to: LastExpireDate)
+        lbInstallment.text = s!.components(separatedBy: CharacterSet.decimalDigits.inverted).joined(separator: "")
     }
 }

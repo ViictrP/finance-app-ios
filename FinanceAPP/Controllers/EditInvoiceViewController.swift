@@ -37,8 +37,9 @@ class EditInvoiceViewController: UITableViewController {
             tfTitle.text = nonNilInvoice.title
             tfValue.text = String(describing: nonNilInvoice.value!)
             dtExpireDate.setDate(nonNilInvoice.expireDate!, animated: true)
-            tfInstallmentCount.text = "Test"
+            swIsInstallment.isOn = nonNilInvoice.isInstallment!
             lbCategory.text = nonNilInvoice.type!.rawValue
+            calculateInvoiceCount(expireDate: nonNilInvoice.expireDate!, LastExpireDate: nonNilInvoice.lastExpireDate!)
         }
     }
     
@@ -125,6 +126,15 @@ class EditInvoiceViewController: UITableViewController {
         let message = MDCSnackbarMessage()
         message.text = msg
         MDCSnackbarManager.show(message)
+    }
+    
+    func calculateInvoiceCount(expireDate: Date, LastExpireDate: Date) {
+        let form = DateComponentsFormatter()
+        form.maximumUnitCount = 2
+        form.unitsStyle = .full
+        form.allowedUnits = [.month]
+        let s = form.string(from: expireDate, to: LastExpireDate)
+        tfInstallmentCount.text = s!.components(separatedBy: CharacterSet.decimalDigits.inverted).joined(separator: "")
     }
 }
 

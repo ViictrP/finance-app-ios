@@ -51,6 +51,7 @@ public class Invoice: Mappable {
     var type: InvoiceCategory?
     var isInstallment: Bool?
     var lastExpireDate: Date?
+    var payment: Double?
     
     public init() {
         
@@ -70,6 +71,7 @@ public class Invoice: Mappable {
         description <- map["description"]
         type <- (map["type"], transformEnum)
         isInstallment <- map["isInstallment"]
+        payment <- map["payment"]
     }
 }
 

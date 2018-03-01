@@ -15,6 +15,8 @@ class FinanceTableViewCell: UITableViewCell {
     @IBOutlet weak var invoiceCategory: UILabel!
     @IBOutlet weak var invoiceValue: UILabel!
     @IBOutlet weak var invoiceInstallmentCount: UILabel!
+    @IBOutlet weak var ivPaid: UIImageView!
+    @IBOutlet weak var viPaidBg: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,6 +36,21 @@ class FinanceTableViewCell: UITableViewCell {
         if let type = invoice.type {
             invoiceCategory.text = type.rawValue
         }
+        if let totalPaid = invoice.totalPaid, let value = invoice.value {
+            if totalPaid >= value {
+                ivPaid.isHidden = false
+                viPaidBg.isHidden = false
+            }
+        }
+        calculateInvoiceCount(expireDate: invoice.expireDate!, LastExpireDate: invoice.lastExpireDate!)
     }
 
+    func calculateInvoiceCount(expireDate: Date, LastExpireDate: Date) {
+        let form = DateComponentsFormatter()
+        form.maximumUnitCount = 2
+        form.unitsStyle = .full
+        form.allowedUnits = [.month]
+        let s = form.string(from: expireDate, to: LastExpireDate)
+        invoiceInstallmentCount.text = s!.components(separatedBy: CharacterSet.decimalDigits.inverted).joined(separator: "")
+    }
 }

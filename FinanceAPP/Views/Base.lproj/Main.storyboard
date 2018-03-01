@@ -188,7 +188,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nef-y3-UoA">
+                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nef-y3-UoA">
                                                     <rect key="frame" x="216" y="30" width="8" height="10"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -196,7 +196,7 @@
                                                         <constraint firstAttribute="height" constant="10" id="tbX-8R-b1o"/>
                                                     </constraints>
                                                 </view>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paid" translatesAutoresizingMaskIntoConstraints="NO" id="gCR-iM-wu9">
+                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paid" translatesAutoresizingMaskIntoConstraints="NO" id="gCR-iM-wu9">
                                                     <rect key="frame" x="213" y="27.5" width="15" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="15" id="Vas-p5-AKn"/>
@@ -237,6 +237,8 @@
                                             <outlet property="invoiceInstallmentCount" destination="KxL-6A-ojR" id="a6j-xF-BKe"/>
                                             <outlet property="invoiceTitle" destination="fWG-uj-Qv4" id="bgv-Zm-9FK"/>
                                             <outlet property="invoiceValue" destination="JFo-pt-at0" id="HsD-mg-E7P"/>
+                                            <outlet property="ivPaid" destination="gCR-iM-wu9" id="mrZ-52-b3O"/>
+                                            <outlet property="viPaidBg" destination="nef-y3-UoA" id="6fV-TZ-6bC"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -357,6 +359,9 @@
                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="19"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" keyboardAppearance="alert"/>
                             </textField>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="tJI-Jl-uGM">
+                                <rect key="frame" x="87" y="226" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" name="main"/>
                         <constraints>
@@ -365,7 +370,9 @@
                             <constraint firstItem="aIY-M1-mM3" firstAttribute="top" secondItem="WtB-2K-Azr" secondAttribute="bottom" constant="20" id="e6X-yV-wer"/>
                             <constraint firstItem="WtB-2K-Azr" firstAttribute="leading" secondItem="wsy-Ni-wWS" secondAttribute="leading" id="faK-3f-5uC"/>
                             <constraint firstItem="e2Q-BZ-P0m" firstAttribute="centerY" secondItem="aIY-M1-mM3" secondAttribute="centerY" id="fzL-zG-9RD"/>
+                            <constraint firstItem="e2Q-BZ-P0m" firstAttribute="leading" secondItem="tJI-Jl-uGM" secondAttribute="trailing" constant="20" id="otR-td-1To"/>
                             <constraint firstItem="wsy-Ni-wWS" firstAttribute="top" secondItem="1VZ-qq-HK5" secondAttribute="top" constant="60" id="q7p-wg-hhS"/>
+                            <constraint firstItem="tJI-Jl-uGM" firstAttribute="centerY" secondItem="e2Q-BZ-P0m" secondAttribute="centerY" id="qdJ-AC-iqH"/>
                             <constraint firstItem="WtB-2K-Azr" firstAttribute="top" secondItem="wsy-Ni-wWS" secondAttribute="bottom" constant="20" id="s2D-0h-46w"/>
                             <constraint firstItem="aIY-M1-mM3" firstAttribute="leading" secondItem="e2Q-BZ-P0m" secondAttribute="trailing" constant="20" id="wko-dF-SBu"/>
                             <constraint firstItem="1VZ-qq-HK5" firstAttribute="trailing" secondItem="WtB-2K-Azr" secondAttribute="trailing" constant="30" id="yQT-77-Zoh"/>
@@ -373,6 +380,7 @@
                         <viewLayoutGuide key="safeArea" id="1VZ-qq-HK5"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="tJI-Jl-uGM" id="vDd-Sm-15B"/>
                         <outlet property="tfPaymentValue" destination="WtB-2K-Azr" id="uAB-m5-jli"/>
                         <segue destination="Cdl-LG-aC3" kind="presentation" identifier="userModal" id="m7N-X6-5aY"/>
                     </connections>
@@ -398,7 +406,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Ie-Rv-Wp2">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Ie-Rv-Wp2">
                                         <rect key="frame" x="194" y="25" width="8" height="10"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -453,7 +461,7 @@
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paid" translatesAutoresizingMaskIntoConstraints="NO" id="lTH-OU-HOP">
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paid" translatesAutoresizingMaskIntoConstraints="NO" id="lTH-OU-HOP">
                                         <rect key="frame" x="191" y="22" width="15" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="15" id="2o1-lg-puQ"/>
@@ -627,6 +635,7 @@
                         <outlet property="btDelete" destination="FoH-h8-s18" id="mMt-MO-TYC"/>
                         <outlet property="btEdit" destination="RWi-zv-Uhb" id="kK5-A3-K1J"/>
                         <outlet property="btPayment" destination="Di3-M2-Nsz" id="7Lb-mQ-x5e"/>
+                        <outlet property="ivPaid" destination="lTH-OU-HOP" id="0bn-DO-oxe"/>
                         <outlet property="lbCategory" destination="MON-ik-qTk" id="E9Q-gF-Dp9"/>
                         <outlet property="lbDescription" destination="ZPM-3o-5Xr" id="Mgq-Rd-3Nh"/>
                         <outlet property="lbExpireDate" destination="62Q-qU-tmg" id="D4i-Gr-dZ9"/>
@@ -636,6 +645,7 @@
                         <outlet property="lbTitle" destination="klK-xQ-tf0" id="pba-Rc-YpP"/>
                         <outlet property="lbTotalPaid" destination="bWp-79-93j" id="eC6-zb-5R7"/>
                         <outlet property="lbValue" destination="Jm2-Z6-1A4" id="HZQ-by-Hos"/>
+                        <outlet property="viPaidBg" destination="1Ie-Rv-Wp2" id="6CT-0n-ULU"/>
                         <segue destination="Cdl-LG-aC3" kind="presentation" identifier="userModal" id="xtJ-cZ-Mc6"/>
                         <segue destination="cPR-G6-Njn" kind="show" identifier="editInvoiceSelected" id="BhW-Up-982"/>
                         <segue destination="m92-ex-Iam" kind="show" identifier="paymentSegue" id="ZdV-R5-Rsx"/>
@@ -1654,7 +1664,7 @@
                                                     <color key="backgroundColor" name="textfield_bg_color"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="19"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" keyboardAppearance="alert" returnKeyType="done"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" keyboardAppearance="alert" returnKeyType="done"/>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -4704,9 +4714,6 @@ AAJ7RAACe1YAAntZAAJ7XgAAAAAAAAQBAAAAAAAAAEEAAAAAAAAAAAAAAAAAAntgA
         <namedColor name="main">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
-        <namedColor name="main">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
         <namedColor name="main_green">
             <color red="0.071000002324581146" green="0.76899999380111694" blue="0.40400001406669617" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -4716,12 +4723,9 @@ AAJ7RAACe1YAAntZAAJ7XgAAAAAAAAQBAAAAAAAAAEEAAAAAAAAAAAAAAAAAAntgA
         <namedColor name="textfield_bg_color">
             <color red="0.14100000262260437" green="0.14499999582767487" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="textfield_bg_color">
-            <color red="0.14100000262260437" green="0.14499999582767487" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bnF-FO-iQP"/>
-        <segue reference="m7N-X6-5aY"/>
+        <segue reference="Gpl-94-njZ"/>
+        <segue reference="z4S-3K-aFN"/>
     </inferredMetricsTieBreakers>
 </document>

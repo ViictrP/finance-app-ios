@@ -12,6 +12,7 @@ import MaterialComponents.MaterialSnackbar
 class PaymentViewController: UIViewControllerExtension {
 
     @IBOutlet weak var tfPaymentValue: UITextField!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var delegate: InvoiceViewController?
     var invoice: Invoice?
@@ -27,7 +28,30 @@ class PaymentViewController: UIViewControllerExtension {
     }
     
     @IBAction func makePayment(_ sender: UIButton) {
-        doSnackbar("payment added")
+        activityIndicator.isHidden = false
+        tfPaymentValue.resignFirstResponder()
+        if var value = tfPaymentValue.text {
+            value = value.replacingOccurrences(of: ",", with: ".")
+            if let converted = Double(value) {
+                api.makePayment(value: converted, invoice: invoice!, completionHandler: { (success, error) in
+                    if error == nil {
+                        self.doSnackbar("payment added")
+                        self.activityIndicator.isHidden = true
+                        self.delegate?.invoice?.totalPaid = (self.delegate?.invoice?.totalPaid)! + converted
+                        self.navigationController?.popViewController(animated: true)
+                    } else {
+                        self.doSnackbar(error!)
+                        self.activityIndicator.isHidden = true
+                    }
+                })
+            } else {
+                self.doSnackbar("Invalid value")
+                self.activityIndicator.isHidden = true
+            }
+        } else {
+            tfPaymentValue.attributedPlaceholder = changePlaceholder("The payment value is required", with: .white)
+            tfPaymentValue.backgroundColor = UIColor(named: "main_red")
+        }
     }
     
     @IBAction func cancel(_ sender: UIButton) {
