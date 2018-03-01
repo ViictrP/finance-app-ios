@@ -8,6 +8,7 @@
 
 import UIKit
 import FSCalendar
+import MaterialComponents.MaterialSnackbar
 
 class HomeViewController: UIViewControllerExtension {
     
@@ -78,6 +79,12 @@ class HomeViewController: UIViewControllerExtension {
             }
         }
     }
+    
+    func doSnackbar(_ msg: String) {
+        let message = MDCSnackbarMessage()
+        message.text = msg
+        MDCSnackbarManager.show(message)
+    }
 }
 
 extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource {
@@ -111,11 +118,45 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let action = UIContextualAction(style: .normal, title: "Pay") { (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
+            let invoice = self.invoices[indexPath.row]
+            invoice.totalPaid = invoice.value
+            self.api.makePayment(value: invoice.totalPaid!, invoice: invoice, completionHandler: { (success, error) in
+                if error == nil {
+                    self.doSnackbar("invoice \(invoice.title!) was paid")
+                    let cell = tableView.cellForRow(at: indexPath) as! FinanceTableViewCell
+                    cell.paidInvoice(true)
+                    invoice.paid = true
+                } else {
+                    self.doSnackbar(error!)
+                }
+            })
             completionHandler(true)
         }
         action.image = UIImage(named: "paid")
         action.backgroundColor = UIColor(named: "main_green")
-        let swipeConfig = UISwipeActionsConfiguration(actions: [action])
+        
+        let deleteAction = UIContextualAction(style: .normal, title: "Delete") { (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
+            let invoice = self.invoices[indexPath.row]
+            self.api.deleteInvoice(invoice: invoice, completionHandler: { (success, error) in
+                if error == nil {
+                    self.doSnackbar("Invoice \(invoice.title!) was removed")
+                    self.invoices.remove(at: indexPath.row)
+                    self.tableView.deleteRows(at: [indexPath], with: .fade)
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                        if self.invoices.count <= 0 {
+                            self.noResultContainer.isHidden = false
+                        }
+                    }
+                } else {
+                    self.doSnackbar(error!)
+                }
+            })
+            completionHandler(true)
+        }
+        deleteAction.image = UIImage(named: "trash")
+        deleteAction.backgroundColor = UIColor(named: "main_red")
+        let swipeConfig = UISwipeActionsConfiguration(actions: [deleteAction, action])
         return swipeConfig
     }
     

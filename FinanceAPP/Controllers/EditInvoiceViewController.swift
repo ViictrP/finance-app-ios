@@ -74,6 +74,8 @@ class EditInvoiceViewController: UITableViewController {
         if swIsInstallment.isOn {
             let expireDate = invoice?.expireDate!
             invoice?.lastExpireDate = Calendar.current.date(byAdding: .month, value: Int(tfInstallmentCount.text!)!, to: expireDate!)
+        } else {
+            invoice?.lastExpireDate = invoice?.expireDate
         }
         invoice?.description = "Invoice updated from app"
         let checked = checkBeforeSave(invoice)

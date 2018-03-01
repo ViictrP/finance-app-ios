@@ -36,11 +36,9 @@ class FinanceTableViewCell: UITableViewCell {
         if let type = invoice.type {
             invoiceCategory.text = type.rawValue
         }
-        if let totalPaid = invoice.totalPaid, let value = invoice.value {
-            if totalPaid >= value {
-                ivPaid.isHidden = false
-                viPaidBg.isHidden = false
-            }
+        if invoice.paid! {
+            ivPaid.isHidden = false
+            viPaidBg.isHidden = false
         }
         calculateInvoiceCount(expireDate: invoice.expireDate!, LastExpireDate: invoice.lastExpireDate!)
     }
@@ -52,5 +50,10 @@ class FinanceTableViewCell: UITableViewCell {
         form.allowedUnits = [.month]
         let s = form.string(from: expireDate, to: LastExpireDate)
         invoiceInstallmentCount.text = s!.components(separatedBy: CharacterSet.decimalDigits.inverted).joined(separator: "")
+    }
+    
+    func paidInvoice(_ paid: Bool) {
+        ivPaid.isHidden = false
+        viPaidBg.isHidden = false
     }
 }

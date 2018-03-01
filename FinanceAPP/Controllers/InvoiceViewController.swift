@@ -60,12 +60,11 @@ class InvoiceViewController: UIViewControllerExtension {
             lbIsInstallment.text = (nonNilInvoice.isInstallment!) ? "Sim" : "Não"
             calculateInvoiceCount(expireDate: nonNilInvoice.expireDate!, LastExpireDate: nonNilInvoice.lastExpireDate!)
             lbLastExpireDate.text = DateUtils.dateToString(nonNilInvoice.lastExpireDate!, with: installmentFormat)
-            if let totalPaid = invoice?.totalPaid, let value = invoice?.value {
-                if totalPaid >= value {
-                    ivPaid.isHidden = false
-                    viPaidBg.isHidden = false
-                }
+            if nonNilInvoice.paid! {
+                ivPaid.isHidden = false
+                viPaidBg.isHidden = false
             }
+            btPayment.isHidden = nonNilInvoice.paid!
         }
     }
     
