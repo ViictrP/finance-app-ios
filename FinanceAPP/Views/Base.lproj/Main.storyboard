@@ -720,7 +720,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <datePicker clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="epI-Hh-5dh">
+                                                <datePicker clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="epI-Hh-5dh">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
                                                     <color key="backgroundColor" name="main"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="541366466.05277097">
@@ -729,10 +729,14 @@
                                                 </datePicker>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="epI-Hh-5dh" firstAttribute="leading" secondItem="Mtg-Az-LLU" secondAttribute="leading" id="43E-7S-xkz"/>
                                                 <constraint firstAttribute="trailing" secondItem="epI-Hh-5dh" secondAttribute="trailing" id="QeA-1t-jSb"/>
                                                 <constraint firstAttribute="bottom" secondItem="epI-Hh-5dh" secondAttribute="bottom" id="Rut-NX-95T"/>
                                                 <constraint firstItem="epI-Hh-5dh" firstAttribute="leading" secondItem="Mtg-Az-LLU" secondAttribute="leading" id="SLx-1m-Bxl"/>
+                                                <constraint firstAttribute="trailing" secondItem="epI-Hh-5dh" secondAttribute="trailing" id="VyY-Di-E44"/>
+                                                <constraint firstAttribute="bottom" secondItem="epI-Hh-5dh" secondAttribute="bottom" id="f46-ep-MbE"/>
                                                 <constraint firstItem="epI-Hh-5dh" firstAttribute="top" secondItem="Mtg-Az-LLU" secondAttribute="top" id="gZj-v0-vKJ"/>
+                                                <constraint firstItem="epI-Hh-5dh" firstAttribute="top" secondItem="Mtg-Az-LLU" secondAttribute="top" id="wfe-lT-znn"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="main"/>
@@ -1681,7 +1685,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <datePicker clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="1eU-AA-ZtH">
+                                                <datePicker clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="1eU-AA-ZtH">
                                                     <rect key="frame" x="27" y="-23" width="320" height="216"/>
                                                     <color key="backgroundColor" name="main"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="541366466.05277097">
@@ -4726,6 +4730,6 @@ AAJ7RAACe1YAAntZAAJ7XgAAAAAAAAQBAAAAAAAAAEEAAAAAAAAAAAAAAAAAAntgA
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="bnF-FO-iQP"/>
-        <segue reference="xtJ-cZ-Mc6"/>
+        <segue reference="z4S-3K-aFN"/>
     </inferredMetricsTieBreakers>
 </document>
