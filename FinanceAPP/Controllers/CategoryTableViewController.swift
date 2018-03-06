@@ -18,10 +18,6 @@ class CategoryTableViewController: UITableViewControllerExtension {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         let loadedFromAPI = defaults.value(forKey: "loadedFromAPI") as? Bool ?? false
         print(loadedFromAPI)
         if !loadedFromAPI {
@@ -38,6 +34,14 @@ class CategoryTableViewController: UITableViewControllerExtension {
             let result = realm.objects(Category.self)
             categories = Array(result)
         }
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let realm = try! Realm()
+        let result = realm.objects(Category.self)
+        categories = Array(result)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -61,12 +65,12 @@ class CategoryTableViewController: UITableViewControllerExtension {
         tableView.deselectRow(at: indexPath, animated: true)
         let category = categories[indexPath.row]
         if let vc = delegate as? EditInvoiceViewController  {
-            vc.lbCategory.text = category.title
+            vc.category = category
             navigationController?.popViewController(animated: true)
             return
         }
         if let vc = delegate as? AddInvoiceViewController {
-            vc.lbCategory.text = category.title
+            vc.category = category
             navigationController?.popViewController(animated: true)
             return
         }

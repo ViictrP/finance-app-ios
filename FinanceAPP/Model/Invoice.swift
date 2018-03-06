@@ -8,58 +8,42 @@
 
 import Foundation
 import ObjectMapper
+import RealmSwift
 
-public enum InvoiceCategory: String {
-    case homeExpenses = "Home expenses"
-    case creditCard = "Credit card"
-    case invoice = "Invoice"
-}
-
-public class Invoice: Mappable {
-    
-    fileprivate final let transformEnum = TransformOf<InvoiceCategory, String>(fromJSON: { (value: String?) -> InvoiceCategory? in
-        if var convertedValue = value {
-            convertedValue = convertedValue.lowercased().replacingOccurrences(of: "_", with: " ").capitalizingFirstLetter()
-            return InvoiceCategory(rawValue: convertedValue)
-        }
-        return nil
-    }, toJSON: { (value: InvoiceCategory?) -> String? in
-        if let value = value {
-            return value.rawValue
-        }
-        return nil
-    })
+public class Invoice: Object, Mappable {
     
     fileprivate final let transformDate = TransformOf<Date, String>(fromJSON: { (value: String?) -> Date? in
         if let value = value {
-            return DateUtils.stringToDate(value, with: "yyyy-MM-dd HH:mm:ss")
+            return DateUtils.stringToDate(value)
         }
         return nil
     }, toJSON: { (value: Date?) -> String? in
         if let value = value {
-            return DateUtils.dateToString(value, with: "yyyy-MM-dd HH:mm:ss")
+            return DateUtils.dateToString(value)
         }
         return nil
     })
     
-    var id: Int?
-    var title: String?
-    var value: Double?
-    var expireDate: Date?
-    var totalPaid: Double?
-    var description: String?
-    var type: InvoiceCategory?
-    var isInstallment: Bool?
-    var lastExpireDate: Date?
-    var payment: Double?
-    var paid: Bool?
+    @objc dynamic var id: Int = 0
+    @objc dynamic var title: String = ""
+    @objc dynamic var value: Double = 0.0
+    @objc dynamic var expireDate: Date = Date()
+    @objc dynamic var totalPaid: Double = 0.0
+    @objc dynamic var invoiceDescription: String = ""
+    @objc dynamic var type: String = ""
+    @objc dynamic var categoryId: Int = 0
+    @objc dynamic var isInstallment: Bool = false
+    @objc dynamic var lastExpireDate: Date = Date()
+    @objc dynamic var payment: Double = 0.0
+    @objc dynamic var paid: Bool = false
+    var category: Category?
     
-    public init() {
-        
+    public required convenience init?(map: Map) {
+        self.init()
     }
     
-    public required init?(map: Map) {
-        
+    override public class func primaryKey() -> String? {
+        return "id"
     }
     
     public func mapping(map: Map) {
@@ -69,11 +53,11 @@ public class Invoice: Mappable {
         expireDate <- (map["expireDate"], transformDate)
         lastExpireDate <- (map["lastExpireDate"], transformDate)
         totalPaid <- map["totalPaid"]
-        description <- map["description"]
-        type <- (map["type"], transformEnum)
+        invoiceDescription <- map["description"]
         isInstallment <- map["isInstallment"]
         payment <- map["payment"]
         paid <- map["paid"]
+        category <- map["category"]
     }
 }
 

@@ -19,6 +19,7 @@ public class LoginAPI {
     
     private let endpoint: String = "/auth"
     private var defaults = UserDefaults.standard
+    private var userAPI: UserAPI = UserAPI.shared
     
     private init() {
         
@@ -37,6 +38,11 @@ public class LoginAPI {
                         let accessToken = json["data"]["token"]
                         self.defaults.set(accessToken.rawString(), forKey: "accessToken")
                         completionHandler("ok")
+                        self.userAPI.getInfo(completionHandler: { (success, error) in
+                            if error != nil {
+                                print(error!)
+                            }
+                        })
                     } else {
                         completionHandler("Something went wrong")
                 }

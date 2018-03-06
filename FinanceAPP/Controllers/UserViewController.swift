@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class UserViewController: UIViewController {
 
@@ -17,6 +18,7 @@ class UserViewController: UIViewController {
     @IBOutlet weak var btEditPic: UIButton!
     
     var userImage: UIImage?
+    var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +27,10 @@ class UserViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         ivUser.image = userImage!
+        let realm = try! Realm()
+        let result = realm.objects(User.self)
+        let array = Array(result)
+        user = array.first!
     }
     
 
@@ -61,10 +67,10 @@ extension UserViewController: UICollectionViewDelegate, UICollectionViewDataSour
         var value = ""
         switch SettingsCollectionViewCell.fields[indexPath.row] {
             case "Name":
-                value = "Victor Prado"
+                value = user!.name
                 cell.textField.keyboardType = .default
             case "Email":
-                value = "vtrsznaah@gmail.com"
+                value = user!.email
                 cell.textField.keyboardType = .emailAddress
             case "Password":
                 value = "**********"

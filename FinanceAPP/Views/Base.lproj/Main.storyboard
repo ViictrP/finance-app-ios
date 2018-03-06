@@ -38,6 +38,7 @@
                     <connections>
                         <segue destination="Gjz-mQ-vHE" kind="relationship" relationship="viewControllers" id="w60-V2-d8s"/>
                         <segue destination="srF-Ty-nib" kind="relationship" relationship="viewControllers" id="Foi-hJ-O1a"/>
+                        <segue destination="rrv-IC-WhK" kind="relationship" relationship="viewControllers" id="7rK-8Z-FPc"/>
                         <segue destination="EJ8-WR-HKE" kind="relationship" relationship="viewControllers" id="VWo-w1-HPr"/>
                     </connections>
                 </tabBarController>
@@ -290,6 +291,11 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Home" id="L38-1u-RhJ">
+                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="fmz-Lj-QYx">
+                            <connections>
+                                <action selector="sync:" destination="0KY-FI-Aay" id="TGZ-uZ-hT3"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem image="icons8-expand-filled" style="plain" id="Hfv-Ih-qiz">
                                 <connections>
@@ -308,6 +314,7 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
+                        <outlet property="btSync" destination="fmz-Lj-QYx" id="HCs-Vh-nAR"/>
                         <outlet property="calendar" destination="Rsi-Ya-vuu" id="2du-ER-WO5"/>
                         <outlet property="calendarHeightConstraint" destination="s25-5n-Tjr" id="HLe-W0-AOT"/>
                         <outlet property="noResultContainer" destination="kjy-im-f2y" id="Lew-P9-B4Z"/>
@@ -703,7 +710,7 @@
                                                     <color key="backgroundColor" red="0.14099062940000001" green="0.1434660606" blue="0.15500079310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="19"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" keyboardAppearance="alert" returnKeyType="done"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" keyboardAppearance="alert" returnKeyType="done"/>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -711,7 +718,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Expire date" id="jTl-be-r9a">
+                            <tableViewSection headerTitle="Expire date *" id="jTl-be-r9a">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="170" id="QNw-l2-dSX">
                                         <rect key="frame" x="0.0" y="255.5" width="375" height="170"/>
@@ -790,7 +797,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Category" id="8AK-Lf-mN0">
+                            <tableViewSection headerTitle="Category *" id="8AK-Lf-mN0">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="50" id="ySg-59-66J">
                                         <rect key="frame" x="0.0" y="625.5" width="375" height="50"/>
@@ -1630,7 +1637,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="main"/>
                         <sections>
-                            <tableViewSection headerTitle="Title" id="k49-sm-LZ3">
+                            <tableViewSection headerTitle="Title *" id="k49-sm-LZ3">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="f1f-w3-smD">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
@@ -1653,7 +1660,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Value" id="b1y-nW-cG1">
+                            <tableViewSection headerTitle="Value *" id="b1y-nW-cG1">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="zLh-Gf-5nQ">
                                         <rect key="frame" x="0.0" y="155.5" width="375" height="44"/>
@@ -1676,7 +1683,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Expire date" id="g85-rW-FdS">
+                            <tableViewSection headerTitle="Expire date *" id="g85-rW-FdS">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="170" id="DEL-G6-qZx">
                                         <rect key="frame" x="0.0" y="255.5" width="375" height="170"/>
@@ -1749,7 +1756,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Category" id="2XM-UG-DOn">
+                            <tableViewSection headerTitle="Category *" id="2XM-UG-DOn">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="50" id="Q5A-Hb-D7Y">
                                         <rect key="frame" x="0.0" y="625.5" width="375" height="50"/>
@@ -1873,6 +1880,25 @@
             </objects>
             <point key="canvasLocation" x="1117.5999999999999" y="-639.13043478260875"/>
         </scene>
+        <!--Category View Controller-->
+        <scene sceneID="kOv-cT-4WF">
+            <objects>
+                <viewController id="jwv-2L-LIp" customClass="CategoryViewController" customModule="FinanceAPP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wt3-eJ-kcX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" name="main"/>
+                        <viewLayoutGuide key="safeArea" id="x1J-HT-vNU"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="6ho-3P-OAp"/>
+                    <connections>
+                        <segue destination="Cdl-LG-aC3" kind="presentation" identifier="userModal" id="my5-Ff-Nhz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OUB-UH-c6F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3082.4000000000001" y="-639.13043478260875"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="72l-UO-g2Z">
             <objects>
@@ -1894,7 +1920,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rz0-OX-DWz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2226" y="-639"/>
+            <point key="canvasLocation" x="3924" y="-639.13043478260875"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="8gg-Vg-h6l">
@@ -1971,7 +1997,27 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8OS-CF-e07" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3085.5999999999999" y="-639.13043478260875"/>
+            <point key="canvasLocation" x="4752.8000000000002" y="-639.13043478260875"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6ID-f7-blb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rrv-IC-WhK" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="category" id="eyt-Kd-9tg"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XBD-XQ-r6c">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="jwv-2L-LIp" kind="relationship" relationship="rootViewController" id="Lag-Gl-1cp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fZg-2I-9Lx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2370" y="-639"/>
         </scene>
     </scenes>
     <resources>
@@ -1979,6 +2025,7 @@
         <image name="bill" width="30" height="30"/>
         <image name="bill-table" width="128" height="128"/>
         <image name="cancel" width="30" height="30"/>
+        <image name="category" width="30" height="30"/>
         <image name="credit_card" width="30" height="30"/>
         <image name="delete" width="20" height="20"/>
         <image name="edit" width="20" height="20"/>
@@ -4718,6 +4765,9 @@ AAJ7RAACe1YAAntZAAJ7XgAAAAAAAAQBAAAAAAAAAEEAAAAAAAAAAAAAAAAAAntgA
         <namedColor name="main">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
+        <namedColor name="main">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <namedColor name="main_green">
             <color red="0.071000002324581146" green="0.76899999380111694" blue="0.40400001406669617" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -4729,7 +4779,7 @@ AAJ7RAACe1YAAntZAAJ7XgAAAAAAAAQBAAAAAAAAAEEAAAAAAAAAAAAAAAAAAntgA
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bnF-FO-iQP"/>
-        <segue reference="z4S-3K-aFN"/>
+        <segue reference="Gpl-94-njZ"/>
+        <segue reference="tKb-Eg-tuW"/>
     </inferredMetricsTieBreakers>
 </document>

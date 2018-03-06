@@ -28,19 +28,15 @@ class FinanceTableViewCell: UITableViewCell {
     
     func prepare(invoice: Invoice) {
         invoiceTitle.text = invoice.title
-        invoiceValue.text = "R$\(invoice.value!)"
-        if let date = invoice.expireDate {
-            expireDate.text = DateUtils.dateToString(date, with: "dd/MM")
-        }
+        invoiceValue.text = "R$\(invoice.value)"
+        expireDate.text = DateUtils.dateToString(invoice.expireDate, format: "dd/MM")
         invoiceInstallmentCount.text = "Test"
-        if let type = invoice.type {
-            invoiceCategory.text = type.rawValue
-        }
-        if invoice.paid! {
+        invoiceCategory.text = invoice.type.isEmpty ? invoice.category?.title : invoice.type
+        if invoice.paid {
             ivPaid.isHidden = false
             viPaidBg.isHidden = false
         }
-        calculateInvoiceCount(expireDate: invoice.expireDate!, LastExpireDate: invoice.lastExpireDate!)
+        calculateInvoiceCount(expireDate: invoice.expireDate, LastExpireDate: invoice.lastExpireDate)
     }
 
     func calculateInvoiceCount(expireDate: Date, LastExpireDate: Date) {

@@ -8,6 +8,7 @@
 
 import UIKit
 import MaterialComponents.MaterialSnackbar
+import RealmSwift
 
 class EditInvoiceViewController: UITableViewController {
 
@@ -24,6 +25,7 @@ class EditInvoiceViewController: UITableViewController {
     var invoice: Invoice?
     var api: InvoiceAPI = InvoiceAPI.shared
     var delegate: InvoiceViewController?
+    var category: Category?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,16 +33,6 @@ class EditInvoiceViewController: UITableViewController {
         tfValue.attributedPlaceholder = changePlaceholder("Value", with: .lightGray)
         dtExpireDate.setValue(UIColor.white, forKey: "textColor")
         tfInstallmentCount.attributedPlaceholder = changePlaceholder("Installment count", with: .lightGray)
-        
-        if let nonNilInvoice = invoice {
-            title = nonNilInvoice.title
-            tfTitle.text = nonNilInvoice.title
-            tfValue.text = String(describing: nonNilInvoice.value!)
-            dtExpireDate.setDate(nonNilInvoice.expireDate!, animated: true)
-            swIsInstallment.isOn = nonNilInvoice.isInstallment!
-            lbCategory.text = nonNilInvoice.type!.rawValue
-            calculateInvoiceCount(expireDate: nonNilInvoice.expireDate!, LastExpireDate: nonNilInvoice.lastExpireDate!)
-        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -56,6 +48,22 @@ class EditInvoiceViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if let nonNilInvoice = invoice {
+            title = nonNilInvoice.title
+            tfTitle.text = nonNilInvoice.title
+            tfValue.text = String(describing: nonNilInvoice.value)
+            dtExpireDate.setDate(nonNilInvoice.expireDate, animated: true)
+            swIsInstallment.isOn = nonNilInvoice.isInstallment
+            lbCategory.text = nonNilInvoice.category?.title
+            calculateInvoiceCount(expireDate: nonNilInvoice.expireDate, LastExpireDate: nonNilInvoice.lastExpireDate)
+            
+            let realm = try! Realm()
+            let category = realm.object(ofType: Category.self, forPrimaryKey: nonNilInvoice.categoryId)
+            if let category = category {
+                self.category = category
+                lbCategory.text = category.title
+            }
+        }
     }
     
     //MARK: - Actions
@@ -65,25 +73,13 @@ class EditInvoiceViewController: UITableViewController {
     
     @IBAction func save(_ sender: UIButton) {
         resignFirstResponderAll()
-        invoice?.title = tfTitle.text!
-        invoice?.value = Double(tfValue.text!)
-        invoice?.expireDate = dtExpireDate.date
-        invoice?.totalPaid = 0.0
-        invoice?.type = InvoiceCategory(rawValue: lbCategory.text!)
-        invoice?.isInstallment = swIsInstallment.isOn
-        if swIsInstallment.isOn {
-            let expireDate = invoice?.expireDate!
-            invoice?.lastExpireDate = Calendar.current.date(byAdding: .month, value: Int(tfInstallmentCount.text!)!, to: expireDate!)
-        } else {
-            invoice?.lastExpireDate = invoice?.expireDate
-        }
-        invoice?.description = "Invoice updated from app"
         let checked = checkBeforeSave(invoice)
         if checked {
+            updateInRealm(checked)
             activityIndicator.isHidden = false
             api.updateInvoice(invoice: invoice!) { (success, error) in
                 if error == nil {
-                    self.doSnackbar("The invoice \(self.invoice!.title!) was updated")
+                    self.doSnackbar("The invoice \(self.invoice!.title) was updated")
                     self.activityIndicator.isHidden = true
                     self.delegate?.invoice = self.invoice
                     self.cancel(self.btCancel)
@@ -121,6 +117,11 @@ class EditInvoiceViewController: UITableViewController {
             tfInstallmentCount.attributedPlaceholder = changePlaceholder("This field is required", with: .white)
             checked = false
         }
+        if invoice?.categoryId == nil {
+            lbCategory.text = "CATEGORY"
+            lbCategory.backgroundColor = UIColor(named: "main_red")
+            checked = false
+        }
         return checked
     }
     
@@ -128,6 +129,30 @@ class EditInvoiceViewController: UITableViewController {
         let message = MDCSnackbarMessage()
         message.text = msg
         MDCSnackbarManager.show(message)
+    }
+    
+    func updateInRealm(_ checked: Bool) {
+        if checked {
+            let realm = try! Realm()
+            try! realm.write {
+                invoice?.title = tfTitle.text!
+                var value = tfValue.text!
+                value = value.replacingOccurrences(of: ",", with: ".")
+                invoice?.value = Double(value)!
+                invoice?.expireDate = dtExpireDate.date
+                invoice?.totalPaid = 0.0
+                invoice?.type = lbCategory.text!
+                invoice?.isInstallment = swIsInstallment.isOn
+                if swIsInstallment.isOn {
+                    let expireDate = invoice?.expireDate
+                    invoice?.lastExpireDate = Calendar.current.date(byAdding: .month, value: Int(tfInstallmentCount.text!)!, to: expireDate!)!
+                } else {
+                    invoice?.lastExpireDate = (invoice?.expireDate)!
+                }
+                invoice?.invoiceDescription = "Invoice updated from app"
+                invoice?.category = category!
+            }
+        }
     }
     
     func calculateInvoiceCount(expireDate: Date, LastExpireDate: Date) {

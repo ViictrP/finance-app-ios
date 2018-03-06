@@ -8,6 +8,7 @@
 
 import UIKit
 import MaterialComponents.MaterialSnackbar
+import RealmSwift
 
 class PaymentViewController: UIViewControllerExtension {
 
@@ -37,7 +38,13 @@ class PaymentViewController: UIViewControllerExtension {
                     if error == nil {
                         self.doSnackbar("payment added")
                         self.activityIndicator.isHidden = true
-                        self.delegate?.invoice?.totalPaid = (self.delegate?.invoice?.totalPaid)! + converted
+                        let realm = try! Realm()
+                        try! realm.write {
+                            self.delegate?.invoice?.totalPaid = (self.delegate?.invoice?.totalPaid)! + converted
+                            if self.delegate!.invoice!.totalPaid >= self.delegate!.invoice!.value {
+                                self.delegate?.invoice?.paid = true
+                            }
+                        }
                         self.navigationController?.popViewController(animated: true)
                     } else {
                         self.doSnackbar(error!)

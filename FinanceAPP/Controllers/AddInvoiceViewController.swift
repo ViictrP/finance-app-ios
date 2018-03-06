@@ -24,6 +24,7 @@ class AddInvoiceViewController: UITableViewControllerExtension {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var invoice: Invoice?
+    var category: Category?
     var api: InvoiceAPI = InvoiceAPI.shared
     
     override func viewDidLoad() {
@@ -36,6 +37,9 @@ class AddInvoiceViewController: UITableViewControllerExtension {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if let category = category {
+            lbCategory.text = category.title
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -56,26 +60,28 @@ class AddInvoiceViewController: UITableViewControllerExtension {
     
     @IBAction func save(_ sender: UIButton) {
         resignFirstResponderAll()
-        invoice = Invoice()
-        invoice?.title = tfTitle.text!
-        var value = tfValue.text!
-        value = value.replacingOccurrences(of: ",", with: ".")
-        invoice?.value = Double(value)
-        invoice?.expireDate = dtExpireDate.date
-        invoice?.totalPaid = 0.0
-        invoice?.type = InvoiceCategory(rawValue: lbCategory.text!)
-        invoice?.isInstallment = swIsInstallment.isOn
-        if swIsInstallment.isOn {
-            let expireDate = invoice?.expireDate!
-            invoice?.lastExpireDate = Calendar.current.date(byAdding: .month, value: Int(tfInstallmentCount.text!)!, to: expireDate!)
-        }
-        invoice?.description = "Invoice added from app"
-        let checked = checkBeforeSave(invoice)
+        let checked = checkBeforeSave()
         if checked {
+            invoice = Invoice()
+            invoice?.title = tfTitle.text!
+            var value = tfValue.text ?? ""
+            value = value.replacingOccurrences(of: ",", with: ".")
+            invoice?.value = Double(value)!
+            invoice?.expireDate = dtExpireDate.date
+            invoice?.totalPaid = 0.0
+            invoice?.type = lbCategory.text!
+            invoice?.isInstallment = swIsInstallment.isOn
+            if swIsInstallment.isOn {
+                let expireDate = invoice?.expireDate
+                invoice?.lastExpireDate = Calendar.current.date(byAdding: .month, value: Int(tfInstallmentCount.text!)!, to: expireDate!)!
+            }
+            invoice?.invoiceDescription = "Invoice added from app"
+            invoice?.category = category!
+            invoice?.categoryId = category!.id
             activityIndicator.isHidden = false
             api.saveInvoice(invoice: invoice!) { (success, error) in
                 if error == nil {
-                    self.doSnackbar("The invoice \(self.invoice!.title!) was created")
+                    self.doSnackbar("The invoice \(self.invoice!.title) was created")
                     self.resetFields()
                     self.activityIndicator.isHidden = true
                 } else {
@@ -111,25 +117,21 @@ class AddInvoiceViewController: UITableViewControllerExtension {
         lbCategory.backgroundColor = UIColor(named: "textfield_bg_color")
     }
     
-    func checkBeforeSave(_ invoice: Invoice?) -> Bool {
+    func checkBeforeSave() -> Bool {
         var checked = true
-        if invoice == nil {
-            self.doSnackbar("Fill the form!")
-            return false
-        }
-        if invoice!.title!.isEmpty {
+        if tfTitle.text == nil {
             tfTitle.text = ""
             tfTitle.backgroundColor = UIColor(named: "main_red")
             tfTitle.attributedPlaceholder = changePlaceholder("This field is required", with: .white)
             checked = false
         }
-        if invoice!.value == nil {
+        if tfValue.text == nil {
             tfValue.text = ""
             tfValue.backgroundColor = UIColor(named: "main_red")
             tfValue.attributedPlaceholder = changePlaceholder("This field is required", with: .white)
             checked = false
         }
-        if invoice!.type == nil {
+        if category == nil {
             lbCategory.text = "CATEGORY"
             lbCategory.backgroundColor = UIColor(named: "main_red")
             checked = false

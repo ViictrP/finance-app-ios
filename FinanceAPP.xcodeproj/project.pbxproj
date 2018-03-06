@@ -24,6 +24,8 @@
 		449514D0203F4A4B00092F14 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449514CF203F4A4B00092F14 /* SignupViewController.swift */; };
 		449E31952041D21D0051E47C /* EditInvoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449E31942041D21D0051E47C /* EditInvoiceViewController.swift */; };
 		449E31972041DF5F0051E47C /* UITableViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449E31962041DF5F0051E47C /* UITableViewControllerExtension.swift */; };
+		44A59E70204984C200C0268F /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A59E6F204984C200C0268F /* UserAPI.swift */; };
+		44A59E722049858D00C0268F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A59E712049858D00C0268F /* User.swift */; };
 		44AF44272041E66000D5BFC5 /* RestConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AF44262041E66000D5BFC5 /* RestConfig.swift */; };
 		44AF442D2041EA2200D5BFC5 /* InvoiceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AF442C2041EA2200D5BFC5 /* InvoiceAPI.swift */; };
 		44AF442F2041EC3100D5BFC5 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AF442E2041EC3100D5BFC5 /* LoginAPI.swift */; };
@@ -36,6 +38,8 @@
 		44B1F6BD203DDD660078E923 /* InvoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1F6BC203DDD660078E923 /* InvoiceViewController.swift */; };
 		44B1F6BF203DDF090078E923 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1F6BE203DDF090078E923 /* SettingsViewController.swift */; };
 		44B1F6C1203DFDD30078E923 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1F6C0203DFDD30078E923 /* LoginViewController.swift */; };
+		44CC1874204EC9E700F2DCBF /* CategoryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CC1873204EC9E700F2DCBF /* CategoryAPI.swift */; };
+		44CC1876204F0AE900F2DCBF /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CC1875204F0AE900F2DCBF /* CategoryViewController.swift */; };
 		44DD51212046F6E8001EBF89 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DD51202046F6E8001EBF89 /* PaymentViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +63,8 @@
 		449514CF203F4A4B00092F14 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		449E31942041D21D0051E47C /* EditInvoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInvoiceViewController.swift; sourceTree = "<group>"; };
 		449E31962041DF5F0051E47C /* UITableViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewControllerExtension.swift; sourceTree = "<group>"; };
+		44A59E6F204984C200C0268F /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
+		44A59E712049858D00C0268F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		44AF44262041E66000D5BFC5 /* RestConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestConfig.swift; sourceTree = "<group>"; };
 		44AF442C2041EA2200D5BFC5 /* InvoiceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceAPI.swift; sourceTree = "<group>"; };
 		44AF442E2041EC3100D5BFC5 /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
@@ -71,6 +77,8 @@
 		44B1F6BC203DDD660078E923 /* InvoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceViewController.swift; sourceTree = "<group>"; };
 		44B1F6BE203DDF090078E923 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		44B1F6C0203DFDD30078E923 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		44CC1873204EC9E700F2DCBF /* CategoryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAPI.swift; sourceTree = "<group>"; };
+		44CC1875204F0AE900F2DCBF /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		44DD51202046F6E8001EBF89 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		7D737D258320E22610610F77 /* Pods-FinanceAPP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceAPP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinanceAPP/Pods-FinanceAPP.debug.xcconfig"; sourceTree = "<group>"; };
 		B0C563CDD5A23C43FB4979D8 /* Pods_FinanceAPP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinanceAPP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +158,7 @@
 				4493B6C520446875009C4258 /* StarterViewController.swift */,
 				4427E24C20448DAA0042D520 /* CategoryTableViewController.swift */,
 				44DD51202046F6E8001EBF89 /* PaymentViewController.swift */,
+				44CC1875204F0AE900F2DCBF /* CategoryViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -233,6 +242,7 @@
 			children = (
 				4463FC162040938B0032BA67 /* Invoice.swift */,
 				4427E24E20448FD90042D520 /* Category.swift */,
+				44A59E712049858D00C0268F /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -251,6 +261,8 @@
 				44AF44262041E66000D5BFC5 /* RestConfig.swift */,
 				44AF442C2041EA2200D5BFC5 /* InvoiceAPI.swift */,
 				44AF442E2041EC3100D5BFC5 /* LoginAPI.swift */,
+				44A59E6F204984C200C0268F /* UserAPI.swift */,
+				44CC1873204EC9E700F2DCBF /* CategoryAPI.swift */,
 			);
 			path = Rest;
 			sourceTree = "<group>";
@@ -439,7 +451,9 @@
 				4415EB14203D00A800FD9888 /* FinanceAPP.xcdatamodeld in Sources */,
 				449E31972041DF5F0051E47C /* UITableViewControllerExtension.swift in Sources */,
 				44B1F6B5203DBB580078E923 /* UserViewController.swift in Sources */,
+				44A59E70204984C200C0268F /* UserAPI.swift in Sources */,
 				44B1F6BD203DDD660078E923 /* InvoiceViewController.swift in Sources */,
+				44A59E722049858D00C0268F /* User.swift in Sources */,
 				4493B6C420445A1D009C4258 /* DateUtils.swift in Sources */,
 				4463EBC920406F6B008224C4 /* TextField.swift in Sources */,
 				44B1F6BF203DDF090078E923 /* SettingsViewController.swift in Sources */,
@@ -458,6 +472,8 @@
 				44AF442D2041EA2200D5BFC5 /* InvoiceAPI.swift in Sources */,
 				449E31952041D21D0051E47C /* EditInvoiceViewController.swift in Sources */,
 				44B1F6BB203DDC310078E923 /* AddInvoiceViewController.swift in Sources */,
+				44CC1876204F0AE900F2DCBF /* CategoryViewController.swift in Sources */,
+				44CC1874204EC9E700F2DCBF /* CategoryAPI.swift in Sources */,
 				44B1F6B7203DC0800078E923 /* FinanceTableViewCell.swift in Sources */,
 				44B1F6C1203DFDD30078E923 /* LoginViewController.swift in Sources */,
 				4427E24F20448FD90042D520 /* Category.swift in Sources */,

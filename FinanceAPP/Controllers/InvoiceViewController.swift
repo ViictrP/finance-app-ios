@@ -52,19 +52,19 @@ class InvoiceViewController: UIViewControllerExtension {
         super.viewWillAppear(animated)
         if let nonNilInvoice = invoice {
             lbTitle.text = invoice?.title
-            lbDescription.text = nonNilInvoice.description!
-            lbCategory.text = nonNilInvoice.type?.rawValue
-            lbExpireDate.text = DateUtils.dateToString(nonNilInvoice.expireDate!, with: format)
-            lbValue.text = "R$\(nonNilInvoice.value!)"
-            lbTotalPaid.text = "R$\(nonNilInvoice.totalPaid!)"
-            lbIsInstallment.text = (nonNilInvoice.isInstallment!) ? "Sim" : "Não"
-            calculateInvoiceCount(expireDate: nonNilInvoice.expireDate!, LastExpireDate: nonNilInvoice.lastExpireDate!)
-            lbLastExpireDate.text = DateUtils.dateToString(nonNilInvoice.lastExpireDate!, with: installmentFormat)
-            if nonNilInvoice.paid! {
+            lbDescription.text = nonNilInvoice.invoiceDescription
+            lbCategory.text = nonNilInvoice.type
+            lbExpireDate.text = DateUtils.dateToString(nonNilInvoice.expireDate, format: "MM/dd")
+            lbValue.text = "R$\(nonNilInvoice.value)"
+            lbTotalPaid.text = "R$\(nonNilInvoice.totalPaid)"
+            lbIsInstallment.text = (nonNilInvoice.isInstallment) ? "Sim" : "Não"
+            calculateInvoiceCount(expireDate: nonNilInvoice.expireDate, LastExpireDate: nonNilInvoice.lastExpireDate)
+            lbLastExpireDate.text = DateUtils.dateToString(nonNilInvoice.lastExpireDate, format: "dd/MM/yyyy")
+            if nonNilInvoice.paid {
                 ivPaid.isHidden = false
                 viPaidBg.isHidden = false
             }
-            btPayment.isHidden = nonNilInvoice.paid!
+            btPayment.isHidden = nonNilInvoice.paid
         }
     }
     
@@ -74,9 +74,10 @@ class InvoiceViewController: UIViewControllerExtension {
     }
     
     @IBAction func deleteInvoice(_ sender: UIButton) {
+        let title = invoice!.title
         api.deleteInvoice(invoice: invoice!) { (success, error) in
             if error == nil {
-                self.doSnackbar("Invoice \(self.invoice!.title!) was deleted")
+                self.doSnackbar("Invoice \(title) was deleted")
                 self.navigationController?.popViewController(animated: true)
             } else {
                 self.doSnackbar(error!)
