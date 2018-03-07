@@ -130,11 +130,13 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource {
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let expireDate = DateUtils.dateToString(date)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: self.uiBusy)
         api.getInvoices(params: ["expireDate": expireDate]) { (invoices) in
             if let inv = invoices {
                 self.invoices = inv
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
+                    self.navigationItem.leftBarButtonItem = self.btSync
                     if inv.count <= 0 {
                         self.noResultContainer.isHidden = false
                     } else {
@@ -174,6 +176,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let action = UIContextualAction(style: .normal, title: "Pay") { (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
             let invoice = self.invoices[indexPath.row]
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: self.uiBusy)
             self.api.makePayment(value: invoice.value, invoice: invoice, completionHandler: { (success, error) in
                 if error == nil {
                     self.doSnackbar("invoice \(invoice.title) was paid")
@@ -185,6 +188,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
                             invoice.paid = true
                         }
                     }
+                    self.navigationItem.leftBarButtonItem = self.btSync
                 } else {
                     self.doSnackbar(error!)
                 }

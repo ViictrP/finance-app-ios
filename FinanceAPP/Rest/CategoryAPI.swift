@@ -34,16 +34,8 @@ public class CategoryAPI {
             case .success:
                 if response.response!.statusCode >= 200 && response.response!.statusCode <= 300 {
                     completionHandler(categories)
-                    let realm = try! Realm()
                     if let categories = categories {
-                        for category in categories {
-                            let categoryRealm = realm.object(ofType: Category.self, forPrimaryKey: category.id)
-                            if categoryRealm == nil {
-                                try! realm.write {
-                                    realm.add(category)
-                                }
-                            }
-                        }
+                        self.saveCategories(categories)
                     }
                 } else {
                     completionHandler([])
@@ -51,6 +43,74 @@ public class CategoryAPI {
             case .failure(let error):
                 print(error.localizedDescription)
                 completionHandler([])
+            }
+        }
+    }
+    
+    public func saveCategory(_ category: Category, completionHandler: @escaping(Bool, String?) -> Void) {
+        let headers: HTTPHeaders = ["authorization": "Bearer \(defaults.string(forKey: "accessToken")!)"]
+        let params: Parameters = buildParams(category)
+        Alamofire.request("\(RestConfig.basePath)\(endpoint)", method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).responseObject(keyPath: "data") { (response: DataResponse<Category>) in
+            let category = response.result.value
+            switch response.result {
+                case .success(let value):
+                    if response.response!.statusCode >= 200 && response.response!.statusCode <= 300 {
+                        if let category = category {
+                            self.saveCategories([category])
+                        }
+                        completionHandler(true, nil)
+                    } else {
+                        let json = JSON(value)
+                        let errors: [String] = json["errors"].rawValue as? [String] ?? ["An error occurred"]
+                        completionHandler(false, errors[0])
+                }
+                case .failure(let error):
+                    print(error.localizedDescription)
+            }
+        }
+    }
+    
+    public func updateCategory(_ category: Category, completionHandler: @escaping(Bool, String?) -> Void) {
+        let headers: HTTPHeaders = ["authorization": "Bearer \(defaults.string(forKey: "accessToken")!)"]
+        let params: Parameters = buildParams(category)
+        Alamofire.request("\(RestConfig.basePath)\(endpoint)/\(category.id)", method: .put, parameters: params, encoding: JSONEncoding.default, headers: headers).responseObject(keyPath: "data") { (response: DataResponse<Category>) in
+            let category = response.result.value
+            switch response.result {
+            case .success(let value):
+                if response.response!.statusCode >= 200 && response.response!.statusCode <= 300 {
+                    if let category = category {
+                        self.saveCategories([category])
+                    }
+                    completionHandler(true, nil)
+                } else {
+                    let json = JSON(value)
+                    let errors: [String] = json["errors"].rawValue as? [String] ?? ["An error occurred"]
+                    completionHandler(false, errors[0])
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    fileprivate func buildParams(_ category: Category) -> Parameters {
+        return [
+            "title": category.title
+        ]
+    }
+    
+    fileprivate func saveCategories(_ categories: [Category]) {
+        let realm = try! Realm()
+        for category in categories {
+            let categoryRealm = realm.object(ofType: Category.self, forPrimaryKey: category.id)
+            if categoryRealm == nil {
+                try! realm.write {
+                    realm.add(category)
+                }
+            } else {
+                try! realm.write {
+                    categoryRealm?.title = category.title
+                }
             }
         }
     }

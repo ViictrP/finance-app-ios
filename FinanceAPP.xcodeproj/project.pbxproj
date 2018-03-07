@@ -19,6 +19,8 @@
 		4463EBC720405933008224C4 /* SettingsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4463EBC620405933008224C4 /* SettingsCollectionViewCell.swift */; };
 		4463EBC920406F6B008224C4 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4463EBC820406F6B008224C4 /* TextField.swift */; };
 		4463FC172040938B0032BA67 /* Invoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4463FC162040938B0032BA67 /* Invoice.swift */; };
+		44889D50205021FA00C091EA /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44889D4F205021FA00C091EA /* CategoryCollectionViewCell.swift */; };
+		44889D54205027AC00C091EA /* AddEditCategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44889D53205027AC00C091EA /* AddEditCategoryTableViewController.swift */; };
 		4493B6C420445A1D009C4258 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4493B6C320445A1D009C4258 /* DateUtils.swift */; };
 		4493B6C620446875009C4258 /* StarterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4493B6C520446875009C4258 /* StarterViewController.swift */; };
 		449514D0203F4A4B00092F14 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449514CF203F4A4B00092F14 /* SignupViewController.swift */; };
@@ -58,6 +60,8 @@
 		4463EBC620405933008224C4 /* SettingsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCollectionViewCell.swift; sourceTree = "<group>"; };
 		4463EBC820406F6B008224C4 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		4463FC162040938B0032BA67 /* Invoice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Invoice.swift; sourceTree = "<group>"; };
+		44889D4F205021FA00C091EA /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		44889D53205027AC00C091EA /* AddEditCategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditCategoryTableViewController.swift; sourceTree = "<group>"; };
 		4493B6C320445A1D009C4258 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		4493B6C520446875009C4258 /* StarterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarterViewController.swift; sourceTree = "<group>"; };
 		449514CF203F4A4B00092F14 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +163,8 @@
 				4427E24C20448DAA0042D520 /* CategoryTableViewController.swift */,
 				44DD51202046F6E8001EBF89 /* PaymentViewController.swift */,
 				44CC1875204F0AE900F2DCBF /* CategoryViewController.swift */,
+				44889D4F205021FA00C091EA /* CategoryCollectionViewCell.swift */,
+				44889D53205027AC00C091EA /* AddEditCategoryTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -451,6 +457,7 @@
 				4415EB14203D00A800FD9888 /* FinanceAPP.xcdatamodeld in Sources */,
 				449E31972041DF5F0051E47C /* UITableViewControllerExtension.swift in Sources */,
 				44B1F6B5203DBB580078E923 /* UserViewController.swift in Sources */,
+				44889D54205027AC00C091EA /* AddEditCategoryTableViewController.swift in Sources */,
 				44A59E70204984C200C0268F /* UserAPI.swift in Sources */,
 				44B1F6BD203DDD660078E923 /* InvoiceViewController.swift in Sources */,
 				44A59E722049858D00C0268F /* User.swift in Sources */,
@@ -464,6 +471,7 @@
 				44B1F6B3203DB4290078E923 /* UIViewControllerExtension.swift in Sources */,
 				4493B6C620446875009C4258 /* StarterViewController.swift in Sources */,
 				449514D0203F4A4B00092F14 /* SignupViewController.swift in Sources */,
+				44889D50205021FA00C091EA /* CategoryCollectionViewCell.swift in Sources */,
 				44AF442F2041EC3100D5BFC5 /* LoginAPI.swift in Sources */,
 				4427E24D20448DAA0042D520 /* CategoryTableViewController.swift in Sources */,
 				4415EB0C203D00A800FD9888 /* AppDelegate.swift in Sources */,
