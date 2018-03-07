@@ -35,6 +35,9 @@ class FinanceTableViewCell: UITableViewCell {
         if invoice.paid {
             ivPaid.isHidden = false
             viPaidBg.isHidden = false
+        } else {
+            ivPaid.isHidden = true
+            viPaidBg.isHidden = true
         }
         calculateInvoiceCount(expireDate: invoice.expireDate, LastExpireDate: invoice.lastExpireDate)
     }

@@ -40,7 +40,6 @@ class PaymentViewController: UIViewControllerExtension {
                         self.activityIndicator.isHidden = true
                         let realm = try! Realm()
                         try! realm.write {
-                            self.delegate?.invoice?.totalPaid = (self.delegate?.invoice?.totalPaid)! + converted
                             if self.delegate!.invoice!.totalPaid >= self.delegate!.invoice!.value {
                                 self.delegate?.invoice?.paid = true
                             }

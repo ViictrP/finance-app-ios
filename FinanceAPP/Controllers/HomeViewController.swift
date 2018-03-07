@@ -174,16 +174,17 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let action = UIContextualAction(style: .normal, title: "Pay") { (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
             let invoice = self.invoices[indexPath.row]
-            self.api.makePayment(value: invoice.totalPaid, invoice: invoice, completionHandler: { (success, error) in
+            self.api.makePayment(value: invoice.value, invoice: invoice, completionHandler: { (success, error) in
                 if error == nil {
-                    let realm = try! Realm()
-                    try! realm.write {
-                        invoice.totalPaid = invoice.value
-                    }
                     self.doSnackbar("invoice \(invoice.title) was paid")
                     let cell = tableView.cellForRow(at: indexPath) as! FinanceTableViewCell
-                    cell.paidInvoice(true)
-                    invoice.paid = true
+                    if invoice.totalPaid >= invoice.value {
+                        cell.paidInvoice(true)
+                        let realm = try! Realm()
+                        try! realm.write {
+                            invoice.paid = true
+                        }
+                    }
                 } else {
                     self.doSnackbar(error!)
                 }

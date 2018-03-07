@@ -150,24 +150,23 @@ public class InvoiceAPI {
     
     public func makePayment(value: Double, invoice: Invoice, completionHandler: @escaping(Bool, String?) -> Void) {
         let headers: HTTPHeaders = ["authorization": "Bearer \(defaults.string(forKey: "accessToken")!)"]
-        let parameters: Parameters = convertToParameters(invoice)
-        Alamofire.request("\(RestConfig.basePath)\(endpoint)/payments/\(invoice.id)", method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
+        Alamofire.request("\(RestConfig.basePath)\(endpoint)/payments/\(invoice.id)", method: .put, parameters: ["value": value], encoding: URLEncoding(destination: .queryString), headers: headers).responseObject(keyPath: "data") { (response: DataResponse<Invoice>) in
+            let invoice = response.result.value
             switch response.result {
-            case .success(let successResponse):
-                if response.response!.statusCode >= 200 && response.response!.statusCode <= 300 {
-                    let realm = try! Realm()
-                    try! realm.write {
-                        invoice.payment = value
+                case .success(let successResponse):
+                    if response.response!.statusCode >= 200 && response.response!.statusCode <= 300 {
+                        if let invoice = invoice {
+                            self.saveInvoices([invoice])
+                        }
+                        completionHandler(true, nil)
+                    } else {
+                        let json = JSON(successResponse)
+                        let errors: [String] = json["errors"].rawValue as? [String] ?? ["An error occurred"]
+                        completionHandler(false, errors[0])
                     }
-                    completionHandler(true, nil)
-                } else {
-                    let json = JSON(successResponse)
-                    let errors: [String] = json["errors"].rawValue as? [String] ?? ["An error occurred"]
-                    completionHandler(false, errors[0])
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
-                completionHandler(false, error.localizedDescription)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    completionHandler(false, error.localizedDescription)
             }
         }
     }
