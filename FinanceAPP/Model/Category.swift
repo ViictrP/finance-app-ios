@@ -28,6 +28,7 @@ public class Category: Object, Mappable {
     
     @objc dynamic var id: Int = DISCARTABLE
     @objc dynamic var title: String = ""
+    @objc dynamic var invoicesCount: Int = 0
     @objc dynamic var createDate: Date = Date()
     @objc dynamic var updateDate: Date = Date()
     
@@ -41,7 +42,8 @@ public class Category: Object, Mappable {
     
     public func mapping(map: Map) {
         id <- map["id"]
-        title <- (map["title"])
+        title <- map["title"]
+        invoicesCount <- map["invoicesCount"]
         createDate <- (map["createDate"], transformDate)
         updateDate <- (map["updateDate"], transformDate)
     }

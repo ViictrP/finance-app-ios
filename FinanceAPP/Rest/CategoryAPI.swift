@@ -47,6 +47,28 @@ public class CategoryAPI {
         }
     }
     
+    public func getCategoryInfo(_ category: Category, completionHandler: @escaping(Category?, String?) -> Void) {
+        let headers: HTTPHeaders = ["authorization": "Bearer \(defaults.string(forKey: "accessToken")!)"]
+        Alamofire.request("\(RestConfig.basePath)\(endpoint)/\(category.id)", method: .get, headers: headers).responseObject(keyPath: "data") { (response: DataResponse<Category>) in
+            let category = response.result.value
+            switch response.result {
+            case .success(let value):
+                if response.response!.statusCode >= 200 && response.response!.statusCode <= 300 {
+                    if let category = category {
+                        self.saveCategories([category])
+                    }
+                    completionHandler(category, nil)
+                } else {
+                    let json = JSON(value)
+                    let errors: [String] = json["errors"].rawValue as? [String] ?? ["An error occurred"]
+                    completionHandler(nil, errors[0])
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
     public func saveCategory(_ category: Category, completionHandler: @escaping(Bool, String?) -> Void) {
         let headers: HTTPHeaders = ["authorization": "Bearer \(defaults.string(forKey: "accessToken")!)"]
         let params: Parameters = buildParams(category)
@@ -140,6 +162,8 @@ public class CategoryAPI {
             } else {
                 try! realm.write {
                     categoryRealm?.title = category.title
+                    categoryRealm?.invoicesCount = category.invoicesCount
+                    categoryRealm?.updateDate = category.updateDate
                 }
             }
         }

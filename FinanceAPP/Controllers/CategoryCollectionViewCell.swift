@@ -16,7 +16,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     
     public func prepare(category: Category) {
         self.lbTitle.text = category.title
-        self.lbBadge.text = "10"
+        self.lbBadge.text = "\(category.invoicesCount)"
         self.lbAddedDate.text = DateUtils.dateToString(category.createDate, format: "dd/MM/yyyy")
     }
 }
