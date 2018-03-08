@@ -47,6 +47,7 @@ class AddEditCategoryTableViewController: UITableViewControllerExtension {
     
     @IBAction func save(_ sender: UIButton) {
         tfTitle.resignFirstResponder()
+        aiBusy.startAnimating()
         let checked = checkValue()
         if checked {
             if category == nil {
@@ -79,6 +80,7 @@ class AddEditCategoryTableViewController: UITableViewControllerExtension {
     
     @IBAction func cancel(_ sender: UIButton) {
         tfTitle.resignFirstResponder()
+        aiBusy.stopAnimating()
         category = nil
         tfTitle.text = ""
         tfTitle.backgroundColor = UIColor(named: "textfield_bg_color")
@@ -87,6 +89,20 @@ class AddEditCategoryTableViewController: UITableViewControllerExtension {
     }
     
     @IBAction func deleteCategory(_ sender: UIButton) {
+        aiBusy.startAnimating()
+        if let category = category {
+            let title = category.title
+            api.deleteCategory(category, completionHandler: { (success, error) in
+                if error == nil {
+                    self.doSnackbar("Category \(title) was deleted")
+                    self.navigationController?.popViewController(animated: true)
+                    self.aiBusy.stopAnimating()
+                } else {
+                    self.doSnackbar(error!)
+                    self.aiBusy.stopAnimating()
+                }
+            })
+        }
     }
     
     func checkValue() -> Bool {

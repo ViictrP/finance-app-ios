@@ -116,12 +116,12 @@
                                     <outlet property="delegate" destination="0KY-FI-Aay" id="AjV-Db-689"/>
                                 </connections>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="150" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nNC-W5-iGT">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="150" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="nNC-W5-iGT">
                                 <rect key="frame" x="0.0" y="364" width="375" height="210"/>
                                 <color key="backgroundColor" name="main"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="financeCell" rowHeight="150" id="VHS-lO-IYE" customClass="FinanceTableViewCell" customModule="FinanceAPP" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="150"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VHS-lO-IYE" id="NCP-jT-ZmK">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
@@ -4984,13 +4984,10 @@ AAJ7RAACe1YAAntZAAJ7XgAAAAAAAAQBAAAAAAAAAEEAAAAAAAAAAAAAAAAAAntgA
         <namedColor name="textfield_bg_color">
             <color red="0.14100000262260437" green="0.14499999582767487" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="textfield_bg_color">
-            <color red="0.14100000262260437" green="0.14499999582767487" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Z27-Im-RC9"/>
         <segue reference="Gpl-94-njZ"/>
-        <segue reference="my5-Ff-Nhz"/>
+        <segue reference="tKb-Eg-tuW"/>
     </inferredMetricsTieBreakers>
 </document>

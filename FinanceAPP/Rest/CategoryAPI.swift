@@ -93,6 +93,36 @@ public class CategoryAPI {
         }
     }
     
+    public func deleteCategory(_ category: Category, completionHandler: @escaping(Bool, String?) -> Void) {
+        let headers: HTTPHeaders = ["authorization": "Bearer \(defaults.string(forKey: "accessToken")!)"]
+        Alamofire.request("\(RestConfig.basePath)\(endpoint)/\(category.id)", method: .delete, headers: headers).responseJSON { (response) in
+            switch response.result {
+            case .success(let value):
+                if response.response!.statusCode >= 200 && response.response!.statusCode <= 300 {
+                    let realm = try! Realm()
+                    try! realm.write {
+                        let result = realm.objects(Invoice.self)
+                        let invoices = Array(result)
+                        for invoice in invoices {
+                            if invoice.categoryId == category.id {
+                                realm.delete(invoice)
+                                break;
+                            }
+                        }
+                        realm.delete(category)
+                    }
+                    completionHandler(true, nil)
+                } else {
+                    let json = JSON(value)
+                    let errors: [String] = json["errors"].rawValue as? [String] ?? ["An error occurred"]
+                    completionHandler(false, errors[0])
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
     fileprivate func buildParams(_ category: Category) -> Parameters {
         return [
             "title": category.title

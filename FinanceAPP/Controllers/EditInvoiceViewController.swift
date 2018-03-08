@@ -58,11 +58,18 @@ class EditInvoiceViewController: UITableViewController {
             calculateInvoiceCount(expireDate: nonNilInvoice.expireDate, LastExpireDate: nonNilInvoice.lastExpireDate)
             
             let realm = try! Realm()
-            let category = realm.object(ofType: Category.self, forPrimaryKey: nonNilInvoice.categoryId)
-            if let category = category {
-                self.category = category
-                lbCategory.text = category.title
+            if category == nil {
+                let category = realm.object(ofType: Category.self, forPrimaryKey: nonNilInvoice.categoryId)
+                if let category = category {
+                    self.category = category
+                    lbCategory.text = category.title
+                } else {
+                    lbCategory.text = nonNilInvoice.category?.title
+                }
+            } else {
+                lbCategory.text = category!.title
             }
+            
         }
     }
     
@@ -151,6 +158,7 @@ class EditInvoiceViewController: UITableViewController {
                 }
                 invoice?.invoiceDescription = "Invoice updated from app"
                 invoice?.category = category!
+                invoice?.categoryId = category!.id
             }
         }
     }

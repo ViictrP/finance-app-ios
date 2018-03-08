@@ -115,6 +115,7 @@ class AddInvoiceViewController: UITableViewControllerExtension {
         tfValue.backgroundColor = UIColor(named: "textfield_bg_color")
         tfInstallmentCount.backgroundColor = UIColor(named: "textfield_bg_color")
         lbCategory.backgroundColor = UIColor(named: "textfield_bg_color")
+        category = nil
     }
     
     func checkBeforeSave() -> Bool {
