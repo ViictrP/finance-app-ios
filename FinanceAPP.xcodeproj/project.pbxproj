@@ -43,6 +43,7 @@
 		44CC1874204EC9E700F2DCBF /* CategoryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CC1873204EC9E700F2DCBF /* CategoryAPI.swift */; };
 		44CC1876204F0AE900F2DCBF /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CC1875204F0AE900F2DCBF /* CategoryViewController.swift */; };
 		44DD51212046F6E8001EBF89 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DD51202046F6E8001EBF89 /* PaymentViewController.swift */; };
+		44F142AA20518A2E0081686A /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F142A920518A2E0081686A /* FilterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +85,7 @@
 		44CC1873204EC9E700F2DCBF /* CategoryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAPI.swift; sourceTree = "<group>"; };
 		44CC1875204F0AE900F2DCBF /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		44DD51202046F6E8001EBF89 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		44F142A920518A2E0081686A /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		7D737D258320E22610610F77 /* Pods-FinanceAPP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceAPP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinanceAPP/Pods-FinanceAPP.debug.xcconfig"; sourceTree = "<group>"; };
 		B0C563CDD5A23C43FB4979D8 /* Pods_FinanceAPP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinanceAPP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E641025F3F4CE455F02F951C /* Pods-FinanceAPP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceAPP.release.xcconfig"; path = "Pods/Target Support Files/Pods-FinanceAPP/Pods-FinanceAPP.release.xcconfig"; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				44CC1875204F0AE900F2DCBF /* CategoryViewController.swift */,
 				44889D4F205021FA00C091EA /* CategoryCollectionViewCell.swift */,
 				44889D53205027AC00C091EA /* AddEditCategoryTableViewController.swift */,
+				44F142A920518A2E0081686A /* FilterViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -480,6 +483,7 @@
 				44AF442D2041EA2200D5BFC5 /* InvoiceAPI.swift in Sources */,
 				449E31952041D21D0051E47C /* EditInvoiceViewController.swift in Sources */,
 				44B1F6BB203DDC310078E923 /* AddInvoiceViewController.swift in Sources */,
+				44F142AA20518A2E0081686A /* FilterViewController.swift in Sources */,
 				44CC1876204F0AE900F2DCBF /* CategoryViewController.swift in Sources */,
 				44CC1874204EC9E700F2DCBF /* CategoryAPI.swift in Sources */,
 				44B1F6B7203DC0800078E923 /* FinanceTableViewCell.swift in Sources */,

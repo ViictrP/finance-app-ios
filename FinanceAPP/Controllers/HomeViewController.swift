@@ -64,6 +64,9 @@ class HomeViewController: UIViewControllerExtension {
             let invoice = invoices[tableView.indexPathForSelectedRow!.row]
             vc.invoice = invoice
         }
+        if let vc = segue.destination as? FilterViewController {
+            vc.delegate = self
+        }
     }
     
     @IBAction func toggleScope(_ sender: UIBarButtonItem) {
@@ -78,6 +81,7 @@ class HomeViewController: UIViewControllerExtension {
     }
     
     @IBAction func filter(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "filterSegue", sender: nil)
     }
     
     @IBAction func sync(_ sender: UIBarButtonItem) {
