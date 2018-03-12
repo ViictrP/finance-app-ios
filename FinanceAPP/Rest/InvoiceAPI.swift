@@ -184,15 +184,16 @@ public class InvoiceAPI {
                 }
             } else {
                 try! realm.write {
-                    invoiceRealm?.title = invoice.title
-                    invoiceRealm?.category = invoice.category
-                    invoiceRealm?.categoryId = invoice.categoryId
-                    invoiceRealm?.expireDate = invoice.expireDate
-                    invoiceRealm?.lastExpireDate = invoice.lastExpireDate
-                    invoiceRealm?.invoiceDescription = invoice.invoiceDescription
-                    invoiceRealm?.isInstallment = invoice.isInstallment
-                    invoiceRealm?.paid = invoice.paid
-                    invoiceRealm?.totalPaid = invoice.totalPaid
+                    invoiceRealm!.title = invoice.title
+                    invoiceRealm!.expireDate = invoice.expireDate
+                    invoiceRealm!.lastExpireDate = invoice.lastExpireDate
+                    invoiceRealm!.invoiceDescription = invoice.invoiceDescription
+                    invoiceRealm!.isInstallment = invoice.isInstallment
+                    invoiceRealm!.paid = invoice.paid
+                    invoiceRealm!.totalPaid = invoice.totalPaid
+                    if let category = invoice.category {
+                        invoiceRealm!.categoryId = category.id
+                    }
                 }
             }
         }

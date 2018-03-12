@@ -18,6 +18,8 @@ class HomeViewController: UIViewControllerExtension {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var noResultContainer: UIView!
     @IBOutlet weak var btSync: UIBarButtonItem!
+    @IBOutlet weak var menuView: UIView!
+    @IBOutlet weak var floatingActionButton: FloatingActionButton!
     
     var invoices: [Invoice] = []
     var oldCalendarHeight = CGFloat(300)
@@ -33,6 +35,7 @@ class HomeViewController: UIViewControllerExtension {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        closeMenuView()
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0
         calendar.setScope(.week, animated: true)
         calendarHeightConstraint.constant = 120
@@ -123,6 +126,40 @@ class HomeViewController: UIViewControllerExtension {
         }
     }
     
+    func getInvoicesWithFilter(_ filter: (category: Category?, value: Double?)? = nil) {
+        if let filter = filter {
+            let realm = try! Realm()
+            if filter.category != nil && filter.value == nil {
+                let results = realm.objects(Invoice.self).filter("categoryId == %@", filter.category!.id)
+                invoices = Array(results)
+                tableView.reloadData()
+            } else if filter.value != nil && filter.category == nil {
+                let results = realm.objects(Invoice.self).filter("value == %@", filter.value!)
+                invoices = Array(results)
+                tableView.reloadData()
+            } else if filter.value != nil && filter.category != nil {
+                let results = realm.objects(Invoice.self).filter("value == %@ AND categoryId == %@", filter.value!, filter.category!.id)
+                invoices = Array(results)
+                tableView.reloadData()
+            }
+        }
+    
+    }
+    
+    @IBAction func toggleMenuView(_ sender: FloatingActionButton) {
+        UIView.animate(withDuration: 0.15, animations: {
+            if self.menuView.transform == .identity {
+                self.closeMenuView()
+            } else {
+                self.menuView.transform = .identity
+            }
+        })
+    }
+    
+    func closeMenuView() {
+        menuView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+    }
+    
     func doSnackbar(_ msg: String) {
         let message = MDCSnackbarMessage()
         message.text = msg
@@ -141,11 +178,6 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource {
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                     self.navigationItem.leftBarButtonItem = self.btSync
-                    if inv.count <= 0 {
-                        self.noResultContainer.isHidden = false
-                    } else {
-                        self.noResultContainer.isHidden = true
-                    }
                 }
             }
         }
@@ -155,6 +187,11 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource {
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if invoices.count == 0 {
+            self.noResultContainer.isHidden = false
+        } else {
+            self.noResultContainer.isHidden = true
+        }
         return invoices.count
     }
     

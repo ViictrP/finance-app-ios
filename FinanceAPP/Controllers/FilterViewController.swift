@@ -47,6 +47,18 @@ class FilterViewController: UIViewController {
     }
     
     @IBAction func apply(_ sender: UIButton) {
+        var filter: (category: Category?, value: Double?) = (nil, nil)
+        if let category = category {
+            filter.category = category
+        }
+        if let text = tfValue.text {
+            if !text.isEmpty {
+                let value = text.replacingOccurrences(of: ",", with: ".")
+                filter.value = Double(value)!
+            }
+        }
+        delegate?.getInvoicesWithFilter(filter)
+        dismiss(animated: true, completion: nil)
     }
     
     func changePlaceholder(_ placeholder: String, with color: UIColor) -> NSAttributedString {
@@ -94,6 +106,9 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FilterCell
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = .black
+        cell.selectedBackgroundView = backgroundView
         let category = categories![indexPath.row]
         cell.label.text = category.title
         return cell
