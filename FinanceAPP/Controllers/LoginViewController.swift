@@ -10,6 +10,7 @@ import UIKit
 import Hero
 import TextFieldEffects
 import DeckTransition
+import MaterialComponents.MaterialSnackbar
 
 class LoginViewController: UIViewController {
 
@@ -38,8 +39,12 @@ class LoginViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tfUsername.text = "vtrsznaah@gmail.com"
-        tfPassword.text = "12345678"
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? SignupViewController {
+            vc.delegate = self
+        }
     }
         
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -59,10 +64,20 @@ class LoginViewController: UIViewController {
         }
     }
     
+    @IBAction func signUp(_ sender: UIButton) {
+        performSegue(withIdentifier: "signUp", sender: nil)
+    }
+    
     func changeView() {
         let mainApp = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "mainApp");
         mainApp.hero.modalAnimationType = .pageIn(direction: .left)
         self.hero.replaceViewController(with: mainApp)
+    }
+    
+    func doSnackbar(_ msg: String) {
+        let message = MDCSnackbarMessage()
+        message.text = msg
+        MDCSnackbarManager.show(message)
     }
     
     func animate(constant: CGFloat, hide activityIsHidden: Bool, title: String) {
@@ -72,6 +87,11 @@ class LoginViewController: UIViewController {
             self.btLoginWidthConstraint.constant = constant
             self.view.layoutIfNeeded()
         }
+    }
+    
+    func autoComplete(user: User) {
+        tfUsername.text = user.email
+        tfPassword.text = user.password
     }
     
     private func resignFirstResponderAll() {

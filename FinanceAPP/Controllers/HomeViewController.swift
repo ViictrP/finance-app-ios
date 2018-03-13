@@ -18,8 +18,6 @@ class HomeViewController: UIViewControllerExtension {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var noResultContainer: UIView!
     @IBOutlet weak var btSync: UIBarButtonItem!
-    @IBOutlet weak var menuView: UIView!
-    @IBOutlet weak var floatingActionButton: FloatingActionButton!
     
     var invoices: [Invoice] = []
     var oldCalendarHeight = CGFloat(300)
@@ -35,7 +33,6 @@ class HomeViewController: UIViewControllerExtension {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        closeMenuView()
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0
         calendar.setScope(.week, animated: true)
         calendarHeightConstraint.constant = 120
@@ -102,26 +99,32 @@ class HomeViewController: UIViewControllerExtension {
     }
     
     func getInvoices() {
-        api.getInvoices(params: [:]) { (invoices) in
-            if let inv = invoices {
-                self.invoices = inv
-                if self.invoices.count == 0 {
-                    let realm = try! Realm()
-                    let result = realm.objects(Invoice.self)
-                    try! realm.write {
-                        realm.delete(result)
+        api.getInvoices(params: [:]) { (invoices, error) in
+            if error == nil {
+                if let inv = invoices {
+                    self.invoices = inv
+                    if self.invoices.count == 0 {
+                        let realm = try! Realm()
+                        let result = realm.objects(Invoice.self)
+                        try! realm.write {
+                            realm.delete(result)
+                        }
+                    }
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                        self.apiRequested = true
+                        self.navigationItem.leftBarButtonItem = self.btSync
+                        if inv.count <= 0 {
+                            self.noResultContainer.isHidden = false
+                        } else {
+                            self.noResultContainer.isHidden = true
+                        }
                     }
                 }
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                    self.apiRequested = true
-                    self.navigationItem.leftBarButtonItem = self.btSync
-                    if inv.count <= 0 {
-                        self.noResultContainer.isHidden = false
-                    } else {
-                        self.noResultContainer.isHidden = true
-                    }
-                }
+            } else {
+                self.doSnackbar(error!)
+                self.navigationItem.leftBarButtonItem = self.btSync
+                self.apiRequested = false
             }
         }
     }
@@ -146,20 +149,6 @@ class HomeViewController: UIViewControllerExtension {
     
     }
     
-    @IBAction func toggleMenuView(_ sender: FloatingActionButton) {
-        UIView.animate(withDuration: 0.15, animations: {
-            if self.menuView.transform == .identity {
-                self.closeMenuView()
-            } else {
-                self.menuView.transform = .identity
-            }
-        })
-    }
-    
-    func closeMenuView() {
-        menuView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-    }
-    
     func doSnackbar(_ msg: String) {
         let message = MDCSnackbarMessage()
         message.text = msg
@@ -172,13 +161,18 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let expireDate = DateUtils.dateToString(date)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: self.uiBusy)
-        api.getInvoices(params: ["expireDate": expireDate]) { (invoices) in
-            if let inv = invoices {
-                self.invoices = inv
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                    self.navigationItem.leftBarButtonItem = self.btSync
+        api.getInvoices(params: ["expireDate": expireDate]) { (invoices, error) in
+            if error == nil {
+                if let inv = invoices {
+                    self.invoices = inv
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                        self.navigationItem.leftBarButtonItem = self.btSync
+                    }
                 }
+            } else {
+                self.doSnackbar(error!)
+                self.navigationItem.leftBarButtonItem = self.btSync
             }
         }
     }

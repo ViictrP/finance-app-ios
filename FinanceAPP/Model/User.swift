@@ -17,6 +17,7 @@ public class User: Object, Mappable {
     @objc dynamic var name: String = ""
     @objc dynamic var email: String = ""
     @objc dynamic var profile: String = ""
+    var password: String?
     
     required convenience public init?(map: Map) {
         self.init()

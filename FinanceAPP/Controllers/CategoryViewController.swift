@@ -35,6 +35,24 @@ class CategoryViewController: UIViewControllerExtension {
         let realm = try! Realm()
         let results = realm.objects(Category.self)
         categories = Array(results)
+        if categories!.count > 0 {
+            getCategoriesInfo()
+        } else {
+            aiBusy.stopAnimating()
+        }
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        if segue.identifier == "addEditCategorySegue", let vc = segue.destination as? AddEditCategoryTableViewController {
+            let cell = sender as! CategoryCollectionViewCell
+            let indexPath = collectionView.indexPath(for: cell)
+            let category = categories![indexPath!.row]
+            vc.category = category
+        }
+    }
+    
+    func getCategoriesInfo() {
         for var category in categories! {
             api.getCategoryInfo(category, completionHandler: { (categoryUpdated, error) in
                 if error == nil {
@@ -50,16 +68,6 @@ class CategoryViewController: UIViewControllerExtension {
                     self.doSnackbar(error!)
                 }
             })
-        }
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        if segue.identifier == "addEditCategorySegue", let vc = segue.destination as? AddEditCategoryTableViewController {
-            let cell = sender as! CategoryCollectionViewCell
-            let indexPath = collectionView.indexPath(for: cell)
-            let category = categories![indexPath!.row]
-            vc.category = category
         }
     }
     

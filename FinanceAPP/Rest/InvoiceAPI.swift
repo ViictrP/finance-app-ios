@@ -27,26 +27,28 @@ public class InvoiceAPI {
         
     }
     
-    public func getInvoices(params: Parameters, completionHandler: @escaping([Invoice]?) -> Void) {
+    public func getInvoices(params: Parameters, completionHandler: @escaping([Invoice]?, String?) -> Void) {
         let headers: HTTPHeaders = ["authorization": "Bearer \(defaults.string(forKey: "accessToken")!)"]
         Alamofire.request("\(RestConfig.basePath)\(endpoint)", method: .get, parameters: params, encoding: URLEncoding(destination: .queryString), headers: headers).responseArray(keyPath: "data") {(response: DataResponse<[Invoice]>) in
             let invoices = response.result.value
             switch response.result {
-            case .success:
+            case .success(let value):
                 if response.response!.statusCode >= 200 && response.response!.statusCode <= 300 {
                     self.categoryAPI.getCategories { (categories) in
                         if let _ = categories, let invoices = invoices {
                             self.defaults.set(true, forKey: "loadedFromAPI")
                             self.saveInvoices(invoices)
-                            completionHandler(invoices)
+                            completionHandler(invoices, nil)
                         }
                     }
                 } else {
-                    completionHandler([])
+                    let json = JSON(value)
+                    let errors: [String] = json["errors"].rawValue as? [String] ?? ["An error occurred"]
+                    completionHandler(nil, errors[0])
                 }
             case .failure(let error):
                 print(error.localizedDescription)
-                completionHandler([])
+                completionHandler(nil, error.localizedDescription)
             }
         }
     }

@@ -272,63 +272,13 @@
                                     <constraint firstItem="crp-Ji-Xs0" firstAttribute="centerX" secondItem="kjy-im-f2y" secondAttribute="centerX" id="akc-PF-tnh"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VAR-B0-Ndy">
-                                <rect key="frame" x="179" y="379" width="300" height="300"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gvq-iR-8Zk">
-                                        <rect key="frame" x="136" y="56" width="28" height="28"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" image="account"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IT0-a0-NWs">
-                                        <rect key="frame" x="70" y="75" width="28" height="28"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" image="settings_float"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Klt-ft-FJG">
-                                        <rect key="frame" x="49" y="138" width="28" height="28"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" image="logout"/>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" name="main_red"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="150"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l8v-LG-sUa" customClass="FloatingActionButton" customModule="FinanceAPP" customModuleProvider="target">
-                                <rect key="frame" x="299" y="499" width="60" height="60"/>
-                                <color key="backgroundColor" name="main_red"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="4eV-1p-UCs"/>
-                                    <constraint firstAttribute="height" constant="60" id="saa-KI-RwT"/>
-                                </constraints>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" image="plus"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="30"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="toggleMenuView:" destination="0KY-FI-Aay" eventType="touchUpInside" id="h3D-OY-0pQ"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" name="main"/>
                         <constraints>
                             <constraint firstItem="kjy-im-f2y" firstAttribute="height" secondItem="nNC-W5-iGT" secondAttribute="height" id="1YC-bB-6AY"/>
                             <constraint firstItem="nNC-W5-iGT" firstAttribute="bottom" secondItem="crb-lF-eSQ" secondAttribute="bottom" id="9Bk-uc-fyh"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="l8v-LG-sUa" secondAttribute="trailing" id="AWU-pf-ioF"/>
                             <constraint firstItem="nNC-W5-iGT" firstAttribute="trailing" secondItem="crb-lF-eSQ" secondAttribute="trailing" id="CLA-IK-82p"/>
                             <constraint firstItem="kjy-im-f2y" firstAttribute="width" secondItem="nNC-W5-iGT" secondAttribute="width" id="RKF-ud-OtW"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="l8v-LG-sUa" secondAttribute="bottom" constant="15" id="YNO-ln-rOd"/>
                             <constraint firstItem="kjy-im-f2y" firstAttribute="centerY" secondItem="nNC-W5-iGT" secondAttribute="centerY" id="cq6-dc-v5R"/>
                             <constraint firstItem="nNC-W5-iGT" firstAttribute="leading" secondItem="crb-lF-eSQ" secondAttribute="leading" id="eEp-sz-Wmb"/>
                             <constraint firstItem="Rsi-Ya-vuu" firstAttribute="trailing" secondItem="crb-lF-eSQ" secondAttribute="trailing" id="jXU-Km-Gdc"/>
@@ -367,8 +317,6 @@
                         <outlet property="btSync" destination="fmz-Lj-QYx" id="HCs-Vh-nAR"/>
                         <outlet property="calendar" destination="Rsi-Ya-vuu" id="2du-ER-WO5"/>
                         <outlet property="calendarHeightConstraint" destination="s25-5n-Tjr" id="HLe-W0-AOT"/>
-                        <outlet property="floatingActionButton" destination="l8v-LG-sUa" id="LPG-m1-HWk"/>
-                        <outlet property="menuView" destination="VAR-B0-Ndy" id="MkV-j8-pG5"/>
                         <outlet property="noResultContainer" destination="kjy-im-f2y" id="Lew-P9-B4Z"/>
                         <outlet property="tableView" destination="nNC-W5-iGT" id="Wqj-HX-vFX"/>
                         <segue destination="9Nl-mY-8UE" kind="show" identifier="editInvoice" id="hfa-iA-vHr"/>
@@ -1375,7 +1323,7 @@
                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="14"/>
                                 <state key="normal" title="Sign up"/>
                                 <connections>
-                                    <segue destination="DoI-n3-Rfx" kind="custom" identifier="signUp" customClass="DeckSegue" customModule="DeckTransition" id="Lj1-7k-1So"/>
+                                    <action selector="signUp:" destination="3VR-Nj-JUm" eventType="touchUpInside" id="gfS-5e-uml"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First time here?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2I-xa-oxu">
@@ -1432,6 +1380,7 @@
                         <outlet property="loginButton" destination="lMh-g7-4bS" id="w5v-Dt-hah"/>
                         <outlet property="tfPassword" destination="Uxt-4L-ess" id="X5a-g6-AHA"/>
                         <outlet property="tfUsername" destination="BHZ-dP-FhN" id="1uR-PW-zbM"/>
+                        <segue destination="DoI-n3-Rfx" kind="custom" identifier="signUp" customClass="DeckSegue" customModule="DeckTransition" id="Xm8-Ml-9Sj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5iz-PJ-pmn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1446,174 +1395,229 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="B4c-rt-kuD">
-                                <rect key="frame" x="70" y="80" width="235" height="20"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SIGN UP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ong-BK-5iR">
-                                <rect key="frame" x="151.5" y="110" width="72.5" height="23.5"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="17"/>
-                                <color key="textColor" name="main"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="NAME" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K5p-Ie-nh5" customClass="KaedeTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="20" y="163.5" width="335" height="40"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DEP-bI-xH1" userLabel="formView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SIGN UP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ong-BK-5iR">
+                                        <rect key="frame" x="151" y="84" width="73" height="24"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="17"/>
+                                        <color key="textColor" name="main"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="NAME" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K5p-Ie-nh5" customClass="KaedeTextField" customModule="TextFieldEffects">
+                                        <rect key="frame" x="20" y="128" width="335" height="40"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="sTj-5e-g3g"/>
+                                        </constraints>
+                                        <color key="textColor" name="main"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="19"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="foregroundColor">
+                                                <color key="value" red="0.39519917960000001" green="0.7710251212" blue="0.4087437391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="7"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="DoI-n3-Rfx" id="Vex-Xa-aIB"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="EMAIL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mq1-Ir-Bxj" customClass="KaedeTextField" customModule="TextFieldEffects">
+                                        <rect key="frame" x="20" y="188" width="335" height="40"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Fga-kL-L8E"/>
+                                        </constraints>
+                                        <color key="textColor" name="main"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="19"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done" textContentType="email"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="foregroundColor">
+                                                <color key="value" red="0.39519917960000001" green="0.7710251212" blue="0.4087437391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="7"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="DoI-n3-Rfx" id="Dcw-Lm-kwe"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="PASSWORD" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fv1-JK-4vu" customClass="KaedeTextField" customModule="TextFieldEffects">
+                                        <rect key="frame" x="20" y="248" width="335" height="40"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="0Q7-CE-bzQ"/>
+                                        </constraints>
+                                        <color key="textColor" name="main"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="19"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done" textContentType="password"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="foregroundColor">
+                                                <color key="value" red="0.39519917960000001" green="0.7710251212" blue="0.4087437391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="7"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="DoI-n3-Rfx" id="eNh-r5-nii"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMt-Db-oIg">
+                                        <rect key="frame" x="235" y="587" width="120" height="40"/>
+                                        <color key="backgroundColor" name="main_green"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="3EG-Qm-coY"/>
+                                            <constraint firstAttribute="width" constant="120" id="3LG-Bo-Htf"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="21"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <inset key="imageEdgeInsets" minX="-13" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Send"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="register:" destination="DoI-n3-Rfx" eventType="touchUpInside" id="g5t-QC-1Ll"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44K-LE-j7E">
+                                        <rect key="frame" x="20" y="587" width="120" height="40"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="1js-fM-gZJ"/>
+                                            <constraint firstAttribute="height" constant="40" id="5ll-n0-ylz"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="21"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="cancel"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="cancelRegister:" destination="DoI-n3-Rfx" eventType="touchUpInside" id="ehu-wa-QBv"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FinanceAPP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZI-06-ehn">
+                                        <rect key="frame" x="16" y="48" width="343" height="28"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="CONFIRM PASSWORD" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ke4-pf-0aj" customClass="KaedeTextField" customModule="TextFieldEffects">
+                                        <rect key="frame" x="20" y="308" width="335" height="40"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="US1-aD-Ill"/>
+                                        </constraints>
+                                        <color key="textColor" name="main"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="19"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done" textContentType="password"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="foregroundColor">
+                                                <color key="value" red="0.39519917960000001" green="0.7710251212" blue="0.4087437391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="7"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="DoI-n3-Rfx" id="zTR-0o-Fvg"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="sTj-5e-g3g"/>
+                                    <constraint firstItem="Ke4-pf-0aj" firstAttribute="trailing" secondItem="Fv1-JK-4vu" secondAttribute="trailing" id="6Lw-AV-F2I"/>
+                                    <constraint firstItem="Ke4-pf-0aj" firstAttribute="top" secondItem="Fv1-JK-4vu" secondAttribute="bottom" constant="20" id="8ZF-AE-5b0"/>
+                                    <constraint firstAttribute="bottom" secondItem="kMt-Db-oIg" secondAttribute="bottom" constant="40" id="8gQ-Eu-VSs"/>
+                                    <constraint firstItem="Fv1-JK-4vu" firstAttribute="top" secondItem="Mq1-Ir-Bxj" secondAttribute="bottom" constant="20" id="Frq-QI-L99"/>
+                                    <constraint firstItem="sZI-06-ehn" firstAttribute="leading" secondItem="DEP-bI-xH1" secondAttribute="leadingMargin" constant="8" id="JQl-69-H7R"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="Fv1-JK-4vu" secondAttribute="trailing" constant="12" id="NA2-6B-pug"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="K5p-Ie-nh5" secondAttribute="trailing" constant="12" id="Skr-6s-Cgt"/>
+                                    <constraint firstItem="Mq1-Ir-Bxj" firstAttribute="leading" secondItem="DEP-bI-xH1" secondAttribute="leadingMargin" constant="12" id="SlR-AU-MW9"/>
+                                    <constraint firstItem="Ke4-pf-0aj" firstAttribute="leading" secondItem="Fv1-JK-4vu" secondAttribute="leading" id="T0B-Bd-571"/>
+                                    <constraint firstItem="sZI-06-ehn" firstAttribute="top" secondItem="DEP-bI-xH1" secondAttribute="topMargin" constant="20" id="Vpj-mm-Hbi"/>
+                                    <constraint firstItem="K5p-Ie-nh5" firstAttribute="leading" secondItem="DEP-bI-xH1" secondAttribute="leadingMargin" constant="12" id="X01-Lj-BFt"/>
+                                    <constraint firstItem="44K-LE-j7E" firstAttribute="centerY" secondItem="kMt-Db-oIg" secondAttribute="centerY" id="Z4f-xa-0BB"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="sZI-06-ehn" secondAttribute="trailing" constant="8" id="a4M-KL-eos"/>
+                                    <constraint firstItem="Ong-BK-5iR" firstAttribute="centerX" secondItem="sZI-06-ehn" secondAttribute="centerX" id="bNZ-Bc-8a9"/>
+                                    <constraint firstItem="Ong-BK-5iR" firstAttribute="top" secondItem="sZI-06-ehn" secondAttribute="bottom" constant="8" id="fU1-NY-eA9"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="Mq1-Ir-Bxj" secondAttribute="trailing" constant="12" id="lv6-TC-93h"/>
+                                    <constraint firstItem="K5p-Ie-nh5" firstAttribute="top" secondItem="Ong-BK-5iR" secondAttribute="bottom" constant="20" id="uRI-Fb-WrR"/>
+                                    <constraint firstItem="44K-LE-j7E" firstAttribute="leading" secondItem="Ke4-pf-0aj" secondAttribute="leading" id="uY0-CD-9DM"/>
+                                    <constraint firstItem="kMt-Db-oIg" firstAttribute="trailing" secondItem="Ke4-pf-0aj" secondAttribute="trailing" id="vFu-JP-ds1"/>
+                                    <constraint firstItem="Fv1-JK-4vu" firstAttribute="leading" secondItem="DEP-bI-xH1" secondAttribute="leadingMargin" constant="12" id="wnl-kx-g1c"/>
+                                    <constraint firstItem="Mq1-Ir-Bxj" firstAttribute="top" secondItem="K5p-Ie-nh5" secondAttribute="bottom" constant="20" id="yIe-Zg-UY2"/>
                                 </constraints>
-                                <color key="textColor" name="main"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="19"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="foregroundColor">
-                                        <color key="value" red="0.39519917960000001" green="0.7710251212" blue="0.4087437391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="7"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <outlet property="delegate" destination="DoI-n3-Rfx" id="Vex-Xa-aIB"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="EMAIL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mq1-Ir-Bxj" customClass="KaedeTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="20" y="223.5" width="335" height="40"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            </view>
+                            <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c8d-hW-ZzY" userLabel="successView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="man" translatesAutoresizingMaskIntoConstraints="NO" id="d7b-lL-jQQ">
+                                        <rect key="frame" x="124" y="100" width="128" height="128"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="d7b-lL-jQQ" secondAttribute="height" multiplier="1:1" id="xUm-Bp-Qq8"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User added with success, you can now sign in the app" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="cvT-IT-kvw">
+                                        <rect key="frame" x="16" y="258" width="343" height="60.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ndf-IT-fgq">
+                                        <rect key="frame" x="154" y="347" width="66" height="36"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
+                                        <color key="tintColor" name="main"/>
+                                        <state key="normal" title="SIGN IN"/>
+                                        <connections>
+                                            <action selector="signIn:" destination="DoI-n3-Rfx" eventType="touchUpInside" id="3Tv-Dx-2Og"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="Fga-kL-L8E"/>
+                                    <constraint firstItem="cvT-IT-kvw" firstAttribute="leading" secondItem="c8d-hW-ZzY" secondAttribute="leadingMargin" constant="8" id="8kd-bW-D5u"/>
+                                    <constraint firstItem="d7b-lL-jQQ" firstAttribute="centerX" secondItem="c8d-hW-ZzY" secondAttribute="centerX" id="G8R-GG-e08"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="cvT-IT-kvw" secondAttribute="trailing" constant="8" id="SgN-fY-y9m"/>
+                                    <constraint firstItem="Ndf-IT-fgq" firstAttribute="top" secondItem="cvT-IT-kvw" secondAttribute="bottom" constant="28" id="cyE-wA-pbG"/>
+                                    <constraint firstItem="d7b-lL-jQQ" firstAttribute="top" secondItem="c8d-hW-ZzY" secondAttribute="top" constant="100" id="kLe-xb-Uar"/>
+                                    <constraint firstItem="cvT-IT-kvw" firstAttribute="top" secondItem="d7b-lL-jQQ" secondAttribute="bottom" constant="30" id="kdc-cm-gj1"/>
+                                    <constraint firstItem="Ndf-IT-fgq" firstAttribute="centerX" secondItem="cvT-IT-kvw" secondAttribute="centerX" id="srl-IU-Vcb"/>
                                 </constraints>
-                                <color key="textColor" name="main"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="19"/>
-                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done" textContentType="email"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="foregroundColor">
-                                        <color key="value" red="0.39519917960000001" green="0.7710251212" blue="0.4087437391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="7"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <outlet property="delegate" destination="DoI-n3-Rfx" id="Dcw-Lm-kwe"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="PASSWORD" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fv1-JK-4vu" customClass="KaedeTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="20" y="283.5" width="335" height="40"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="0Q7-CE-bzQ"/>
-                                </constraints>
-                                <color key="textColor" name="main"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="19"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done" textContentType="password"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="foregroundColor">
-                                        <color key="value" red="0.39519917960000001" green="0.7710251212" blue="0.4087437391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="7"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <outlet property="delegate" destination="DoI-n3-Rfx" id="eNh-r5-nii"/>
-                                </connections>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMt-Db-oIg">
-                                <rect key="frame" x="235" y="583.5" width="120" height="40"/>
-                                <color key="backgroundColor" name="main_green"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="3EG-Qm-coY"/>
-                                    <constraint firstAttribute="width" constant="120" id="3LG-Bo-Htf"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="21"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <inset key="imageEdgeInsets" minX="-13" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Send" image="send"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="CONFIRM PASSWORD" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ke4-pf-0aj" customClass="KaedeTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="20" y="343.5" width="335" height="40"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="US1-aD-Ill"/>
-                                </constraints>
-                                <color key="textColor" name="main"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="19"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done" textContentType="password"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="foregroundColor">
-                                        <color key="value" red="0.39519917960000001" green="0.7710251212" blue="0.4087437391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="7"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <outlet property="delegate" destination="DoI-n3-Rfx" id="zTR-0o-Fvg"/>
-                                </connections>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44K-LE-j7E">
-                                <rect key="frame" x="20" y="583" width="120" height="40"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="1js-fM-gZJ"/>
-                                    <constraint firstAttribute="height" constant="40" id="5ll-n0-ylz"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="21"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="cancel" image="cancel"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="cancel:" destination="DoI-n3-Rfx" eventType="touchUpInside" id="88V-Ih-fKt"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Mq1-Ir-Bxj" firstAttribute="top" secondItem="K5p-Ie-nh5" secondAttribute="bottom" constant="20" id="3wP-uH-dB0"/>
-                            <constraint firstItem="Fv1-JK-4vu" firstAttribute="top" secondItem="Mq1-Ir-Bxj" secondAttribute="bottom" constant="20" id="5pV-Q2-AoI"/>
-                            <constraint firstItem="Mq1-Ir-Bxj" firstAttribute="leading" secondItem="K5p-Ie-nh5" secondAttribute="leading" id="5rk-C4-REG"/>
-                            <constraint firstItem="44K-LE-j7E" firstAttribute="centerY" secondItem="kMt-Db-oIg" secondAttribute="centerY" id="AC8-wp-9Wx"/>
-                            <constraint firstItem="B4c-rt-kuD" firstAttribute="leading" secondItem="FaK-6U-7sZ" secondAttribute="leading" constant="70" id="BZH-6F-L7Z"/>
-                            <constraint firstItem="Ong-BK-5iR" firstAttribute="top" secondItem="B4c-rt-kuD" secondAttribute="bottom" constant="10" id="JOl-kg-QUG"/>
-                            <constraint firstItem="Mq1-Ir-Bxj" firstAttribute="trailing" secondItem="K5p-Ie-nh5" secondAttribute="trailing" id="Ktu-rk-v6R"/>
-                            <constraint firstItem="Ke4-pf-0aj" firstAttribute="leading" secondItem="Fv1-JK-4vu" secondAttribute="leading" id="N9q-eF-KrG"/>
-                            <constraint firstItem="K5p-Ie-nh5" firstAttribute="leading" secondItem="FaK-6U-7sZ" secondAttribute="leading" constant="20" id="Qht-nD-i2b"/>
-                            <constraint firstItem="FaK-6U-7sZ" firstAttribute="trailing" secondItem="K5p-Ie-nh5" secondAttribute="trailing" constant="20" id="RZv-Fy-2eh"/>
-                            <constraint firstItem="kMt-Db-oIg" firstAttribute="top" secondItem="Ke4-pf-0aj" secondAttribute="bottom" constant="200" id="XK9-bR-uSb"/>
-                            <constraint firstItem="Mq1-Ir-Bxj" firstAttribute="centerX" secondItem="K5p-Ie-nh5" secondAttribute="centerX" id="aUO-rK-xF8"/>
-                            <constraint firstItem="B4c-rt-kuD" firstAttribute="top" secondItem="FaK-6U-7sZ" secondAttribute="top" constant="60" id="bd5-fb-UQi"/>
-                            <constraint firstItem="Ke4-pf-0aj" firstAttribute="centerX" secondItem="Fv1-JK-4vu" secondAttribute="centerX" id="kNM-Tt-kBo"/>
-                            <constraint firstItem="Fv1-JK-4vu" firstAttribute="leading" secondItem="Mq1-Ir-Bxj" secondAttribute="leading" id="khb-ox-vWq"/>
-                            <constraint firstItem="Fv1-JK-4vu" firstAttribute="centerX" secondItem="Mq1-Ir-Bxj" secondAttribute="centerX" id="mDg-vT-wwZ"/>
-                            <constraint firstItem="Ong-BK-5iR" firstAttribute="centerX" secondItem="bNi-TB-Vsp" secondAttribute="centerX" id="nNB-pG-EwQ"/>
-                            <constraint firstItem="FaK-6U-7sZ" firstAttribute="trailing" secondItem="B4c-rt-kuD" secondAttribute="trailing" constant="70" id="rxn-Rg-nGD"/>
-                            <constraint firstItem="Ke4-pf-0aj" firstAttribute="trailing" secondItem="Fv1-JK-4vu" secondAttribute="trailing" id="uUd-wU-Jrm"/>
-                            <constraint firstItem="K5p-Ie-nh5" firstAttribute="top" secondItem="Ong-BK-5iR" secondAttribute="bottom" constant="30" id="uoE-Hx-vfR"/>
-                            <constraint firstItem="Ke4-pf-0aj" firstAttribute="top" secondItem="Fv1-JK-4vu" secondAttribute="bottom" constant="20" id="wbu-3Y-QVx"/>
-                            <constraint firstItem="kMt-Db-oIg" firstAttribute="trailing" secondItem="Ke4-pf-0aj" secondAttribute="trailing" id="wcf-jt-QN4"/>
-                            <constraint firstItem="44K-LE-j7E" firstAttribute="leading" secondItem="Ke4-pf-0aj" secondAttribute="leading" id="yNc-zQ-PYp"/>
-                            <constraint firstItem="Fv1-JK-4vu" firstAttribute="trailing" secondItem="Mq1-Ir-Bxj" secondAttribute="trailing" id="zFg-TX-vd9"/>
+                            <constraint firstItem="DEP-bI-xH1" firstAttribute="trailing" secondItem="FaK-6U-7sZ" secondAttribute="trailing" id="SAL-fL-Y92"/>
+                            <constraint firstItem="DEP-bI-xH1" firstAttribute="leading" secondItem="FaK-6U-7sZ" secondAttribute="leading" id="Ta5-ms-WOQ"/>
+                            <constraint firstItem="DEP-bI-xH1" firstAttribute="top" secondItem="bNi-TB-Vsp" secondAttribute="top" id="feO-qC-f0R"/>
+                            <constraint firstItem="c8d-hW-ZzY" firstAttribute="trailing" secondItem="FaK-6U-7sZ" secondAttribute="trailing" id="hl2-lu-W9C"/>
+                            <constraint firstItem="c8d-hW-ZzY" firstAttribute="leading" secondItem="bNi-TB-Vsp" secondAttribute="leading" id="lSi-45-maZ"/>
+                            <constraint firstItem="c8d-hW-ZzY" firstAttribute="bottom" secondItem="FaK-6U-7sZ" secondAttribute="bottom" id="mGF-mH-xzg"/>
+                            <constraint firstItem="c8d-hW-ZzY" firstAttribute="top" secondItem="bNi-TB-Vsp" secondAttribute="top" id="oxd-dL-Wwn"/>
+                            <constraint firstItem="DEP-bI-xH1" firstAttribute="bottom" secondItem="FaK-6U-7sZ" secondAttribute="bottom" id="z2f-8v-di7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FaK-6U-7sZ"/>
                     </view>
@@ -1623,6 +1627,9 @@
                     <connections>
                         <outlet property="btCancel" destination="44K-LE-j7E" id="p7c-gF-as9"/>
                         <outlet property="btSend" destination="kMt-Db-oIg" id="9mo-ld-9TB"/>
+                        <outlet property="btSignIn" destination="Ndf-IT-fgq" id="lgj-4I-18a"/>
+                        <outlet property="formView" destination="DEP-bI-xH1" id="GhB-gT-I2P"/>
+                        <outlet property="successView" destination="c8d-hW-ZzY" id="g2z-AW-cjy"/>
                         <outlet property="tfConfirmPassword" destination="Ke4-pf-0aj" id="lpN-LE-mSZ"/>
                         <outlet property="tfEmail" destination="Mq1-Ir-Bxj" id="qHz-M9-7OA"/>
                         <outlet property="tfName" destination="K5p-Ie-nh5" id="B52-9r-wXf"/>
@@ -2490,7 +2497,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="account" width="28" height="28"/>
         <image name="bg" width="2000" height="1200"/>
         <image name="bill" width="30" height="30"/>
         <image name="bill-table" width="128" height="128"/>
@@ -5225,16 +5231,16 @@ AAJ7RAACe1YAAntZAAJ7XgAAAAAAAAQBAAAAAAAAAEEAAAAAAAAAAAAAAAAAAntgA
         </image>
         <image name="invoice" width="30" height="30"/>
         <image name="logo" width="137" height="20"/>
-        <image name="logout" width="28" height="28"/>
+        <image name="man" width="128" height="128"/>
         <image name="other" width="20" height="20"/>
         <image name="paid" width="30" height="30"/>
-        <image name="plus" width="30" height="30"/>
-        <image name="send" width="30" height="30"/>
         <image name="settings" width="30" height="30"/>
-        <image name="settings_float" width="28" height="28"/>
         <image name="splash" width="282" height="42"/>
         <namedColor name="blue_grey_900">
             <color red="0.039000000804662704" green="0.050999999046325684" blue="0.057999998331069946" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="main">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="main">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -5244,9 +5250,6 @@ AAJ7RAACe1YAAntZAAJ7XgAAAAAAAAQBAAAAAAAAAEEAAAAAAAAAAAAAAAAAAntgA
         </namedColor>
         <namedColor name="main_inverse">
             <color red="0.96299999952316284" green="0.96299999952316284" blue="0.96299999952316284" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="main_red">
-            <color red="1" green="0.36899998784065247" blue="0.37599998712539673" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="main_red">
             <color red="1" green="0.36899998784065247" blue="0.37599998712539673" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
