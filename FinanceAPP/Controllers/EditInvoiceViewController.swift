@@ -23,9 +23,11 @@ class EditInvoiceViewController: UITableViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var invoice: Invoice?
+    var oldExpireDate: Date?
     var api: InvoiceAPI = InvoiceAPI.shared
     var delegate: InvoiceViewController?
     var category: Category?
+    let nm = NotificationsManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +51,7 @@ class EditInvoiceViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let nonNilInvoice = invoice {
+            oldExpireDate = nonNilInvoice.expireDate
             title = nonNilInvoice.title
             tfTitle.text = nonNilInvoice.title
             tfValue.text = String(describing: nonNilInvoice.value)
@@ -86,6 +89,9 @@ class EditInvoiceViewController: UITableViewController {
             activityIndicator.isHidden = false
             api.updateInvoice(invoice: invoice!) { (success, error) in
                 if error == nil {
+                    if self.invoice!.expireDate > self.oldExpireDate! && self.invoice!.paid == false {
+                        self.nm.scheduleNotification(identifier: "\(self.invoice!.id)", self.invoice!.title, subtitle: self.lbCategory.text!, message: "The invoice \(self.invoice!.title) is expiring", when: self.invoice!.expireDate)
+                    }
                     self.doSnackbar("The invoice \(self.invoice!.title) was updated")
                     self.activityIndicator.isHidden = true
                     self.delegate?.invoice = self.invoice

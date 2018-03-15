@@ -8,16 +8,39 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    let notificationCenter = UNUserNotificationCenter.current()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         UIApplication.shared.statusBarStyle = .lightContent
         window?.tintColor = UIColor(named: "main_inverse")
+        
+        notificationCenter.delegate = self
+        notificationCenter.getNotificationSettings { (settings) in
+            if settings.authorizationStatus == .notDetermined {
+                let options: UNAuthorizationOptions = [.alert, .sound, .badge, .carPlay]
+                self.notificationCenter.requestAuthorization(options: options, completionHandler: { (success, error) in
+                    if error == nil {
+                        print("\(success)")
+                    } else {
+                        print("\(error!.localizedDescription)")
+                    }
+                })
+            } else if settings.authorizationStatus == .denied {
+                print("Not authorized")
+            }
+        }
+        
+        let confirmAction = UNNotificationAction(identifier: "pay", title: "Pay", options: [.foreground])
+        let viewAction = UNNotificationAction(identifier: "view", title: "View", options: [.foreground])
+        let cancelAction = UNNotificationAction(identifier: "cancel", title: "Cancel", options: [])
+        let category = UNNotificationCategory(identifier: "expire", actions: [confirmAction, viewAction, cancelAction], intentIdentifiers: [], hiddenPreviewsBodyPlaceholder: "", options: [.allowInCarPlay, .customDismissAction])
+        notificationCenter.setNotificationCategories([category])
         return true
     }
 
@@ -91,4 +114,52 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.sound, .alert])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        let id = response.notification.request.identifier
+        switch response.actionIdentifier {
+            case "pay":
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "pay"), object: nil, userInfo: ["id": Int(id)!])
+            case "view":
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "view"), object: nil, userInfo: ["id": Int(id)!])
+            case "cancel":
+                print("ok")
+            case UNNotificationDefaultActionIdentifier:
+                print("notification")
+            case UNNotificationDismissActionIdentifier:
+                print("dismiss")
+            default:
+                break
+        }
+        completionHandler()
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

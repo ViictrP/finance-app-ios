@@ -10,6 +10,7 @@ import UIKit
 import FSCalendar
 import MaterialComponents.MaterialSnackbar
 import RealmSwift
+import UserNotifications
 
 class HomeViewController: UIViewControllerExtension {
     
@@ -30,6 +31,7 @@ class HomeViewController: UIViewControllerExtension {
         uibusy.startAnimating()
         return uibusy
     }()
+    var nm = NotificationsManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +39,8 @@ class HomeViewController: UIViewControllerExtension {
         calendar.setScope(.week, animated: true)
         calendarHeightConstraint.constant = 120
         getInvoices()
+        NotificationCenter.default.addObserver(self, selector: #selector(onReceive(notification:)), name: NSNotification.Name(rawValue: "pay"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onReceiveViewNotitication(notification:)), name: NSNotification.Name(rawValue: "view"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,14 +64,19 @@ class HomeViewController: UIViewControllerExtension {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        if let vc = segue.destination as? InvoiceViewController {
+        if let id = sender as? Int {
+            if let invoice = invoices.first(where: {$0.id == id}) {
+                let vc = segue.destination as! InvoiceViewController
+                vc.invoice = invoice
+            }
+        } else if let vc = segue.destination as? InvoiceViewController {
             let invoice = invoices[tableView.indexPathForSelectedRow!.row]
             vc.invoice = invoice
-        }
-        if let vc = segue.destination as? FilterViewController {
+        } else if let vc = segue.destination as? FilterViewController {
             vc.delegate = self
         }
     }
+    
     
     @IBAction func toggleScope(_ sender: UIBarButtonItem) {
         switch calendar.scope {
@@ -98,6 +107,36 @@ class HomeViewController: UIViewControllerExtension {
         })
     }
     
+    @objc func onReceive(notification: Notification) {
+        if let userInfo = notification.userInfo, let id = userInfo["id"] as? Int {
+            if let invoice = invoices.first(where: {$0.id == id}) {
+                self.api.makePayment(value: invoice.value, invoice: invoice, completionHandler: { (success, error) in
+                    if error == nil {
+                        self.doSnackbar("invoice \(invoice.title) was paid")
+                        if invoice.totalPaid >= invoice.value {
+                            let realm = try! Realm()
+                            try! realm.write {
+                                invoice.paid = true
+                            }
+                        }
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
+                        self.navigationItem.leftBarButtonItem = self.btSync
+                    } else {
+                        self.doSnackbar(error!)
+                    }
+                })
+            }
+        }
+    }
+    
+    @objc func onReceiveViewNotitication(notification: Notification) {
+        if let userInfo = notification.userInfo, let id = userInfo["id"] as? Int {
+            performSegue(withIdentifier: "editInvoice", sender: id)
+        }
+    }
+    
     func getInvoices() {
         api.getInvoices(params: [:]) { (invoices, error) in
             if error == nil {
@@ -110,6 +149,7 @@ class HomeViewController: UIViewControllerExtension {
                             realm.delete(result)
                         }
                     }
+                    self.createNotifications(invoices: inv)
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                         self.apiRequested = true
@@ -125,6 +165,27 @@ class HomeViewController: UIViewControllerExtension {
                 self.doSnackbar(error!)
                 self.navigationItem.leftBarButtonItem = self.btSync
                 self.apiRequested = false
+            }
+        }
+    }
+    
+    func createNotifications(invoices: [Invoice]) {
+        var invoicesToNotCreateNotification: [Int] = []
+        UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: { (notifications) in
+            for notification in notifications {
+                for invoice in invoices {
+                    if notification.identifier == "\(invoice.id)" {
+                        invoicesToNotCreateNotification.append(invoice.id)
+                        break
+                    }
+                }
+            }
+        })
+        for id in invoicesToNotCreateNotification {
+            for invoice in invoices {
+                if invoice.id != id && invoice.paid == false {
+                    nm.scheduleNotification(identifier: "\(invoice.id)", invoice.title, subtitle: invoice.category!.title, message: "The invoice \(invoice.title) is expiring", when: invoice.expireDate)
+                }
             }
         }
     }
@@ -239,12 +300,20 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         let deleteAction = UIContextualAction(style: .normal, title: "Delete") { (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
             let invoice = self.invoices[indexPath.row]
+            let identified = String(invoice.id)
             let title = String(invoice.title)
             self.api.deleteInvoice(invoice: invoice, completionHandler: { (success, error) in
                 if error == nil {
                     self.doSnackbar("Invoice \(title) was removed")
                     self.invoices.remove(at: indexPath.row)
                     self.tableView.deleteRows(at: [indexPath], with: .fade)
+                    UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: { (notifications) in
+                        for notification in notifications {
+                            if notification.identifier == identified {
+                                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [notification.identifier])
+                            }
+                        }
+                    })
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                         if self.invoices.count <= 0 {

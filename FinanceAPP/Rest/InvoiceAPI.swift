@@ -17,6 +17,7 @@ public class InvoiceAPI {
     private let endpoint: String = "/invoices"
     private var defaults = UserDefaults.standard
     private var categoryAPI: CategoryAPI = CategoryAPI.shared
+    private let nm = NotificationsManager.shared
     
     public static var shared: InvoiceAPI = {
         let invoiceAPI = InvoiceAPI()
@@ -91,7 +92,8 @@ public class InvoiceAPI {
             case .success(let value):
                 if response.response!.statusCode >= 200 && response.response!.statusCode <= 300 {
                     if let addedInvoice = addedInvoice {
-                       self.saveInvoices([addedInvoice])
+                        self.saveInvoices([addedInvoice])
+                        self.nm.scheduleNotification(identifier: "\(addedInvoice.id)", addedInvoice.title, subtitle: addedInvoice.category!.title, message: "The invoice \(invoice.title) is expiring", when: addedInvoice.expireDate)
                     }
                     completionHandler(true, nil)
                 } else {
