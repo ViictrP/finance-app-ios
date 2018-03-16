@@ -1000,16 +1000,23 @@
                                             <action selector="voltarAction:" destination="Cdl-LG-aC3" eventType="touchUpInside" id="UTo-Ou-hAZ"/>
                                         </connections>
                                     </button>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="nnB-yI-I6F">
+                                        <rect key="frame" x="311" y="139" width="46" height="30"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" name="main"/>
                                 <constraints>
                                     <constraint firstItem="0Un-11-WIj" firstAttribute="top" secondItem="7Mf-Lj-WQA" secondAttribute="bottom" constant="10" id="0Iy-5W-inX"/>
                                     <constraint firstItem="9P4-ii-g1x" firstAttribute="centerY" secondItem="0Un-11-WIj" secondAttribute="centerY" id="8ZM-o5-4mP"/>
+                                    <constraint firstItem="nnB-yI-I6F" firstAttribute="width" secondItem="9P4-ii-g1x" secondAttribute="width" id="FpM-cI-3cJ"/>
                                     <constraint firstAttribute="trailing" secondItem="9P4-ii-g1x" secondAttribute="trailing" constant="18" id="OLx-nR-6lb"/>
+                                    <constraint firstItem="nnB-yI-I6F" firstAttribute="centerY" secondItem="9P4-ii-g1x" secondAttribute="centerY" id="P8N-a4-V2t"/>
                                     <constraint firstItem="7Mf-Lj-WQA" firstAttribute="centerX" secondItem="BEe-GG-cXm" secondAttribute="centerX" id="Xgu-aQ-9G9"/>
                                     <constraint firstAttribute="height" constant="174" id="cUF-XL-oKA"/>
                                     <constraint firstItem="0Un-11-WIj" firstAttribute="centerX" secondItem="Vd7-lJ-Yso" secondAttribute="centerX" id="cm6-1y-YeE"/>
+                                    <constraint firstItem="nnB-yI-I6F" firstAttribute="height" secondItem="9P4-ii-g1x" secondAttribute="height" id="fMh-NW-4nu"/>
                                     <constraint firstItem="7Mf-Lj-WQA" firstAttribute="top" secondItem="BEe-GG-cXm" secondAttribute="bottom" constant="10" id="guX-4a-5Le"/>
+                                    <constraint firstItem="nnB-yI-I6F" firstAttribute="centerX" secondItem="9P4-ii-g1x" secondAttribute="centerX" id="it8-yP-qYz"/>
                                     <constraint firstItem="wk7-0W-vFK" firstAttribute="leading" secondItem="Vd7-lJ-Yso" secondAttribute="leading" constant="220" id="kCj-GA-oGJ"/>
                                     <constraint firstItem="BEe-GG-cXm" firstAttribute="centerX" secondItem="Vd7-lJ-Yso" secondAttribute="centerX" id="kfI-PM-eXS"/>
                                     <constraint firstItem="RmR-0T-GdR" firstAttribute="top" secondItem="Vd7-lJ-Yso" secondAttribute="top" constant="10" id="kqb-D5-Dzl"/>
@@ -1106,6 +1113,7 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
+                        <outlet property="aiBusy" destination="nnB-yI-I6F" id="5KE-KV-mfg"/>
                         <outlet property="btClose" destination="RmR-0T-GdR" id="6pr-Hy-YUS"/>
                         <outlet property="btEdit" destination="9P4-ii-g1x" id="0ue-j7-jUP"/>
                         <outlet property="btEditPic" destination="wk7-0W-vFK" id="Rw6-Qu-MfO"/>

@@ -34,7 +34,7 @@ public class NotificationsManager {
     }
     
     private func buildTrigger(date: Date, repeats: Bool) -> UNCalendarNotificationTrigger {
-        var dateComponents = NSCalendar.current.dateComponents([.day, .hour, .minute], from: Date())
+        var dateComponents = NSCalendar.current.dateComponents([.day, .hour, .minute], from: date)
         dateComponents.minute = dateComponents.minute! + 1
         return UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: repeats)
     }

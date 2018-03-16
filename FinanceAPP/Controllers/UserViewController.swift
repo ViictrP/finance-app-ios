@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import MaterialComponents.MaterialSnackbar
 
 class UserViewController: UIViewController {
 
@@ -16,12 +17,15 @@ class UserViewController: UIViewController {
     @IBOutlet weak var btClose: UIButton!
     @IBOutlet weak var btEdit: UIButton!
     @IBOutlet weak var btEditPic: UIButton!
+    @IBOutlet weak var aiBusy: UIActivityIndicatorView!
     
     var userImage: UIImage?
     var user: User?
+    var api: UserAPI = UserAPI.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        aiBusy.stopAnimating()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,11 +49,36 @@ class UserViewController: UIViewController {
             }
             sender.setTitle("Save", for: UIControlState())
         } else {
+            sender.setTitle("", for: UIControlState())
+            aiBusy.startAnimating()
+            user = User()
+            var values: [String] = []
             for cell in collectionView.visibleCells {
-                (cell as! SettingsCollectionViewCell).enableTextField(false)
+                if let cell = cell as? SettingsCollectionViewCell {
+                  cell.enableTextField(false)
+                  values.append(cell.lbValue.text!)
+                }
             }
-            sender.setTitle("Edit", for: UIControlState())
+            user?.name = values[0]
+            user?.email = values[1]
+            user?.password = values[2]
+            api.updateInfo(user: user!, completionHandler: { (success, error) in
+                self.aiBusy.stopAnimating()
+                if error == nil {
+                    sender.setTitle("Edit", for: UIControlState())
+                    self.doSnackbar("Information was updated, remember to save your new password.")
+                } else {
+                    self.doSnackbar(error!)
+                    sender.setTitle("Save", for: UIControlState())
+                }
+            })
         }
+    }
+    
+    func doSnackbar(_ msg: String) {
+        let message = MDCSnackbarMessage()
+        message.text = msg
+        MDCSnackbarManager.show(message)
     }
     
     @IBAction func editPic(_ sender: UIButton) {

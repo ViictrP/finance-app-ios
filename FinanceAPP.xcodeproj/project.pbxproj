@@ -14,6 +14,7 @@
 		4415EB19203D00A800FD9888 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4415EB17203D00A800FD9888 /* LaunchScreen.storyboard */; };
 		4415EB4D203D05C800FD9888 /* Hero+FinanceAPP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4415EB4C203D05C800FD9888 /* Hero+FinanceAPP.swift */; };
 		4415EB4E203D061200FD9888 /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4415EB4F203D061200FD9888 /* Hero.framework */; };
+		44193C64205BFC69008A9B0A /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44193C63205BFC69008A9B0A /* UIImageExtension.swift */; };
 		4427E24D20448DAA0042D520 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4427E24C20448DAA0042D520 /* CategoryTableViewController.swift */; };
 		4427E24F20448FD90042D520 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4427E24E20448FD90042D520 /* Category.swift */; };
 		4463EBC720405933008224C4 /* SettingsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4463EBC620405933008224C4 /* SettingsCollectionViewCell.swift */; };
@@ -58,6 +59,7 @@
 		4415EB21203D017E00FD9888 /* Hero.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Hero.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4415EB4C203D05C800FD9888 /* Hero+FinanceAPP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Hero+FinanceAPP.swift"; sourceTree = "<group>"; };
 		4415EB4F203D061200FD9888 /* Hero.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Hero.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		44193C63205BFC69008A9B0A /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		4427E24C20448DAA0042D520 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 		4427E24E20448FD90042D520 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		4463EBC620405933008224C4 /* SettingsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 			children = (
 				44B1F6B2203DB4290078E923 /* UIViewControllerExtension.swift */,
 				449E31962041DF5F0051E47C /* UITableViewControllerExtension.swift */,
+				44193C63205BFC69008A9B0A /* UIImageExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -466,6 +469,7 @@
 				4415EB14203D00A800FD9888 /* FinanceAPP.xcdatamodeld in Sources */,
 				449E31972041DF5F0051E47C /* UITableViewControllerExtension.swift in Sources */,
 				44B1F6B5203DBB580078E923 /* UserViewController.swift in Sources */,
+				44193C64205BFC69008A9B0A /* UIImageExtension.swift in Sources */,
 				44889D54205027AC00C091EA /* AddEditCategoryTableViewController.swift in Sources */,
 				44A59E70204984C200C0268F /* UserAPI.swift in Sources */,
 				44B1F6BD203DDD660078E923 /* InvoiceViewController.swift in Sources */,
