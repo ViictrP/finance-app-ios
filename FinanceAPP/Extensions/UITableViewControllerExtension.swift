@@ -15,7 +15,7 @@ class UITableViewControllerExtension: UITableViewController {
         let imageView = UIImageView(image: UIImage(named: "logo"))
         let buttonUser = UIButton(type: .custom)
         let userImage = resizeImage(image: UIImage(named: "user")!, targetSize: CGSize(width: 30, height: 30))
-        buttonUser.setImage(userImage, for: UIControlState())
+        buttonUser.setImage(UIImage(named: "user")!.resize(targetSize: CGSize(width: 30, height: 30)), for: UIControlState())
         buttonUser.clipsToBounds = true
         buttonUser.cornerRadius = 15
         buttonUser.hero.id = "userImage"

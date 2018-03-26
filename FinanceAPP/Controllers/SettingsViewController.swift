@@ -18,6 +18,17 @@ class SettingsViewController: UITableViewControllerExtension {
         super.viewDidLoad()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        let vc = segue.destination as! SettingsAuxViewController
+        if segue.identifier == "themeSegue" {
+            vc.hideTableView = false
+        }
+        if segue.identifier == "notificationHourSegue" {
+            vc.hideTableView = true
+        }
+    }
+    
     @IBAction func logout(_ sender: UIButton) {
         defaults.set(nil, forKey: "accessToken")
         let mainApp = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "loginController");

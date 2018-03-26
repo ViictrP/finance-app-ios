@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0CE3F6B87DC3B9B27C8CE022 /* Pods_FinanceAPP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0C563CDD5A23C43FB4979D8 /* Pods_FinanceAPP.framework */; };
+		4411834220694BD100E84B86 /* SettingsAuxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4411834120694BD100E84B86 /* SettingsAuxViewController.swift */; };
 		4415EB0C203D00A800FD9888 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4415EB0B203D00A800FD9888 /* AppDelegate.swift */; };
 		4415EB11203D00A800FD9888 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4415EB0F203D00A800FD9888 /* Main.storyboard */; };
 		4415EB14203D00A800FD9888 /* FinanceAPP.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4415EB12203D00A800FD9888 /* FinanceAPP.xcdatamodeld */; };
@@ -50,6 +51,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4411834120694BD100E84B86 /* SettingsAuxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAuxViewController.swift; sourceTree = "<group>"; };
 		4415EB08203D00A800FD9888 /* FinanceAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinanceAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4415EB0B203D00A800FD9888 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4415EB10203D00A800FD9888 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				44889D4F205021FA00C091EA /* CategoryCollectionViewCell.swift */,
 				44889D53205027AC00C091EA /* AddEditCategoryTableViewController.swift */,
 				44F142A920518A2E0081686A /* FilterViewController.swift */,
+				4411834120694BD100E84B86 /* SettingsAuxViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -486,6 +489,7 @@
 				449514D0203F4A4B00092F14 /* SignupViewController.swift in Sources */,
 				44889D50205021FA00C091EA /* CategoryCollectionViewCell.swift in Sources */,
 				44AF442F2041EC3100D5BFC5 /* LoginAPI.swift in Sources */,
+				4411834220694BD100E84B86 /* SettingsAuxViewController.swift in Sources */,
 				4427E24D20448DAA0042D520 /* CategoryTableViewController.swift in Sources */,
 				4415EB0C203D00A800FD9888 /* AppDelegate.swift in Sources */,
 				44DD51212046F6E8001EBF89 /* PaymentViewController.swift in Sources */,

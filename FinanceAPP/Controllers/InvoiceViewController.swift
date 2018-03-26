@@ -57,7 +57,7 @@ class InvoiceViewController: UIViewControllerExtension {
             lbExpireDate.text = DateUtils.dateToString(nonNilInvoice.expireDate, format: "MM/dd")
             lbValue.text = "R$\(nonNilInvoice.value)"
             lbTotalPaid.text = "R$\(nonNilInvoice.totalPaid)"
-            lbIsInstallment.text = (nonNilInvoice.isInstallment) ? "Sim" : "Não"
+            lbIsInstallment.text = (nonNilInvoice.isInstallment) ? "Yes" : "No"
             calculateInvoiceCount(expireDate: nonNilInvoice.expireDate, LastExpireDate: nonNilInvoice.lastExpireDate)
             lbLastExpireDate.text = DateUtils.dateToString(nonNilInvoice.lastExpireDate, format: "dd/MM/yyyy")
             if nonNilInvoice.paid {
